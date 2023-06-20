@@ -1,0 +1,27 @@
+:root {
+  --main-header-color: rgb(15, 171, 116);
+  --paragraph-color: #fff;
+  --background-color: #221a15;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(91, 89, 89);
+  font-size: 1.3125rem;
+  line-height: 1.6rem;
+}
+
+.full-page {
+  width: min(90%, 70em);
+  margin: auto;
+  border: 1px solid red;
+}
+
+.search-component {
+  display: grid;
+  place-items: center;
+}
