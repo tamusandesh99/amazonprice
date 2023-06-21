@@ -1,0 +1,51 @@
+:root {
+    --main-header-color: rgb(15, 171, 116);
+    --paragraph-color: #fff;
+    --background-color: #221a15;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: rgb(14, 14, 22);
+    font-size: 1.3125rem;
+    line-height: 1.6rem;
+    // width: 100vw;
+    // max-width: 100vw;
+    margin-bottom: 10%;
+  }
+
+  .main-page {
+    // border: 1px solid red;
+    // overflow: scroll;
+    width: min(90%, 70em);
+    // position: absolute;
+    margin: auto;
+    border: 1px solid red;
+    display: grid;
+    place-items: center;
+    margin-top: 10%;
+    padding: 10px;
+    H{
+        color: white;
+    }
+    .single-website{
+        // color: #fff;
+        display: inline-flex;
+        margin-top: 10%;
+        width: 100%;
+        height: 70px;
+        border: 1px solid blue;
+        .author-info{
+
+        }
+        .website-preview{
+          margin-left: auto;
+          width: 10%;
+        }
+    }
+  }
+  
