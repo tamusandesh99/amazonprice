@@ -1,11 +1,11 @@
-import SearchComponent from './components/Search/SearchComponent'
+import HomeLayout from './components/Layout'
 
 function App() {
   return (
     <div className="App">
-      <SearchComponent>
+      <HomeLayout>
 
-      </SearchComponent>
+      </HomeLayout>
     </div>
   );
 }
