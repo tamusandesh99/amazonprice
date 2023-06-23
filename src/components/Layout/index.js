@@ -1,14 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./index.scss";
-import Website from "../Website";
+
 
 const HomeLayout = () => {
-  const [selectedWebsiteUrl, setSelectedWebsiteUrl] = useState(null);
-
-  const handleWebsiteClick = (websiteUrl) => {
-    setSelectedWebsiteUrl(websiteUrl);
-  }
 
   return (
     <>
@@ -27,6 +22,11 @@ const HomeLayout = () => {
           <ul className="load-websites">
             <li>
             <Link to="/websites" >see all websites</Link>
+            </li>
+          </ul>
+          <ul className="load-websites">
+            <li>
+            <Link to="/submitwebsite" >Submit Website</Link>
             </li>
           </ul>
         </div>

@@ -10,19 +10,23 @@
     margin-top: 10%;
     padding: 10px;
     color: white;
-    .single-website{
-        // color: #fff;
-        display: inline-flex;
-        margin-top: 2%;
-        width: 100%;
-        height: 80px;
-        border: 1px solid blue;
-        .author-info{
 
+    .single-web{
+      display: inline-flex;
+      border: 1px solid yellow;
+      width: 100%;
+      height: 80px;
+      .creator-info{
+        display: block;
+      }
+      .website-preview{
+        margin-left: auto;
+        width: 10%;
+        border: 1px solid green;
+        button{
+          width: 100%;
+          height: 100%;
         }
-        .website-preview{
-          margin-left: auto;
-          width: 10%;
-        }
+      }
     }
   }

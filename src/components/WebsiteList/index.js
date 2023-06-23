@@ -1,56 +1,56 @@
 import React from "react";
-import "./index.scss";
-import SingleWebsite from "../Website";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import SingleWebsite from "../Website";
+import "./index.scss";
 
 const WebsiteList = () => {
-  let navigate = useNavigate();
+  const [data, setData] = useState([]);
 
-  const handleButtonClick = (id) => {
-    navigate("/websites/1");
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/creators/");
+      setData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  let navigate = useNavigate();
+  const handleButtonClick = (webLink, firstName, lastName) => {
+    navigate(`/websites/${encodeURIComponent(webLink)}`, {
+      state: {
+        firstName: firstName,
+        lastName: lastName
+      }
+      });
+  };
+
   return (
     <>
       <div className="all-websites">
-        <div className="single-website">
-          <div className="author-info">
-            <p>John Smith</p>
-            <p>HTML, CSS, JS</p>
-          </div>
-          <div className="website-preview">
-            <button onClick={handleButtonClick}>
+        {data.map((item) => (
+          <div className="single-web" key={item.id}>
+            <div className="creator-info">
+              <p>
+                {item.firstname} {item.lastname}
+              </p>
+              <p> {item.email}</p>
+              <p> {item.description}</p>
+            </div>
+            <div className="website-preview">
+              <button onClick={() => handleButtonClick(item.website_link, item.firstname, item.lastname)}>
                 IMG
-            </button>
-  
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="single-website">
-          <div className="author-info">
-            <p>John Smith</p>
-            <p>HTML, CSS, JS</p>
-          </div>
-          <div className="website-preview">
-          <Link>IMG</Link>
-          </div>
-        </div>
-        <div className="single-website">
-          <div className="author-info">
-            <p>John Smith</p>
-            <p>HTML, CSS, JS</p>
-          </div>
-          <div className="website-preview">
-          <Link>IMG</Link>
-          </div>
-        </div>
-        <div className="single-website">
-          <div className="author-info">
-            <p>John Smith</p>
-            <p>HTML, CSS, JS</p>
-          </div>
-          <div className="website-preview">
-          <Link>IMG</Link>
-          </div>
-        </div>
+        ))}
       </div>
     </>
   );
