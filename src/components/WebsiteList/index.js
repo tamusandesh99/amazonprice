@@ -23,11 +23,11 @@ const WebsiteList = () => {
   };
 
   let navigate = useNavigate();
-  const handleButtonClick = (webLink, firstName, lastName) => {
+  const handleButtonClick = (webLink, username, tech_stack) => {
     navigate(`/websites/${encodeURIComponent(webLink)}`, {
       state: {
-        firstName: firstName,
-        lastName: lastName
+        username: username,
+        tech_stack: tech_stack
       }
       });
   };
@@ -39,13 +39,12 @@ const WebsiteList = () => {
           <div className="single-web" key={item.id}>
             <div className="creator-info">
               <p>
-                {item.firstname} {item.lastname}
+                {item.username}
               </p>
-              <p> {item.email}</p>
-              <p> {item.description}</p>
+              <p> {item.tech_stack}</p>
             </div>
             <div className="website-preview">
-              <button onClick={() => handleButtonClick(item.website_link, item.firstname, item.lastname)}>
+              <button onClick={() => handleButtonClick(item.website_link, item.username, item.tech_stack)}>
                 IMG
               </button>
             </div>

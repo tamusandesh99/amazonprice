@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./index.scss";
 
 const WebsiteSubmit = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [passWord, setPassWord] = useState("");
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState("");
   const [message, setMessage] = useState("");
@@ -11,19 +11,41 @@ const WebsiteSubmit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Handle form submission
-    // You can perform validation, data processing, or API requests here
-    console.log("Form submitted!");
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
-    console.log("Email:", email);
-    console.log("Website:", website);
-    console.log("Message:", message);
+    // Form validation
+  if ( !userName || !passWord || !email || !website || !message) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+
+    const formData = {
+      username: userName,
+      password: passWord,
+      email: email,
+      website_link: website,
+      tech_stack: message
+    };
+
+    fetch('http://127.0.0.1:8000/creators/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response data
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error('Error:', error);
+      });
 
     // Reset form fields
-    setFirstName("");
-    setLastName("");
     setEmail("");
+    setPassWord("");
+    setUserName("")
     setWebsite("");
     setMessage("");
   };
@@ -31,21 +53,23 @@ const WebsiteSubmit = () => {
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
       <div className="form-group">
-        <label htmlFor="firstName">First Name:</label>
+        <label htmlFor="website">Username:</label>
         <input
           type="text"
-          id="firstName"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          id="username"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          required
         />
       </div>
       <div className="form-group">
-        <label htmlFor="lastName">Last Name:</label>
+        <label htmlFor="website">Password:</label>
         <input
           type="text"
-          id="lastName"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          id="username"
+          value={passWord}
+          onChange={(e) => setPassWord(e.target.value)}
+          required
         />
       </div>
       <div className="form-group">
@@ -55,6 +79,7 @@ const WebsiteSubmit = () => {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
       </div>
       <div className="form-group">
@@ -64,19 +89,23 @@ const WebsiteSubmit = () => {
           id="website"
           value={website}
           onChange={(e) => setWebsite(e.target.value)}
+          required
         />
       </div>
+      
       <div className="form-group">
-        <label htmlFor="message">Message:</label>
+        <label htmlFor="message">Tech Stack:</label>
         <textarea
           id="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          required
         ></textarea>
       </div>
       <div className="form-group">
         <button type="submit">Submit</button>
       </div>
+      
     </form>
   );
 };

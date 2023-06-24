@@ -7,16 +7,17 @@ const SingleWebsite = () => {
   const {id} = useParams()
   const webLink = decodeURIComponent(id);
   const location = useLocation();
-  const { firstName, lastName } = location.state;
+  const { username, tech_stack } = location.state;
   // const decodedFirstName = decodeURIComponent(firstName);
   // const decodedLastName = decodeURIComponent(lastName);
 
   return (
     <>
       <div className="single-website-owner">
-        <p>firstname: {firstName}</p>
-        <p>lastname: {lastName}</p>
+        <p>User: {username}</p>
+        <p>Tech Stack: {tech_stack}</p>
         <br></br>
+
         <iframe title="user-website" src={webLink} />
         <h>Stars</h>
         <input type="textbox"></input>
