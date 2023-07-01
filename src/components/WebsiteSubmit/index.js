@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./index.scss";
-import axios from 'axios';
+import axios from "axios";
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
@@ -21,50 +21,47 @@ const WebsiteSubmit = () => {
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    client.post("/creator/register",
-    {
+    e.preventDefault();
+    client.post("/creator/register", {
       email: email,
       userame: userName,
       password: passWord,
-      website_link: website
-    })
-  }
+      website_link: website,
+    });
+  };
 
-
-
-  if (currentUser){
+  if (currentUser) {
     return (
       <>
-      <div class="submit-form-container">
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="website">Password:</label>
-            <input
-              type="text"
-              id="username"
-              value={passWord}
-              onChange={(e) => setPassWord(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
+        <div class="submit-form-container">
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="website">Password:</label>
+              <input
+                type="text"
+                id="username"
+                value={passWord}
+                onChange={(e) => setPassWord(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
       </>
-    )
+    );
   }
 
   return (
