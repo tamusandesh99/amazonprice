@@ -10,12 +10,12 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomeLayout />}>
+        <Route path="/*" element={<HomeLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="/websites" element={<WebsiteList />} />
-          <Route path="/websites/:id" element={<Website />} />
-          <Route path="/submitwebsite" element={<WebsiteSubmit />} />
-          <Route path="/login" element={<WebsiteLogin />} />
+          <Route path="websites" element={<WebsiteList />} />
+          <Route path="websites/:id" element={<Website />} />
+          <Route path="submitwebsite" element={<WebsiteSubmit />} />
+          <Route path="login" element={<WebsiteLogin />} />
         </Route>
       </Routes>
     </>

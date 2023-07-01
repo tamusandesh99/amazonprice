@@ -1,19 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./index.scss";
-import Website from "../Website";
-import WebsiteList from "../WebsiteList";
-import WebsiteSubmit from "../WebsiteSubmit";
-import WebsiteLogin from "../WebsiteLogin";
-import HomePage from "../HomePage";
-import { Navbar, Nav, Button } from "react-bootstrap";
+
 
 const HomeLayout = () => {
+  let navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate("/login");
+  };
   return (
     <>
-      
       <div className="main-layout-page">
-        <HomePage />
+        <nav className="main-navbar">
+         <p className="title-name">ReviewersHub</p>
+         <button onClick={handleButtonClick} className="login-button">Login</button>
+        </nav>
+        <Outlet />
       </div>
     </>
   );
