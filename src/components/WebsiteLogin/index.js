@@ -11,14 +11,17 @@ const WebsiteLogin = () => {
   
       // Perform login API call here
       // Replace the API endpoint and logic with your actual implementation
-      fetch('http://127.0.0.1:8000/creators/login/', {
+      fetch('http://127.0.0.1:8000/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ username, password })
       })
-        .then((response) => response.json())
+        .then((response) => {
+          console.log('Response: ', response )
+          response.json()
+        })
         .then((data) => {
           // Handle the response data
           console.log('Success:', data);
