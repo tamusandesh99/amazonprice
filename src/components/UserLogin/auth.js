@@ -25,7 +25,9 @@ export const register =
             })
         }
     }
-    catch{
-
+    catch (err){
+        dispatch({
+            type: REGISTER_FAIL
+        })
     }
   };
