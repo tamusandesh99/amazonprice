@@ -1,33 +1,26 @@
-import axios from "axios";
-import { REGISTER_SUCCESS, REGISTER_FAIL } from "../../actions/types";
-export const register =
-  (username, password, email) => async (dispatch) => {
-    const config = {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      }
-    };
+import React, {useState} from 'react'
+import {connect} from 'react-redux'
+import { Register } from '../../actions/auth'
 
-    const body = JSON.stringify({username, password, email})
+const Register = () => {
+    const [formData, setFormData] = setState({
+        usernamme: '',
+        password: '',
+        email: ''
+    })
 
-    try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/register`, body, config)
+    const {username, password, email} = formData
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
 
-        if(res.data.error){
-            dispatch({
-                type: REGISTER_FAIL
-            })
-        }
-        else{
-            dispatch({
-                type: REGISTER_SUCCESS
-            })
-        }
-    }
-    catch (err){
-        dispatch({
-            type: REGISTER_FAIL
-        })
-    }
-  };
+
+    const onSubmit = e => {
+        e.preventDefaut()
+        
+    } 
+
+  return (
+    <div>index</div>
+  )
+}
+
+export default connect(null)(Register)

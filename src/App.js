@@ -1,24 +1,26 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomeLayout from "./components/Layout";
+import HomeLayout from "./hocs/Layout";
 import Website from "./components/Website";
 import WebsiteList from "./components/WebsiteList";
 import WebsiteSubmit from "./components/WebsiteSubmit";
 import UserLogin from "./components/UserLogin";
-import HomePage from "./components/HomePage"
+import HomePage from "./components/HomePage";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/*" element={<HomeLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="websites" element={<WebsiteList />} />
-          <Route path="websites/:id" element={<Website />} />
-          <Route path="submitwebsite" element={<WebsiteSubmit />} />
-          <Route path="login" element={<UserLogin />} />
-          <Route path="register" element={<UserLogin />} />
-        </Route>
-      </Routes>
+      <Router>
+        <HomeLayout>
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route exact path="/websites" element={<WebsiteList />} />
+            <Route exact path="/websites/:id" element={<Website />} />
+            <Route exact path="/submitwebsite" element={<WebsiteSubmit />} />
+            <Route exact path="/login" element={<UserLogin />} />
+            <Route exact path="/register" element={<UserLogin />} />
+          </Routes>
+        </HomeLayout>
+      </Router>
     </>
   );
 }
