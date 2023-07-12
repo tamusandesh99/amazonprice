@@ -1,5 +1,5 @@
 import axios from "axios";
-import { REGISTER_SUCCESS, REGISTER_FAIL } from "./types";
+import { REGISTER_SUCCESS, REGISTER_FAIL } from "../../actions/types";
 export const register =
   (username, password, email) => async (dispatch) => {
     const config = {
