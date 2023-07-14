@@ -1,11 +1,15 @@
 import axios from "axios";
+import Cookies from 'js-cookie';
 import { REGISTER_SUCCESS, REGISTER_FAIL } from "./types";
+
+
 export const register =
   (username, password, email) => async (dispatch) => {
     const config = {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "X-CSRFToken": Cookies.get('csrftoken')
       }
     };
 

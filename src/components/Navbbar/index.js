@@ -21,7 +21,7 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <Link className="navbar-brand" exact to="/">
+          <Link className="navbar-brand" to="/">
             Reviewers Hub
           </Link>
           <button
@@ -38,7 +38,7 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="nav-link" exact to="/">
+                <NavLink className="nav-link" to="/">
                   Home
                 </NavLink>
               </li>
