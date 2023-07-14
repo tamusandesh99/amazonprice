@@ -34,7 +34,7 @@ const Register = ({ register }) => {
   return (
     <>
       <div class="submit-form-container">
-        <form className="contact-form" onSubmit={onSubmit(e)}>
+        <form className="contact-form" onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="website">Username:</label>
             <input
@@ -53,7 +53,6 @@ const Register = ({ register }) => {
               value={password}
               onChange={(e) => onChange(e)}
               minLength='6'
-              placeholder="password*"
               required
             />
           </div>
