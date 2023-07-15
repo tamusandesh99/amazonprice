@@ -1,40 +1,39 @@
-import React from 'react'
-import { useState } from 'react';
+import React, {useState} from 'react'
+import Cookies from 'js-cookie';
+import axios from 'axios';
 import './index.scss'
 
-const WebsiteLogin = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+const UserLogin = () => {
+
+    const [loginData, setLoginData] = useState({
+      username: "",
+      password: ""
+    });
+
+    const config = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-CSRFToken": Cookies.get('csrftoken')
+      }
+    }
+    
+    const { username, password } = loginData;
+    const body = JSON.stringify({username, password})
+    
+    const onChange = (e) =>
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
   
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
       e.preventDefault();
-  
-      // Perform login API call here
-      // Replace the API endpoint and logic with your actual implementation
-      fetch('http://127.0.0.1:8000/user/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-      })
-        .then((response) => {
-          console.log('Response: ', response )
-          response.json()
-        })
-        .then((data) => {
-          // Handle the response data
-          console.log('Success:', data);
-          // Redirect or perform any necessary actions upon successful login
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.error('Error:', error);
-        });
-  
-      // Reset form fields
-      setUsername('');
-      setPassword('');
+      
+      try{
+        await axios.post(`${process.env.REACT_APP_API_URL}/user/login`, body, config)
+      }
+      catch(err){
+
+      }
+      
     };
   
     return (
@@ -44,8 +43,10 @@ const WebsiteLogin = () => {
           <input
             type="text"
             id="username"
+            name="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -53,8 +54,10 @@ const WebsiteLogin = () => {
           <input
             type="password"
             id="password"
+            name="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -64,4 +67,4 @@ const WebsiteLogin = () => {
     );
 }
 
-export default WebsiteLogin
+export default UserLogin
