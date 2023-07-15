@@ -3,9 +3,8 @@ import React, {useState, useEffect} from 'react'
 
 const CSRFToken = () => {
 
-    const [csrfToken, setCsrfToken] = useState(undefined)
+    const [csrfToken, setCsrfToken] = useState('')
     
-
     const getCookie = (name) => {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -24,18 +23,18 @@ const CSRFToken = () => {
     useEffect(() =>{
         const fetchData = async () =>{
             try{
-                await axios.get(`${process.env.REACT_APP_API_URL}/user/csrfCookie`)
+              await axios.get(`${process.env.REACT_APP_API_URL}/user/csrfCookie`)
             }
             catch(err){
 
             }
         }
         fetchData()
-        setCsrfToken(getCookie('csrfCookie'))
+        setCsrfToken(getCookie('csrftoken'))
     },[])
   return (
     <>
-    {csrfToken && <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />}
+    <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
     </>
   )
 }

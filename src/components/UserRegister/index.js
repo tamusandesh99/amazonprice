@@ -48,7 +48,7 @@ const Register = ({ register }) => {
               id="username"
               name="username"
               value={username}
-              onChange={(e) => onChange(e)}
+              onChange={onChange}
               required
             />
           </div>
@@ -59,7 +59,7 @@ const Register = ({ register }) => {
               id="password"
               name="password"
               value={password}
-              onChange={(e) => onChange(e)}
+              onChange={onChange}
               minLength="6"
               required
             />
@@ -71,7 +71,7 @@ const Register = ({ register }) => {
               id="email"
               name="email"
               value={email}
-              onChange={(e) => onChange(e)}
+              onChange={onChange}
               required
             />
           </div>
