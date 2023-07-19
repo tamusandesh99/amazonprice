@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./index.scss";
-import Navbar from "../../components/Navbbar";
+import Navbar from "../../components/Navbar";
 
 const HomeLayout = ({children}) => (
   <Fragment>

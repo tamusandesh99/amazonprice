@@ -1,38 +1,25 @@
 import React, {useState} from 'react'
 import Cookies from 'js-cookie';
+import { connect } from "react-redux";
 import axios from 'axios';
+import { login } from '../../actions/auth';
 import './index.scss'
 
-const UserLogin = () => {
+const UserLogin = (login, isAuthenticated) => {
 
     const [loginData, setLoginData] = useState({
       username: "",
       password: ""
     });
-
-    const config = {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "X-CSRFToken": Cookies.get('csrftoken')
-      }
-    }
     
     const { username, password } = loginData;
-    const body = JSON.stringify({username, password})
     
     const onChange = (e) =>
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   
     const handleLogin = async (e) => {
       e.preventDefault();
-      
-      try{
-        await axios.post(`${process.env.REACT_APP_API_URL}/user/login`, body, config)
-      }
-      catch(err){
-
-      }
+      login(username, password)
       
     };
   
@@ -67,4 +54,8 @@ const UserLogin = () => {
     );
 }
 
-export default UserLogin
+const mapStateToProps = state =>({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect (mapStateToProps,{login} (UserLogin))

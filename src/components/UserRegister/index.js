@@ -42,18 +42,30 @@ const Register = ({ register }) => {
         <form className="contact-form" onSubmit={onSubmit}>
           <CSRFToken />
           <div className="form-group">
-            <label htmlFor="website">Username:</label>
+            <label htmlFor="website">Email:</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={email}
+              onChange={onChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="passowrd">Username:</label>
             <input
               type="text"
               id="username"
               name="username"
               value={username}
               onChange={onChange}
+              minLength="6"
               required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="passowrd">Password:</label>
+            <label htmlFor="email">Password:</label>
             <input
               type="text"
               id="password"
@@ -61,17 +73,6 @@ const Register = ({ register }) => {
               value={password}
               onChange={onChange}
               minLength="6"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={onChange}
               required
             />
           </div>
