@@ -5,7 +5,7 @@ import { register } from "../../actions/auth";
 import CSRFToken from "../CSRFToken";
 import "./index.scss";
 
-const Register = ({ register }) => {
+const Register = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -35,6 +35,13 @@ const Register = ({ register }) => {
     });
     setAccountCreated(true);
   };
+
+  if (isAuthenticated) {
+    navigate("/home");
+  }
+  else if(accountCreated){
+    navigate("/login")
+  }
 
   return (
     <>
@@ -88,4 +95,8 @@ const Register = ({ register }) => {
   );
 };
 
-export default connect(null, { register })(Register);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { register })(Register);

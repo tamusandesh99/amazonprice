@@ -7,9 +7,48 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
+  AUTHENTICATED_SUCCESS,
+  AUTHENTICATED_FAIL
 } from "./types";
 
-export const login = (username, password) =>async (dispatch) =>{
+export const checkAuthenticated = () => async (dispatch) => {
+  const config = {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const res = await axios.get(
+      `${process.env.REACT_APP_API_URL}/user/authenticated`,
+      config
+    );
+    if (res.data.error || res.data.isAuthenticated === "error") {
+      dispatch({
+        type: AUTHENTICATED_FAIL,
+        payload: false,
+      });
+    } else if (res.data.isAuthenticated === "success") {
+      dispatch({
+        type: AUTHENTICATED_SUCCESS,
+        payload: true,
+      });
+    } else {
+      dispatch({
+        type: AUTHENTICATED_FAIL,
+        payload: false,
+      });
+    }
+  } catch (err) {
+    dispatch({
+      type: AUTHENTICATED_FAIL,
+      payload: false,
+    });
+  }
+};
+
+export const login = (username, password) => async (dispatch) => {
   const config = {
     headers: {
       Accept: "application/json",
@@ -18,16 +57,32 @@ export const login = (username, password) =>async (dispatch) =>{
     },
   };
   const body = JSON.stringify({ username, password });
-  try{
-    await axios.post(`${process.env.REACT_APP_API_URL}/user/login`, body, config)
+  try {
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/user/login`,
+      body,
+      config
+    );
+    if (res.data.success) {
+      dispatch({
+        type: LOGIN_SUCCESS,
+      });
 
+      // dispatch(load_user());
+    } else {
+      dispatch({
+        type: LOGIN_FAIL,
+      });
+    }
+  } catch (err) {
+    dispatch({
+      type: AUTHENTICATED_FAIL,
+      payload: false,
+    });
   }
-  catch(err){
+};
 
-  }
-}
-
-export const logout = () =>async (dispatch) =>{
+export const logout = async (dispatch) => {
   const config = {
     headers: {
       Accept: "application/json",
@@ -35,16 +90,17 @@ export const logout = () =>async (dispatch) =>{
       "X-CSRFToken": Cookies.get("csrftoken"),
     },
   };
-  try{
-    await axios.post(`${process.env.REACT_APP_API_URL}/user/logout`, config)
-
-  }
-  catch(err){
-
-  }
-}
-
-
+  const body = JSON.stringify({
+    withCredentials: true,
+  });
+  try {
+    await axios.post(
+      `${process.env.REACT_APP_API_URL}/user/logout`,
+      body,
+      config
+    );
+  } catch (err) {}
+};
 
 export const register = (username, password, email) => async (dispatch) => {
   const config = {
@@ -67,6 +123,7 @@ export const register = (username, password, email) => async (dispatch) => {
     if (res.data.error) {
       dispatch({
         type: REGISTER_FAIL,
+        payload: false,
       });
     } else {
       dispatch({

@@ -9,11 +9,11 @@ import {
 
 const initialState = {
   isAuthenticated: null,
-  username: "",
+  username: ''
 };
 
 export default function (state = initialState, action) {
-  const { type, payload } = action;
+  const { type } = action;
   switch (type) {
     case REGISTER_SUCCESS:
       return {
@@ -24,13 +24,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
-        username: payload,
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
         isAuthenticated: false,
-        username: "",
       };
     case REGISTER_FAIL:
       return state;

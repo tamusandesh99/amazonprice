@@ -6,6 +6,7 @@ import WebsiteSubmit from "./components/WebsiteSubmit";
 import UserLogin from "./components/UserLogin";
 import HomePage from "./components/HomePage";
 import UserRegister from "./components/UserRegister";
+import UserProfile from "./components/UserProfile";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -23,6 +24,7 @@ function App() {
               <Route exact path="/submitwebsite" element={<WebsiteSubmit />} />
               <Route exact path="/login" element={<UserLogin />} />
               <Route exact path="/register" element={<UserRegister />} />
+              <Route exact path="/profile" element={<UserProfile />} />
             </Routes>
           </HomeLayout>
         </Router>

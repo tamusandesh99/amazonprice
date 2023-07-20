@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth"
 
-const Navbar = (isAuthenticated, logout) => {
+const Navbar = ({isAuthenticated, logout}) => {
   const authLinks = (
     <Fragment>
       <li className="nav-item">
@@ -66,4 +66,4 @@ const mapStateToProps = state =>({
   isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, {logout} (Navbar));
+export default connect(mapStateToProps, {logout}) (Navbar);

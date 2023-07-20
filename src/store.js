@@ -12,7 +12,7 @@ const store = configureStore({
     reducer: rootReducer,
     preloadedState: initialState,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware),
-    devTools: process.env.NODE_ENV !== 'production',
+    devTools: process.env.NODE_ENV !== 'production'
   });
 
 export default store
