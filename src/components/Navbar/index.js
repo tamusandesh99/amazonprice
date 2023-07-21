@@ -12,6 +12,11 @@ const Navbar = ({isAuthenticated, logout}) => {
           Profile
         </NavLink>
       </li>
+      <li className="nav-item">
+        <a onClick={logout} className="nav-link" to="/">
+          Logout
+        </a>
+      </li>
     </Fragment>
   );
   const guestLinks = (

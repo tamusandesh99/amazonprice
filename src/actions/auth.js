@@ -82,7 +82,7 @@ export const login = (username, password) => async (dispatch) => {
   }
 };
 
-export const logout = async (dispatch) => {
+export const logout = () => async (dispatch) => {
   const config = {
     headers: {
       Accept: "application/json",
@@ -91,15 +91,28 @@ export const logout = async (dispatch) => {
     },
   };
   const body = JSON.stringify({
-    withCredentials: true,
+    'withCredentials': true,
   });
   try {
-    await axios.post(
+    const res = await axios.post(
       `${process.env.REACT_APP_API_URL}/user/logout`,
       body,
       config
     );
-  } catch (err) {}
+    if (res.data.success) {
+      dispatch({
+          type: LOGOUT_SUCCESS
+      });
+  } else {
+      dispatch({
+          type: LOGOUT_FAIL
+      });
+  }
+  } catch (err) {
+    dispatch({
+      type: LOGOUT_FAIL
+  });
+  }
 };
 
 export const register = (username, password, email) => async (dispatch) => {
