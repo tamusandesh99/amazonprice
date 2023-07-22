@@ -1,34 +1,24 @@
-import React, {Fragment} from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import React, { Fragment, useEffect } from "react";
 import "./index.scss";
 import Navbar from "../../components/Navbar";
+import { connect } from "react-redux";
+import { checkAuthenticated } from "../../actions/auth";
+import { load_user } from "../../actions/profile";
 
-const HomeLayout = ({children}) => (
-  <Fragment>
-    <Navbar></Navbar>
-    {children}
-  </Fragment>
-)
+const HomeLayout = ({ children, checkAuthenticated, load_user }) => {
 
-export default HomeLayout;
+  useEffect(()=>{
+    checkAuthenticated()
+    load_user()
+  },[])
 
-// const HomeLayout = () => {
-//   let navigate = useNavigate();
-//   const handleButtonClick = () => {
-//     navigate("/login");
-//   };
-//   return (
-//     <>
-//       <div className="main-layout-page">
-        
-//         <nav className="main-navbar">
-//          <p className="title-name">ReviewersHub</p>
-//          <button onClick={handleButtonClick} className="login-button">Login</button>
-//         </nav>
-//         <Outlet />
-//       </div>
-//     </>
-//   );
-// };
+  return (
+    <Fragment>
+      <Navbar></Navbar>
+      {children}
+    </Fragment>
+  );
+};
 
-// export default HomeLayout;
+export default connect(null,{checkAuthenticated, load_user})(HomeLayout);
+

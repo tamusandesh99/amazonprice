@@ -5,16 +5,23 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
   LOGOUT_SUCCESS,
+  AUTHENTICATED_FAIL,
+  AUTHENTICATED_SUCCESS
 } from "../actions/types";
 
 const initialState = {
   isAuthenticated: null,
-  username: ''
 };
 
 export default function (state = initialState, action) {
-  const { type } = action;
+  const { type, payload } = action;
   switch (type) {
+    case AUTHENTICATED_SUCCESS:
+    case AUTHENTICATED_FAIL:
+      return{
+        ...state,
+        isAuthenticated: payload
+      }
     case REGISTER_SUCCESS:
       return {
         ...state,
