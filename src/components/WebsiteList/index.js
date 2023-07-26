@@ -1,29 +1,29 @@
 import React from "react";
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import SingleWebsite from "../Website";
+import {useNavigate } from "react-router-dom";
+import { load_posts } from "../../actions/posts";
 import "./index.scss";
 
 const WebsiteList = () => {
-  const [data, setData] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetchData();
+    // Call the load_posts function and handle the data
+    load_posts()
+      .then((data) => {
+        // Here, data will contain the posts retrieved from the API
+        setPosts(data);
+      })
+      .catch((error) => {
+        // Handle errors if needed
+        console.error("Error loading posts:", error);
+      });
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/creators/");
-      setData(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   let navigate = useNavigate();
+ 
   const handleButtonClick = (webLink, username, tech_stack) => {
+    console.log(webLink, username, tech_stack)
     navigate(`/websites/${encodeURIComponent(webLink)}`, {
       state: {
         username: username,
@@ -35,16 +35,16 @@ const WebsiteList = () => {
   return (
     <>
       <div className="all-websites">
-        {data.map((item) => (
-          <div className="single-web" key={item.id}>
+        {posts.map((post, index) => (
+          <div className="single-web" key={index}>
             <div className="creator-info">
               <p>
-                {item.username}
+                {post.username}
               </p>
-              <p> {item.tech_stack}</p>
+              <p> {post.website_link}</p>
             </div>
             <div className="website-preview">
-              <button onClick={() => handleButtonClick(item.website_link, item.username, item.tech_stack)}>
+              <button onClick={() => handleButtonClick(post.website_link, post.username, "react")}>
                 IMG
               </button>
             </div>

@@ -91,16 +91,17 @@ export const logout = () => async (dispatch) => {
       "X-CSRFToken": Cookies.get("csrftoken"),
     },
   };
+
   const body = JSON.stringify({
     'withCredentials': true,
   });
+  
   try {
     const res = await axios.post(
       `${process.env.REACT_APP_API_URL}/user/logout`,
       body,
       config
     );
-    console.log(res.data)
     if (res.data.success) {
       dispatch({
           type: LOGOUT_SUCCESS

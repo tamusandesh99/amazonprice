@@ -10,7 +10,7 @@ const SingleWebsite = () => {
   const { username, tech_stack } = location.state;
   // const decodedFirstName = decodeURIComponent(firstName);
   // const decodedLastName = decodeURIComponent(lastName);
-
+  console.log(webLink)
   return (
     <>
       <div className="single-website-owner">
@@ -19,7 +19,8 @@ const SingleWebsite = () => {
         <br></br>
 
         <iframe title="user-website" src={webLink} />
-        <h>Stars</h>
+        {/* <iframe title="user-website" src="https://sandeshgurung.com" /> */}
+        <h1>Stars</h1>
         <input type="textbox"></input>
       </div>
     </>
