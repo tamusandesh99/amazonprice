@@ -9,7 +9,7 @@ const UserProfile = ({ update_profile, user_website_global }) => {
   // const website_link = useSelector(state => state.profile.user_website);
 
   const [userData, setUserData] = useState({
-    user_website: " ",
+    user_website: "",
   });
 
   const { user_website } = userData;
@@ -42,7 +42,7 @@ const UserProfile = ({ update_profile, user_website_global }) => {
               type="text"
               name="user_website"
               onChange={(e) => onChange(e)}
-              value={user_website}
+              value={user_website_global}
             ></input>
           </div>
           <button>Update</button>
