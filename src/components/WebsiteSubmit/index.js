@@ -1,133 +1,73 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../../actions/auth";
 import "./index.scss";
+import { useNavigate, Link, Await } from "react-router-dom";
 import axios from "axios";
+import { create_user_post } from "../../actions/posts";
 
-axios.defaults.xsrfCookieName = "csrftoken";
-axios.defaults.xsrfHeaderName = "X-CSRFToken";
-axios.defaults.withCredentials = true;
+const UserPost = ({ isAuthenticated }) => {
+  const [postData, setPostData] = useState({ title: "", website_link: "", tech_stack:"" });
 
-const client = axios.create({
-  baseURL: "http://127.0.0.1:8000",
-});
 
-const WebsiteSubmit = () => {
-  const [currentUser, setCurrentUser] = useState();
-  const [registrationToggle, setRegistrationToggle] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [passWord, setPassWord] = useState("");
-  const [email, setEmail] = useState("");
-  const [website, setWebsite] = useState("");
-  const [message, setMessage] = useState("");
+  const { title, website_link, tech_stack } = postData;
 
-  const handleSubmit = (e) => {
+  const onChange = (e) =>
+    setPostData({ ...postData, [e.target.name]: e.target.value });
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    client.post("/creator/register", {
-      email: email,
-      userame: userName,
-      password: passWord,
-      website_link: website,
-    });
+    create_user_post(title,website_link,tech_stack)
   };
-
-  if (currentUser) {
-    return (
-      <>
-        <div class="submit-form-container">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="website">Password:</label>
-              <input
-                type="text"
-                id="username"
-                value={passWord}
-                onChange={(e) => setPassWord(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <button type="submit">Submit</button>
-            </div>
-          </form>
-        </div>
-      </>
-    );
-  }
-
   return (
     <>
-      <div class="submit-form-container">
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="website">Username:</label>
-            <input
-              type="text"
-              id="username"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="website">Password:</label>
-            <input
-              type="text"
-              id="username"
-              value={passWord}
-              onChange={(e) => setPassWord(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="website">Website Link:</label>
-            <input
-              type="text"
-              id="website"
-              value={website}
-              onChange={(e) => setWebsite(e.target.value)}
-              required
-            />
-          </div>
-          {/* <div className="form-group">
-            <label htmlFor="message">Tech Stack:</label>
-            <input
-              id="message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-            ></input>
-          </div> */}
-          <div className="form-group">
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-        <div className="already-user">
-          <p>Already a user?</p>
-          <button>Click here</button>
+      <form className="login-form" onSubmit={handleLogin}>
+        <div className="form-group">
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={title}
+            onChange={onChange}
+            required
+          />
         </div>
-      </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="text"
+            id="website_link"
+            name="website_link"
+            value={website_link}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="text"
+            id="tech_stack"
+            name="tech_stack"
+            value={tech_stack}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+      <p>
+        Don't have an account? <Link to="/register">Signup</Link>
+      </p>
     </>
   );
 };
 
-export default WebsiteSubmit;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { create_user_post })(UserPost);
