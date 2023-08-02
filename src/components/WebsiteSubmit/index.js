@@ -6,6 +6,7 @@ import { useNavigate, Link, Await } from "react-router-dom";
 import axios from "axios";
 import { create_user_post } from "../../actions/posts";
 
+
 const UserPost = ({ isAuthenticated }) => {
   const [postData, setPostData] = useState({ title: "", website_link: "", tech_stack:"" });
 

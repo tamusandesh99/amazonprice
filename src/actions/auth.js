@@ -117,13 +117,13 @@ export const logout = () => async (dispatch) => {
   });
   }
 };
-
-export const register = (username, password, email) => async (dispatch) => {
+export const register = (username, password, email, ) => async (dispatch) => {
+  console.log(Cookies.get('csrftoken'))
   const config = {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "X-CSRFToken": Cookies.get("csrftoken"),
+      "X-CSRFToken": Cookies.get('csrftoken')
     },
   };
 
@@ -135,7 +135,7 @@ export const register = (username, password, email) => async (dispatch) => {
       body,
       config
     );
-
+     console.log(res) 
     if (res.data.error) {
       dispatch({
         type: REGISTER_FAIL,

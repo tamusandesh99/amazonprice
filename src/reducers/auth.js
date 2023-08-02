@@ -1,4 +1,5 @@
 import {
+  SET_CSRF_TOKEN,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
   LOGIN_FAIL,
@@ -16,6 +17,11 @@ const initialState = {
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    // case SET_CSRF_TOKEN:
+    //   return {
+    //     ...state,
+    //     csrfToken: payload, 
+    //   };
     case AUTHENTICATED_SUCCESS:
     case AUTHENTICATED_FAIL:
       return{

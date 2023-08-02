@@ -5,6 +5,7 @@ import { register } from "../../actions/auth";
 import CSRFToken from "../CSRFToken";
 import "./index.scss";
 
+
 const Register = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     username: "",
@@ -19,11 +20,11 @@ const Register = ({ register, isAuthenticated }) => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  useEffect(() => {
-    if (accountCreated) {
-      navigate("/");
-    }
-  }, [accountCreated, navigate]);
+  // useEffect(() => {
+  //   if (accountCreated) {
+  //     navigate("/");
+  //   }
+  // }, [accountCreated, navigate]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -36,18 +37,24 @@ const Register = ({ register, isAuthenticated }) => {
     setAccountCreated(true);
   };
 
-  if (isAuthenticated) {
-    navigate("/home");
-  }
-  else if(accountCreated){
-    navigate("/login")
-  }
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     navigate("/home");
+  //   }
+  // }, [isAuthenticated, navigate]);
+
+  // useEffect(() => {
+  //   if (accountCreated) {
+  //     navigate("/login"); // Navigate to login page after account creation
+  //   }
+  // }, [accountCreated, navigate]);
+  
 
   return (
     <>
       <div className="submit-form-container">
-        <form className="contact-form" onSubmit={onSubmit}>
           <CSRFToken />
+        <form className="contact-form" onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="website">Email:</label>
             <input
