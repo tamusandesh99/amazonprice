@@ -22,11 +22,9 @@ const CSRFToken = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/user/csrfCookie`,
-          { withCredentials: true }
-        );
-          console.log(res)
+        await axios.get(`${process.env.REACT_APP_API_URL}/user/csrfCookie`, {
+          withCredentials: true,
+        });
       } catch (err) {
         console.error("Error fetching CSRF Token:", err);
       }

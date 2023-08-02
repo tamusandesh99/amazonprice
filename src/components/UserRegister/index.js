@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { connect } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { register } from "../../actions/auth";
 import CSRFToken from "../CSRFToken";
 import "./index.scss";
 
+
+axios.defaults.xsrfHeaderName = 'x-csrftoken'
+axios.defaults.xsrfCookieName = 'csrftoken'
 
 const Register = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -53,8 +57,8 @@ const Register = ({ register, isAuthenticated }) => {
   return (
     <>
       <div className="submit-form-container">
-          <CSRFToken />
         <form className="contact-form" onSubmit={onSubmit}>
+          <CSRFToken />
           <div className="form-group">
             <label htmlFor="website">Email:</label>
             <input

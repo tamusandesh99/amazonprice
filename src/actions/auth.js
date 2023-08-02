@@ -120,6 +120,7 @@ export const logout = () => async (dispatch) => {
 export const register = (username, password, email, ) => async (dispatch) => {
   console.log(Cookies.get('csrftoken'))
   const config = {
+    withCredentials: true,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -133,7 +134,7 @@ export const register = (username, password, email, ) => async (dispatch) => {
     const res = await axios.post(
       `${process.env.REACT_APP_API_URL}/user/register`,
       body,
-      config
+      config,
     );
      console.log(res) 
     if (res.data.error) {
