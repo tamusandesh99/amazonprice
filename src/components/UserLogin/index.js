@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
+import CSRFToken from "../CSRFToken";
 import "./index.scss";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -30,6 +31,7 @@ const UserLogin = ({ login, isAuthenticated }) => {
   return (
     <>
       <form className="login-form" onSubmit={handleLogin}>
+        <CSRFToken />
         <div className="form-group">
           <label htmlFor="username">Username:</label>
           <input

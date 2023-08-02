@@ -10,6 +10,7 @@ import {
 
 export const load_user = () => async (dispatch) => {
   const config = {
+    withCredentials: true,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -21,7 +22,7 @@ export const load_user = () => async (dispatch) => {
       `${process.env.REACT_APP_API_URL}/profile/user`,
       config
     );
-
+      console.log(res.data)
     if (res.data.error) {
       dispatch({
         type: LOAD_USER_PROFILE_FAIL,

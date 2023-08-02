@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   username: "",
-  user_website: "",
+  user_posts: "",
 };
 
 export default function (state = initialState, action) {
@@ -15,11 +15,11 @@ export default function (state = initialState, action) {
   switch (type) {
     case LOAD_USER_PROFILE_SUCCESS:
     case UPDATE_USER_PROFILE_SUCCESS:
-      console.log(payload.profile.website_link)
+      console.log(payload)
       return {
         ...state,
         username: payload.username,
-        user_website: payload.profile.website_link,
+        user_posts: payload.profile.posts,
       };
     case LOAD_USER_PROFILE_FAIL:
       return {

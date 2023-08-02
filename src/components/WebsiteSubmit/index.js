@@ -16,13 +16,13 @@ const UserPost = ({ isAuthenticated }) => {
   const onChange = (e) =>
     setPostData({ ...postData, [e.target.name]: e.target.value });
 
-  const handleLogin = (e) => {
+  const newPost = (e) => {
     e.preventDefault();
     create_user_post(title,website_link,tech_stack)
   };
   return (
     <>
-      <form className="login-form" onSubmit={handleLogin}>
+      <form className="login-form" onSubmit={newPost}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
           <input

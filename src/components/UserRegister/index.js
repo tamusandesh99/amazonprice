@@ -24,11 +24,11 @@ const Register = ({ register, isAuthenticated }) => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // useEffect(() => {
-  //   if (accountCreated) {
-  //     navigate("/");
-  //   }
-  // }, [accountCreated, navigate]);
+  useEffect(() => {
+    if (accountCreated) {
+      navigate("/");
+    }
+  }, [accountCreated, navigate]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -41,17 +41,17 @@ const Register = ({ register, isAuthenticated }) => {
     setAccountCreated(true);
   };
 
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     navigate("/home");
-  //   }
-  // }, [isAuthenticated, navigate]);
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/home");
+    }
+  }, [isAuthenticated, navigate]);
 
-  // useEffect(() => {
-  //   if (accountCreated) {
-  //     navigate("/login"); // Navigate to login page after account creation
-  //   }
-  // }, [accountCreated, navigate]);
+  useEffect(() => {
+    if (accountCreated) {
+      navigate("/login"); // Navigate to login page after account creation
+    }
+  }, [accountCreated, navigate]);
   
 
   return (

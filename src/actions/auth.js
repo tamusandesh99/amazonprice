@@ -14,6 +14,7 @@ import {
 
 export const checkAuthenticated = () => async (dispatch) => {
   const config = {
+    withCredentials: true,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
@@ -51,6 +52,7 @@ export const checkAuthenticated = () => async (dispatch) => {
 
 export const login = (username, password) => async (dispatch) => {
   const config = {
+    withCredentials: true,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -85,6 +87,7 @@ export const login = (username, password) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   const config = {
+    withCredentials: true,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -118,7 +121,6 @@ export const logout = () => async (dispatch) => {
   }
 };
 export const register = (username, password, email, ) => async (dispatch) => {
-  console.log(Cookies.get('csrftoken'))
   const config = {
     withCredentials: true,
     headers: {
@@ -136,7 +138,6 @@ export const register = (username, password, email, ) => async (dispatch) => {
       body,
       config,
     );
-     console.log(res) 
     if (res.data.error) {
       dispatch({
         type: REGISTER_FAIL,
