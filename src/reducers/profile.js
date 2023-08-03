@@ -15,7 +15,6 @@ export default function (state = initialState, action) {
   switch (type) {
     case LOAD_USER_PROFILE_SUCCESS:
     case UPDATE_USER_PROFILE_SUCCESS:
-      console.log(payload)
       return {
         ...state,
         username: payload.username,

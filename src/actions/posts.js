@@ -18,6 +18,7 @@ export const load_posts  = async () => {
 };
 
 export const create_user_post  = (title, website_link, tech_stack) => async () => {
+  console.log('oo')
   const config = {
     headers: {
       Accept: "application/json",

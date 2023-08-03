@@ -24,7 +24,7 @@ const UserPost = ({ isAuthenticated }) => {
     <>
       <form className="login-form" onSubmit={newPost}>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Title</label>
           <input
             type="text"
             id="title"
@@ -35,7 +35,7 @@ const UserPost = ({ isAuthenticated }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Website Link</label>
           <input
             type="text"
             id="website_link"
@@ -46,18 +46,18 @@ const UserPost = ({ isAuthenticated }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Tech Stacks Used:</label>
           <input
             type="text"
             id="tech_stack"
             name="tech_stack"
             value={tech_stack}
             onChange={onChange}
-            required
+            
           />
         </div>
         <div className="form-group">
-          <button type="submit">Login</button>
+          <button type="submit">Post</button>
         </div>
       </form>
       <p>

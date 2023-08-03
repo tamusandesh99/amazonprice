@@ -1,9 +1,30 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 import "./index.scss";
 
 
-const HomePage = () => {
+const HomePage = (isAuthenticated) => {
+  console.log("isAuthenticated:", isAuthenticated); 
+  const loginLink = (
+    <Fragment>
+      <li className="nav-item">
+        <Link  to="/login">
+          Login to submit website
+        </Link>
+      </li>
+    </Fragment>
+  );
+  const postLink = (
+    <Fragment>
+      <li className="nav-item">
+        <Link to="/submitwebsite">
+          Submit Website
+        </Link>
+      </li>
+    </Fragment>
+  );
 
   return (
     <>
@@ -26,7 +47,7 @@ const HomePage = () => {
           </ul>
           <ul className="load-websites">
             <li>
-            <Link to="/submitwebsite" >Submit Website</Link>
+            {isAuthenticated.isAuthenticated ? postLink : loginLink}
             </li>
           </ul>
           
@@ -36,4 +57,9 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+const mapStateToProps = state =>({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+
+export default connect(mapStateToProps) (HomePage);
