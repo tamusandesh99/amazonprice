@@ -8,7 +8,13 @@ export const get_all_posts = async () => {
       `${process.env.REACT_APP_API_URL}/profile/get_posts`
     );
     const { user_profiles } = res.data;
-    return user_profiles;
+    const postsWithUsernames = user_profiles.reduce((acc, profile) => {
+      const { username, posts } = profile;
+      const postsWithUsername = posts.map((post) => ({ ...post, username }));
+      return [...acc, ...postsWithUsername];
+    }, []);
+    console.log(postsWithUsernames)
+    return postsWithUsernames;
   } catch (err) {
     console.error("Error loading posts:", err);
     throw err;
