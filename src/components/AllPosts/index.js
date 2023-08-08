@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import {useNavigate } from "react-router-dom";
-import { load_posts } from "../../actions/posts";
+import { get_all_posts } from "../../actions/posts";
 import "./index.scss";
 
 const WebsiteList = () => {
@@ -9,7 +9,7 @@ const WebsiteList = () => {
 
   useEffect(() => {
     // Call the load_posts function and handle the data
-    load_posts()
+    get_all_posts()
       .then((data) => {
         // Here, data will contain the posts retrieved from the API
         setPosts(data);

@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { USER_POST_FAIL, USER_POST_SUCCESS } from "./types";
 
-export const load_posts = async () => {
+export const get_all_posts = async () => {
   try {
     const res = await axios.get(
       `${process.env.REACT_APP_API_URL}/profile/get_posts`

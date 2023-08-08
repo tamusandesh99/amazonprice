@@ -19,9 +19,9 @@ function App() {
           <HomeLayout>
             <Routes>
               <Route exact path="/" element={<HomePage />} />
-              <Route exact path="/websites" element={<AllPosts />} />
-              <Route exact path="/websites/:id" element={<SinglePost />} />
-              <Route exact path="/submitwebsite" element={<UserPost />} />
+              <Route exact path="/posts" element={<AllPosts />} />
+              <Route exact path="/posts/:id" element={<SinglePost />} />
+              <Route exact path="/submitpost" element={<UserPost />} />
               <Route exact path="/login" element={<UserLogin />} />
               <Route exact path="/register" element={<UserRegister />} />
               <Route exact path="/profile" element={<UserProfile />} />

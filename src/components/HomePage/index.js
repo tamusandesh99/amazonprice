@@ -10,7 +10,7 @@ const HomePage = (isAuthenticated) => {
     <Fragment>
       <li className="nav-item">
         <Link  to="/login">
-          Login to submit website
+          Login to make a post
         </Link>
       </li>
     </Fragment>
@@ -18,8 +18,8 @@ const HomePage = (isAuthenticated) => {
   const postLink = (
     <Fragment>
       <li className="nav-item">
-        <Link to="/submitwebsite">
-          Submit Website
+        <Link to="/submitpost">
+          Submit Post
         </Link>
       </li>
     </Fragment>
@@ -41,7 +41,7 @@ const HomePage = (isAuthenticated) => {
         <div className="load-all-websites">
           <ul className="load-websites">
             <li>
-            <Link to="/websites" >see all websites</Link>
+            <Link to="/posts" >see all posts</Link>
             </li>
           </ul>
           <ul className="load-websites">
