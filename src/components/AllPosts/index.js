@@ -23,11 +23,11 @@ const WebsiteList = () => {
 
   let navigate = useNavigate();
  
-  const handleButtonClick = (webLink, username, tech_stack) => {
-    console.log(webLink, username, tech_stack)
-    navigate(`/websites/${encodeURIComponent(webLink)}`, {
+  const handleButtonClick = (webLink, username, title, tech_stack) => {
+    navigate(`/posts/${encodeURIComponent(webLink)}`, {
       state: {
         username: username,
+        title: title,
         tech_stack: tech_stack
       }
       });
@@ -42,10 +42,10 @@ const WebsiteList = () => {
               <p>
                 {post.username}
               </p>
-              <p> {post.website_link}</p>
+              <p> {post.title}</p>
             </div>
             <div className="website-preview">
-              <button onClick={() => handleButtonClick(post.website_link, post.username, "react")}>
+              <button onClick={() => handleButtonClick(post.website_link, post.username, post.title, post.tech_stack)}>
                 IMG
               </button>
             </div>
