@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { logout } from "../../actions/auth"
 
 const Navbar = ({isAuthenticated, logout}) => {
-  
+
   const authLinks = (
     <Fragment>
       <li className="nav-item">

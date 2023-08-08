@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   username: "",
-  user_posts: "",
+  user_posts: [],
 };
 
 export default function (state = initialState, action) {

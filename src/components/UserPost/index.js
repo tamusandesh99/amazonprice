@@ -1,28 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { login } from "../../actions/auth";
 import "./index.scss";
 import { useNavigate, Link, Await } from "react-router-dom";
 import axios from "axios";
 import { create_user_post } from "../../actions/posts";
-
+import Cookies from "js-cookie";
 
 const UserPost = ({ isAuthenticated }) => {
-  const [postData, setPostData] = useState({ title: "", website_link: "", tech_stack:"" });
-
+  const [postData, setPostData] = useState({
+    title: "",
+    website_link: "",
+    tech_stack: "",
+  });
 
   const { title, website_link, tech_stack } = postData;
 
   const onChange = (e) =>
     setPostData({ ...postData, [e.target.name]: e.target.value });
 
-  const newPost = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    create_user_post(title,website_link,tech_stack)
-  };
+    console.log('e')
+    // create_user_post(title, website_link, tech_stack);
+    const config = {
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-CSRFToken": Cookies.get("csrftoken"),
+      },
+    };
+
+    const body = JSON.stringify({ title, website_link, tech_stack });
+
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/profile/post/create`,
+        body,
+        config )
+      }
   return (
     <>
-      <form className="login-form" onSubmit={newPost}>
+      <form className="login-form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <label htmlFor="username">Title</label>
           <input
@@ -53,7 +71,6 @@ const UserPost = ({ isAuthenticated }) => {
             name="tech_stack"
             value={tech_stack}
             onChange={onChange}
-            
           />
         </div>
         <div className="form-group">

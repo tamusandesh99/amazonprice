@@ -10,7 +10,6 @@ const SingleWebsite = () => {
   const { username, tech_stack } = location.state;
   // const decodedFirstName = decodeURIComponent(firstName);
   // const decodedLastName = decodeURIComponent(lastName);
-  console.log(webLink)
   return (
     <>
       <div className="single-website-owner">

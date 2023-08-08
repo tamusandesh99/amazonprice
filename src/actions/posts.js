@@ -1,43 +1,52 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { USER_POST_FAIL, USER_POST_SUCCESS } from "./types";
 
-
-export const load_posts  = async () => {
-
+export const load_posts = async () => {
   try {
     const res = await axios.get(
       `${process.env.REACT_APP_API_URL}/profile/get_posts`
     );
     const { user_profiles } = res.data;
-    return user_profiles
-  }
-  catch(err){
+    return user_profiles;
+  } catch (err) {
     console.error("Error loading posts:", err);
-    throw err
+    throw err;
   }
 };
 
-export const create_user_post  = (title, website_link, tech_stack) => async () => {
-  console.log('oo')
-  const config = {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "X-CSRFToken": Cookies.get("csrftoken"),
-    },
+export const create_user_post =
+  (title, website_link, tech_stack) => async (dispatch) => {
+    console.log(title, website_link, tech_stack);
+    const config = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-CSRFToken": Cookies.get("csrftoken"),
+      },
+    };
+
+    const body = JSON.stringify({ title, website_link, tech_stack });
+
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/profile/post/create`,
+        body,
+        config
+      );
+      if (res.data.error) {
+        dispatch({
+          type: USER_POST_FAIL
+        });
+      }
+      else{
+        dispatch({
+          type: USER_POST_SUCCESS,
+          payload: res.data
+        })
+      }
+    } catch (err) {
+      console.error("Error loading posts:", err);
+      throw err;
+    }
   };
-
-  const body = JSON.stringify({ title, website_link, tech_stack});
-
-  try {
-    await axios.post(
-      `${process.env.REACT_APP_API_URL}/profile/post/create`,
-      body,
-      config
-    );
-  }
-  catch(err){
-    console.error("Error loading posts:", err);
-    throw err
-  }
-};

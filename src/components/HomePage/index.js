@@ -6,7 +6,6 @@ import "./index.scss";
 
 
 const HomePage = (isAuthenticated) => {
-  console.log("isAuthenticated:", isAuthenticated); 
   const loginLink = (
     <Fragment>
       <li className="nav-item">
