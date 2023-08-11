@@ -1,10 +1,12 @@
 .main-page {
+        // font-size: 1.3125rem;
     // border: 1px solid red;
     // overflow: scroll;
     width: min(100%, 70em);
+    background-color: rgb(34, 33, 33);
     // position: absolute;
     margin: auto;
-    border: 1px solid rgba(68, 9, 179, 0.631);
+    // border: 1px solid rgba(238, 237, 239, 0.631);
     display: grid;
     place-items: center;
     p{

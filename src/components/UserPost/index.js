@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./index.scss";
 import { useNavigate, Link, Await } from "react-router-dom";
 import axios from "axios";
-import { create_user_post } from "../../actions/posts";
+import {create_user_post} from '../../actions/posts'
 import Cookies from "js-cookie";
 
 const UserPost = ({ isAuthenticated }) => {
@@ -18,29 +18,29 @@ const UserPost = ({ isAuthenticated }) => {
   const onChange = (e) =>
     setPostData({ ...postData, [e.target.name]: e.target.value });
 
-  const onSubmit = async (e) => {
+  const onSubmit =  (e) => {
     e.preventDefault();
     console.log('e')
-    // create_user_post(title, website_link, tech_stack);
-    const config = {
-      withCredentials: true,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "X-CSRFToken": Cookies.get("csrftoken"),
-      },
-    };
+    create_user_post(title, website_link, tech_stack);
+    // const config = {
+    //   withCredentials: true,
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //     "X-CSRFToken": Cookies.get("csrftoken"),
+    //   },
+    // };
 
-    const body = JSON.stringify({ title, website_link, tech_stack });
+    // const body = JSON.stringify({ title, website_link, tech_stack });
 
-      await axios.post(
-        `${process.env.REACT_APP_API_URL}/profile/post/create`,
-        body,
-        config )
+    //   await axios.post(
+    //     `${process.env.REACT_APP_API_URL}/profile/post/create`,
+    //     body,
+    //     config )
       }
   return (
     <>
-      <form className="login-form" onSubmit={e => onSubmit(e)}>
+      <form className="login-form" onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="username">Title</label>
           <input

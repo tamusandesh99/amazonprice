@@ -1,75 +1,64 @@
-import React, {Fragment} from "react";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import React, { Fragment, useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout } from "../../actions/auth"
+import { logout } from "../../actions/auth";
+import "./index.scss";
 
-const Navbar = ({isAuthenticated, logout}) => {
+const Navbar = ({ isAuthenticated, logout }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
 
   const authLinks = (
     <Fragment>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/profile">
-          Profile
-        </NavLink>
-      </li>
-      <li className="nav-item">
-        <a onClick={logout} className="nav-link" to="/">
-          Logout
-        </a>
-      </li>
+          <div className="nav-link-right">
+            <NavLink className="nav-link" to="/profile">
+              Profile
+            </NavLink>
+            <button onClick={handleLogout} className="nav-link" to="/">
+              Logout
+            </button>
+          </div>
     </Fragment>
   );
   const guestLinks = (
-    <Fragment>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/login">
-          Login
-        </NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/register">
-          Signup
-        </NavLink>
-      </li>
-    </Fragment>
+    <div className="nav-link-right">
+      <Fragment>
+            <NavLink className="nav-link" to="/login">
+              Login
+            </NavLink>
+            <NavLink className="nav-link" to="/register">
+              Signup
+            </NavLink>
+      </Fragment>
+    </div>
   );
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
+      <nav className="main-nav-container">
+        <div className="nav-logo-items">
           <Link className="navbar-brand" to="/">
             Reviewers Hub
           </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/">
-                  Home
-                </NavLink>
-              </li>
-              {isAuthenticated ? authLinks : guestLinks}
-            </ul>
-          </div>
+          <NavLink className="nav-link-center" to="/">
+            Home
+          </NavLink>
+          {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
     </>
   );
 };
 
-const mapStateToProps = state =>({
-  isAuthenticated: state.auth.isAuthenticated
-})
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
 
-export default connect(mapStateToProps, {logout}) (Navbar);
+export default connect(mapStateToProps, { logout })(Navbar);
