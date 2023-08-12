@@ -1,9 +1,14 @@
+nav {
+  position: relative;
+  z-index: 2;
+  background-color: #000814;
+}
+
 .main-nav-container {
   width: 100vw;
   height: 8vh;
   display: grid;
   place-content: center;
-  background-color: rgba(64, 64, 64, 0.114);
 
   .nav-logo-items {
     border: 1px solid green;

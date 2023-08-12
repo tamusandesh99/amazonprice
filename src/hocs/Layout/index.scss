@@ -1,7 +1,8 @@
 :root {
   --main-header-color: rgb(15, 171, 116);
   --paragraph-color: #fff;
-  --background-color:rgb(2, 2, 52);
+  --background-color: #001d3d;
+  
   font-size: 1.3125rem;
   --primary:hsla(219, 41%, 13%, 1);
   --secondary:rgb(164, 203, 248);
@@ -21,7 +22,7 @@ body {
   margin-bottom: 10%;
   // width: min(90%, 70em);
   margin: auto;
-  border: 1px dashed red;
+  // border: 1px dashed red;
   
 }
 
