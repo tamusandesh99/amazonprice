@@ -48,6 +48,7 @@ export const create_user_post =
       else{
         dispatch({
           type: USER_POST_SUCCESS,
+          payload: res.data.post,
         })
       }
     } catch (err) {

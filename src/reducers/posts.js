@@ -2,7 +2,7 @@ import { USER_POST_FAIL, USER_POST_SUCCESS } from "../actions/types";
 
 const initialState = {
   username: "",
-  user_posts: "",
+  user_posts: [],
 };
 
 export default function (state = initialState, action) {
@@ -12,7 +12,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         username: payload.username,
-        user_posts: payload.profile.posts,
+        user_posts: [...state.user_posts, payload],
       };
     case USER_POST_FAIL:
       return {
