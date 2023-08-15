@@ -53,6 +53,10 @@ const Navbar = ({ isAuthenticated, logout }) => {
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
+
+      <div className="banner">
+        
+      </div>
     </>
   );
 };

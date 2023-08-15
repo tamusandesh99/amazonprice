@@ -57,3 +57,12 @@ nav {
     padding: 0.5rem;
   }
 }
+
+.banner{
+  width: 100vw;
+  height: 20vh;
+  // border: 1px solid yellow;
+  background-image: url('../../assets/background-pictures/banner.jpg');
+  background-size: cover;
+  background-position: 35% 43%;
+}

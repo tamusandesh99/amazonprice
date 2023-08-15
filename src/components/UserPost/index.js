@@ -21,22 +21,22 @@ const UserPost = ({userPosts}) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log('e')
-     create_user_post(title, website_link, tech_stack);
-    // const config = {
-    //   withCredentials: true,
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //     "X-CSRFToken": Cookies.get("csrftoken"),
-    //   },
-    // };
+    //  create_user_post(title, website_link, tech_stack); need fix here
+    const config = {
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-CSRFToken": Cookies.get("csrftoken"),
+      },
+    };
 
-    // const body = JSON.stringify({ title, website_link, tech_stack });
+    const body = JSON.stringify({ title, website_link, tech_stack });
 
-    //   await axios.post(
-    //     `${process.env.REACT_APP_API_URL}/profile/post/create`,
-    //     body,
-    //     config )
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/profile/post/create`,
+        body,
+        config )
       }
   return (
     <>
