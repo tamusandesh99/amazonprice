@@ -13,7 +13,6 @@ export const get_all_posts = async () => {
       const postsWithUsername = posts.map((post) => ({ ...post, username }));
       return [...acc, ...postsWithUsername];
     }, []);
-    console.log(postsWithUsernames)
     return postsWithUsernames;
   } catch (err) {
     console.error("Error loading posts:", err);

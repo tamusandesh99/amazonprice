@@ -8,20 +8,20 @@ import "./index.scss";
 const HomePage = (isAuthenticated) => {
   const loginLink = (
     <Fragment>
-      <li className="nav-item">
+      <div className="nav-item">
         <Link  to="/login">
           Login to make a post
         </Link>
-      </li>
+      </div>
     </Fragment>
   );
   const postLink = (
     <Fragment>
-      <li className="nav-item">
+      <div className="nav-item">
         <Link to="/submitpost">
           Submit Post
         </Link>
-      </li>
+      </div>
     </Fragment>
   );
 
@@ -40,14 +40,14 @@ const HomePage = (isAuthenticated) => {
         </button>
         <div className="load-all-websites">
           <ul className="load-websites">
-            <li>
+            <div>
             <Link to="/posts" >see all posts</Link>
-            </li>
+            </div>
           </ul>
           <ul className="load-websites">
-            <li>
+            <div>
             {isAuthenticated.isAuthenticated ? postLink : loginLink}
-            </li>
+            </div>
           </ul>
           
         </div>

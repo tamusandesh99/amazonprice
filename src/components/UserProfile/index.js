@@ -17,7 +17,6 @@ const UserProfile = ({ username, user_posts_global }) => {
 
 
   useEffect(() => {
-    console.log(username)
     setUserData({
       user_posts: user_posts_global
     })

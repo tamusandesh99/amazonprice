@@ -18,7 +18,6 @@ const WebsiteList = () => {
         // Handle errors if needed
         console.error("Error loading posts:", error);
       });
-      console.log(posts)
   }, []);
 
   let navigate = useNavigate();
