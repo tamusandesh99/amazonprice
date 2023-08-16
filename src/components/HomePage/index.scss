@@ -1,46 +1,48 @@
 .main-page {
-    
-    width: min(100%, 70em);
-    background-color: var(--homepage-bg);
-    margin: auto;
-    // border: 1px solid rgba(238, 237, 239, 0.631);
-    display: grid;
-    place-items: center;
-    padding: 1em 2em 1em 2em;
-    p{
-        color: white;
+  width: min(100%, 70em);
+  background-color: var(--homepage-bg);
+  margin: auto;
+  // border: 1px solid rgba(238, 237, 239, 0.631);
+  display: grid;
+  place-items: center;
+  padding: 1em 2em 1em 2em;
+  p {
+    color: white;
+  }
+  .single-post {
+    background-color: rgb(44, 47, 46);
+    display: flex;
+    margin-top: 5%;
+    width: 100%;
+    padding: 1em;
+
+    .website-preview {
+      margin-left: auto;
+      width: 10%;
     }
-    .single-post{
-        background-color: rgb(44, 47, 46);
-        // color: #fff;
-        display: block;
-        margin-top: 5%;
+
+    .post-username {
+      font-size: 0.75rem;
+    }
+
+    .post-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+    .post-tech-stack {
+      font-size: 0.7rem;
+    }
+
+    .website-preview {
+      border: 1px solid red;
+      button {
         width: 100%;
-        padding: 1em;
-        // height: 70px;
-        // border: 1px solid blue;
-        .author-info{
-
-        }
-        .website-preview{
-          margin-left: auto;
-          width: 10%;
-        }
-
-        .post-username{
-            font-size: .75rem;
-        }
-
-        .post-title{
-            font-size: .9rem;
-            font-weight: 800;
-        }
-        .post-tech-stack{
-            font-size: .7rem;
-        }
+        height: 100%;
+      }
     }
+  }
 
-    button{
-        border: none;
-    }
+  button {
+    border: none;
+  }
 }
