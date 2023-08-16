@@ -13,10 +13,11 @@
     .single-post{
         background-color: rgb(44, 47, 46);
         // color: #fff;
-        display: inline-flex;
+        display: block;
         margin-top: 5%;
         width: 100%;
-        height: 70px;
+        padding: 1em;
+        // height: 70px;
         // border: 1px solid blue;
         .author-info{
 
@@ -24,6 +25,18 @@
         .website-preview{
           margin-left: auto;
           width: 10%;
+        }
+
+        .post-username{
+            font-size: .75rem;
+        }
+
+        .post-title{
+            font-size: .9rem;
+            font-weight: 800;
+        }
+        .post-tech-stack{
+            font-size: .7rem;
         }
     }
 
