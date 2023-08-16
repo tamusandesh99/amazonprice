@@ -20,6 +20,29 @@ export const get_all_posts = async () => {
   }
 };
 
+export const get_top_posts = async () => {
+  try {
+    const res = await axios.get(
+      `${process.env.REACT_APP_API_URL}/profile/top_posts`
+    );
+    const { random_posts } = res.data;
+
+    const postsWithUsernames = random_posts.map((post) => ({
+      ...post,
+      username: post.username,
+      title: post.title,
+      website_link: post.website_link,
+      tech_stack: post.tech_stack,
+    }));
+
+    return postsWithUsernames;
+  } catch (err) {
+    console.error("Error loading posts:", err);
+    throw err;
+  }
+};
+
+
 export const create_user_post =
   (title, website_link, tech_stack) => async (dispatch) => {
     console.log(title, website_link, tech_stack);

@@ -18,25 +18,25 @@ const Navbar = ({ isAuthenticated, logout }) => {
 
   const authLinks = (
     <Fragment>
-          <div className="nav-link-right">
-            <NavLink className="nav-link" to="/profile">
-              Profile
-            </NavLink>
-            <button onClick={handleLogout} className="nav-link" to="/">
-              Logout
-            </button>
-          </div>
+      <div className="nav-link-right">
+        <NavLink className="nav-link" to="/profile">
+          Profile
+        </NavLink>
+        <button onClick={handleLogout} className="nav-link" to="/">
+          Logout
+        </button>
+      </div>
     </Fragment>
   );
   const guestLinks = (
     <div className="nav-link-right">
       <Fragment>
-            <NavLink className="nav-link" to="/login">
-              Login
-            </NavLink>
-            <NavLink className="nav-link" to="/register">
-              Signup
-            </NavLink>
+        <NavLink className="nav-link" to="/login">
+          Login
+        </NavLink>
+        <NavLink className="nav-link" to="/register">
+          Signup
+        </NavLink>
       </Fragment>
     </div>
   );
@@ -53,10 +53,6 @@ const Navbar = ({ isAuthenticated, logout }) => {
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
-
-      <div className="banner">
-        
-      </div>
     </>
   );
 };
