@@ -5,16 +5,20 @@
   // border: 1px solid rgba(238, 237, 239, 0.631);
   display: grid;
   place-items: center;
-  padding: 1em 2em 1em 2em;
   p {
     color: white;
   }
   .single-post {
     background-color: rgb(44, 47, 46);
     display: flex;
-    margin-top: 5%;
+    margin-top: 2%;
     width: 100%;
-    padding: 1em;
+    // padding: 1em;
+    
+    .post-info{
+        //   border: 1px solid rgba(238, 237, 239, 0.631);
+        padding: 1em 2em 1em 2em;
+    }
 
     .website-preview {
       margin-left: auto;
