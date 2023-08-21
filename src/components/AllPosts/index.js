@@ -36,19 +36,18 @@ const WebsiteList = () => {
     <>
       <div className="all-websites">
         {posts.map((post, index) => (
-          <div className="single-web" key={index}>
-            <div className="creator-info">
-              <p>
-                {post.username}
-              </p>
-              <p> {post.title}</p>
-            </div>
-            <div className="website-preview">
-              <button onClick={() => handleButtonClick(post.website_link, post.username, post.title, post.tech_stack)}>
-                IMG
-              </button>
-            </div>
-          </div>
+           <div className="single-post" key={index}>
+           <div className="post-info">
+             <p className="post-username">{post.username}</p>
+             <p className="post-title">{post.title}</p>
+             <p className="post-tech-stack">{post.tech_stack}</p>
+           </div>
+           <div className="website-preview">
+               <button onClick={() => handleButtonClick(post.website_link, post.username, post.title, post.tech_stack)}>
+               IMG
+               </button>
+             </div>
+         </div>
         ))}
       </div>
     </>
