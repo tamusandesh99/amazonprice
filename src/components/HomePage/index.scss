@@ -1,19 +1,37 @@
 .main-page {
+   background-color: var(--homepage-bg);
   width: min(100%, 70em);
-  background-color: var(--homepage-bg);
   margin: auto;
   // border: 1px solid rgba(238, 237, 239, 0.631);
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   p {
     color: white;
   }
+
+  .center-homepage{
+    border: 1px solid red;
+
+    width: 80%;
+  }
+
+  .left-homepage{
+    width: 20%;
+    border: 1px solid red;
+  }
+
+  .right-homepage{
+    width: 20%;
+    border: 1px solid red;
+  }
+
   .single-post {
-    // background-color: rgb(44, 47, 46);
+    // background-color: var(--homepage-bg);
     display: flex;
     margin-top: 1%;
     width: 100%;
-   border-top: 1px solid red;;
+//    border-top: 1px solid white;
 
     &:hover{
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
