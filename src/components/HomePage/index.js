@@ -60,7 +60,14 @@ const HomePage = (isAuthenticated) => {
         <div className="center-homepage">
           <p>Rate my website</p>
           {topPosts.map((post, index) => (
-            <div className="single-post" key={index}>
+            <div className="single-post"  onClick={() =>
+              handleButtonClick(
+                post.website_link,
+                post.username,
+                post.title,
+                post.tech_stack
+              )
+            } key={index}>
               <div className="post-info">
                 <p className="post-username">{post.username}</p>
                 <p className="post-title">{post.title}</p>
