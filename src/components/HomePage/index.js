@@ -50,7 +50,13 @@ const HomePage = (isAuthenticated) => {
   return (
     <>
       <div className="main-page">
-        <div className="left-homepage">this is left</div>
+        <div className="left-homepage">
+          {" "}
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
+          risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
+          ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula
+          massa, varius a, semper congue, euismod non, mi.
+        </div>
         <div className="center-homepage">
           <p>Rate my website</p>
           {topPosts.map((post, index) => (
@@ -62,6 +68,7 @@ const HomePage = (isAuthenticated) => {
               </div>
               <div className="website-preview">
                 <button
+                  className="preview-button"
                   onClick={() =>
                     handleButtonClick(
                       post.website_link,
@@ -89,10 +96,19 @@ const HomePage = (isAuthenticated) => {
             </ul>
           </div>
         </div>
-        <div className="right-homepage">this is left</div>
+        <div className="right-homepage">
+          <button class="">
+          
+              Make a post
+          </button>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
+            risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
+            nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
+            ligula massa, varius a, semper congue, euismod non, mi.
+          </p>
+        </div>
       </div>
-
-
     </>
   );
 };

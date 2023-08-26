@@ -1,5 +1,4 @@
 .main-page {
-   background-color: var(--homepage-bg);
   width: min(100%, 70em);
   margin: auto;
   // border: 1px solid rgba(238, 237, 239, 0.631);
@@ -7,23 +6,36 @@
   justify-content: center;
   align-items: center;
   p {
+    margin: auto;
     color: white;
   }
 
-  .center-homepage{
+  .center-homepage {
+    display: grid;
     border: 1px solid red;
-
+    background-color: var(--homepage-bg);
     width: 80%;
   }
 
-  .left-homepage{
-    width: 20%;
+  .left-homepage {
+    // background-color: var(--homepage-bg);
+    width: 17.5%;
     border: 1px solid red;
+    padding-right: 1em;
   }
 
-  .right-homepage{
-    width: 20%;
+  .right-homepage {
+    background-color: var(--homepage-bg);
+    width: 17.5%;
+    margin-left: 1%;
     border: 1px solid red;
+
+    button{
+        width: 100%;
+        :hover{
+            background-color: red;
+        }
+    }
   }
 
   .single-post {
@@ -31,15 +43,15 @@
     display: flex;
     margin-top: 1%;
     width: 100%;
-//    border-top: 1px solid white;
+    //    border-top: 1px solid white;
 
-    &:hover{
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    &:hover {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-    
-    .post-info{
-        //   border: 1px solid rgba(238, 237, 239, 0.631);
-        padding: 1em 2em 1em 2em;
+
+    .post-info {
+      //   border: 1px solid rgba(238, 237, 239, 0.631);
+      padding: 1em 2em 1em 2em;
     }
 
     .website-preview {
@@ -67,7 +79,6 @@
       }
     }
   }
-
   button {
     border: none;
   }
