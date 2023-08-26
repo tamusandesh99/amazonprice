@@ -12,7 +12,7 @@
 
   .center-homepage {
     display: grid;
-    border: 1px solid red;
+    // border: 1px solid red;
     background-color: var(--homepage-bg);
     width: 80%;
   }
@@ -28,7 +28,7 @@
     background-color: var(--homepage-bg);
     width: 17.5%;
     margin-left: 1%;
-    border: 1px solid red;
+    // border: 1px solid red;
 
     button{
         width: 100%;
@@ -81,5 +81,8 @@
   }
   button {
     border: none;
+  }
+  img{
+    width: 40%;
   }
 }

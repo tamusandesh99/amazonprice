@@ -14,6 +14,8 @@ const UserPost = ({userPosts}) => {
   });
 
   const { title, website_link, tech_stack } = postData;
+  const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
 
   const onChange = (e) =>
     setPostData({ ...postData, [e.target.name]: e.target.value });
@@ -33,11 +35,20 @@ const UserPost = ({userPosts}) => {
 
     const body = JSON.stringify({ title, website_link, tech_stack });
 
+    try {
       await axios.post(
         `${process.env.REACT_APP_API_URL}/profile/post/create`,
         body,
-        config )
-      }
+        config
+      );
+      window.alert("Post successfully created!");
+      setSuccessMessage("Post successfully created!");
+      navigate("/"); // Redirect to /home after successful post
+    } catch (error) {
+      console.error(error);
+      setSuccessMessage("An error occurred. Please try again.");
+    }
+  }
   return (
     <>
       <form className="login-form" onSubmit={onSubmit}>

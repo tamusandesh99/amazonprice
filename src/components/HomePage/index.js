@@ -78,7 +78,7 @@ const HomePage = (isAuthenticated) => {
                     )
                   }
                 >
-                  IMG
+                   <img src="https://www.youtube.com/favicon.ico" alt="YouTube Favicon" />
                 </button>
               </div>
             </div>
