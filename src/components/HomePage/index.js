@@ -32,6 +32,15 @@ const HomePage = (isAuthenticated) => {
     });
   };
 
+  const postButton = () =>{
+    if(isAuthenticated.isAuthenticated) {
+      navigate("/submitpost")
+    }
+    else{
+      navigate("/register")
+    }
+  }
+
   const loginLink = (
     <Fragment>
       <div className="nav-item">
@@ -104,8 +113,7 @@ const HomePage = (isAuthenticated) => {
           </div>
         </div>
         <div className="right-homepage">
-          <button class="">
-          
+          <button onClick={postButton} class="">
               Make a post
           </button>
           <p>
