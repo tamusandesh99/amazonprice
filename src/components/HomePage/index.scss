@@ -20,11 +20,28 @@
   .left-homepage {
     // background-color: var(--homepage-bg);
     width: 17.5%;
-    border: 1px solid red;
     padding-right: 1em;
 
-    .icon-text-container{
+    .icon-text-container {
+      display: flex;
+      align-items: center;
+      color: white;
+      transition: color 0.3s;
+      :hover {
+        color: red;
+        .left-content{
+            color: red;
+        }
+      }
+
+      .icon {
+        margin-right: 0.5em; 
+      transition: color 0.3s;
+      }
+      button {
+        background: none;
         color: white;
+      }
     }
   }
 
@@ -34,9 +51,8 @@
     margin-left: 1%;
     // border: 1px solid red;
 
-    button{
-        width: 100%;
-      
+    button {
+      width: 100%;
     }
   }
 
@@ -84,7 +100,7 @@
   button {
     border: none;
   }
-  img{
+  img {
     width: 40%;
   }
 }

@@ -5,7 +5,7 @@ import { get_top_posts } from "../../actions/posts";
 import { connect } from "react-redux";
 import { AiFillHome, AiTwotoneTags } from "react-icons/ai";
 import { GiOpenFolder } from "react-icons/gi";
-import {BiSolidHelpCircle} from 'react-icons/bi'
+import { BiSolidHelpCircle } from "react-icons/bi";
 import "./index.scss";
 
 const HomePage = (isAuthenticated) => {
@@ -40,6 +40,10 @@ const HomePage = (isAuthenticated) => {
     }
   };
 
+  const navigateTo = (path) => {
+    navigate(path);
+  };
+
   const loginLink = (
     <Fragment>
       <div className="nav-item">
@@ -59,21 +63,33 @@ const HomePage = (isAuthenticated) => {
     <>
       <div className="main-page">
         <div className="left-homepage">
-          <div class="icon-text-container">
+          <div
+            className="icon-text-container"
+            onClick={() => navigateTo("/")}
+          >
             <AiFillHome className="left-content icon" />
-            <span className="left-content icon-text">Home</span>
+            <button className="left-content icon-text">Home</button>
           </div>
-          <div class="icon-text-container">
+          <div
+            className="icon-text-container"
+            onClick={() => navigateTo("/posts")}
+          >
             <GiOpenFolder className="left-content icon" />
-            <span className="left-content icon-text">Questions</span>
+            <button className="left-content icon-text">Posts</button>
           </div>
-          <div class="icon-text-container">
+          <div
+            className="icon-text-container"
+            onClick={() => navigateTo("/")}
+          >
             <AiTwotoneTags className="left-content icon" />
-            <span className="left-content icon-text">Tags</span>
+            <button className="left-content icon-text">Tags</button>
           </div>
-          <div class="icon-text-container">
+          <div
+            className="icon-text-container"
+            onClick={() => navigateTo("/")}
+          >
             <BiSolidHelpCircle className="left-content icon" />
-            <span className="left-content icon-text">Help</span>
+            <button className="left-content icon-text">Help</button>
           </div>
         </div>
         <div className="center-homepage">
