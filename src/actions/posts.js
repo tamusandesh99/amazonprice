@@ -1,6 +1,11 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { USER_POST_FAIL, USER_POST_SUCCESS } from "./types";
+import {
+  USER_POST_FAIL,
+  USER_POST_SUCCESS,
+  USER_POST_LOAD_FAIL,
+  USER_POST_LOAD_SUCCESS,
+} from "./types";
 
 export const get_all_posts = async () => {
   try {
@@ -20,7 +25,7 @@ export const get_all_posts = async () => {
   }
 };
 
-export const get_top_posts = async () => {
+export const get_top_posts = async (dispatch) => {
   try {
     const res = await axios.get(
       `${process.env.REACT_APP_API_URL}/profile/top_posts`
@@ -35,13 +40,23 @@ export const get_top_posts = async () => {
       tech_stack: post.tech_stack,
     }));
 
-    return postsWithUsernames;
+    // if(res.data.error) {
+    //   dispatch({
+    //     type: USER_POST_LOAD_FAIL
+    //   })
+    // }
+    // else{
+    //   dispatch({
+    //     type: USER_POST_LOAD_SUCCESS,
+    //     payload: postsWithUsernames,
+    //   });
+    // }
+     return postsWithUsernames;
   } catch (err) {
     console.error("Error loading posts:", err);
     throw err;
   }
 };
-
 
 export const create_user_post =
   (title, website_link, tech_stack) => async (dispatch) => {
@@ -64,14 +79,13 @@ export const create_user_post =
       );
       if (res.data.error) {
         dispatch({
-          type: USER_POST_FAIL
+          type: USER_POST_FAIL,
         });
-      }
-      else{
+      } else {
         dispatch({
           type: USER_POST_SUCCESS,
           payload: res.data.post,
-        })
+        });
       }
     } catch (err) {
       console.error("Error loading posts:", err);

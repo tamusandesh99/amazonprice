@@ -3,19 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { get_top_posts } from "../../actions/posts";
 import { connect } from "react-redux";
+import { AiFillHome, AiTwotoneTags } from "react-icons/ai";
+import { GiOpenFolder } from "react-icons/gi";
+import {BiSolidHelpCircle} from 'react-icons/bi'
 import "./index.scss";
 
 const HomePage = (isAuthenticated) => {
   const [topPosts, setTopPosts] = useState([]);
   useEffect(() => {
-    // Call the load_posts function and handle the data
     get_top_posts()
       .then((data) => {
-        // Here, data will contain the posts retrieved from the API
         setTopPosts(data);
       })
       .catch((error) => {
-        // Handle errors if needed
         console.error("Error loading posts:", error);
       });
   }, []);
@@ -32,14 +32,13 @@ const HomePage = (isAuthenticated) => {
     });
   };
 
-  const postButton = () =>{
-    if(isAuthenticated.isAuthenticated) {
-      navigate("/submitpost")
+  const postButton = () => {
+    if (isAuthenticated.isAuthenticated) {
+      navigate("/submitpost");
+    } else {
+      navigate("/register");
     }
-    else{
-      navigate("/register")
-    }
-  }
+  };
 
   const loginLink = (
     <Fragment>
@@ -60,23 +59,38 @@ const HomePage = (isAuthenticated) => {
     <>
       <div className="main-page">
         <div className="left-homepage">
-          {" "}
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-          risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-          ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula
-          massa, varius a, semper congue, euismod non, mi.
+          <div class="icon-text-container">
+            <AiFillHome className="left-content icon" />
+            <span className="left-content icon-text">Home</span>
+          </div>
+          <div class="icon-text-container">
+            <GiOpenFolder className="left-content icon" />
+            <span className="left-content icon-text">Questions</span>
+          </div>
+          <div class="icon-text-container">
+            <AiTwotoneTags className="left-content icon" />
+            <span className="left-content icon-text">Tags</span>
+          </div>
+          <div class="icon-text-container">
+            <BiSolidHelpCircle className="left-content icon" />
+            <span className="left-content icon-text">Help</span>
+          </div>
         </div>
         <div className="center-homepage">
           <p>Rate my website</p>
           {topPosts.map((post, index) => (
-            <div className="single-post"  onClick={() =>
-              handleButtonClick(
-                post.website_link,
-                post.username,
-                post.title,
-                post.tech_stack
-              )
-            } key={index}>
+            <div
+              className="single-post"
+              onClick={() =>
+                handleButtonClick(
+                  post.website_link,
+                  post.username,
+                  post.title,
+                  post.tech_stack
+                )
+              }
+              key={index}
+            >
               <div className="post-info">
                 <p className="post-username">{post.username}</p>
                 <p className="post-title">{post.title}</p>
@@ -94,7 +108,10 @@ const HomePage = (isAuthenticated) => {
                     )
                   }
                 >
-                   <img src="https://www.youtube.com/favicon.ico" alt="YouTube Favicon" />
+                  <img
+                    src="https://www.youtube.com/favicon.ico"
+                    alt="YouTube Favicon"
+                  />
                 </button>
               </div>
             </div>
@@ -113,8 +130,8 @@ const HomePage = (isAuthenticated) => {
           </div>
         </div>
         <div className="right-homepage">
-          <button onClick={postButton} class="">
-              Make a post
+          <button onClick={postButton} className="">
+            Make a post
           </button>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
@@ -130,6 +147,7 @@ const HomePage = (isAuthenticated) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  topPosts: state.posts.top_posts,
 });
 
 export default connect(mapStateToProps)(HomePage);
