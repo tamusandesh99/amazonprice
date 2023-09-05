@@ -18,7 +18,6 @@
   }
 
   .left-homepage {
-    // background-color: var(--homepage-bg);
     width: 17.5%;
     padding-right: 1em;
 
@@ -27,16 +26,17 @@
       align-items: center;
       color: white;
       transition: color 0.3s;
+
       :hover {
+        transition: color 0.3s;
         color: red;
-        .left-content{
+        .icon-text-container-inner {
             color: red;
-        }
+          }
       }
 
       .icon {
         margin-right: 0.5em; 
-      transition: color 0.3s;
       }
       button {
         background: none;

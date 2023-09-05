@@ -63,33 +63,32 @@ const HomePage = (isAuthenticated) => {
     <>
       <div className="main-page">
         <div className="left-homepage">
-          <div
-            className="icon-text-container"
-            onClick={() => navigateTo("/")}
-          >
-            <AiFillHome className="left-content icon" />
-            <button className="left-content icon-text">Home</button>
+          <div className="icon-text-container" onClick={() => navigateTo("/")}>
+            <div className="icon-text-container-inner">
+              <AiFillHome className="left-content icon" />
+              <button className="left-content icon-text">Home</button>
+            </div>
           </div>
           <div
             className="icon-text-container"
             onClick={() => navigateTo("/posts")}
           >
-            <GiOpenFolder className="left-content icon" />
-            <button className="left-content icon-text">Posts</button>
+            <div className="icon-text-container-inner">
+              <GiOpenFolder className="left-content icon" />
+              <button className="left-content icon-text">Posts</button>
+            </div>
           </div>
-          <div
-            className="icon-text-container"
-            onClick={() => navigateTo("/")}
-          >
-            <AiTwotoneTags className="left-content icon" />
-            <button className="left-content icon-text">Tags</button>
+          <div className="icon-text-container" onClick={() => navigateTo("/")}>
+            <div className="icon-text-container-inner">
+              <AiTwotoneTags className="left-content icon" />
+              <button className="left-content icon-text">Tags</button>
+            </div>
           </div>
-          <div
-            className="icon-text-container"
-            onClick={() => navigateTo("/")}
-          >
-            <BiSolidHelpCircle className="left-content icon" />
-            <button className="left-content icon-text">Help</button>
+          <div className="icon-text-container" onClick={() => navigateTo("/")}>
+            <div className="icon-text-container-inner">
+              <BiSolidHelpCircle className="left-content icon" />
+              <button className="left-content icon-text">Help</button>
+            </div>
           </div>
         </div>
         <div className="center-homepage">
