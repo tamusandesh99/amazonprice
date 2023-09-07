@@ -20,7 +20,7 @@ nav {
 
     .nav-link-right {
       border: 1px solid yellow;
-      width: 15%;
+      min-width: 15%;
       display: flex;
       align-items: center;
       text-align: right;
@@ -32,7 +32,7 @@ nav {
       }
     }
     .nav-link-center {
-      width: 70%;
+      min-width: 70%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -43,7 +43,7 @@ nav {
     .navbar-brand {
       border: 1px solid yellow;
       text-decoration: none;
-      width: 15%;
+      min-width: 15%;
       padding: 0.5rem;
     }
   }
