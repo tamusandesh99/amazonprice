@@ -44,10 +44,10 @@ const Navbar = ({ isAuthenticated, logout }) => {
     <>
       <nav className="main-nav-container">
         <div className="nav-logo-items">
-          <Link className="navbar-brand" to="/">
+          <Link className="nav-link navbar-brand" to="/">
             Reviewers Hub
           </Link>
-          <NavLink className="nav-link-center" to="/">
+          <NavLink className="nav-link" to="/">
             Home
           </NavLink>
           {isAuthenticated ? authLinks : guestLinks}
