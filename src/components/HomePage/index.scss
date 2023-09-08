@@ -24,7 +24,10 @@
       border-bottom: 1px var(--border-color);
 
       .menu-button{
-        margin-right: 3em;
+        // margin-right: 1em;
+        &:hover{
+          background-color: red;
+        }
       }
       button{
         min-width: 15%;
