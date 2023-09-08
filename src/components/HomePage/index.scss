@@ -13,9 +13,11 @@
     display: grid;
     // border: 1px solid red;
     background-color: var(--homepage-bg);
-    min-width: 70%;
-    flex: 1
+    min-width: 69%;
+    flex: 1;
     // height: 100vh; 
+    margin-right: 0.5em;
+    margin-left: 0.5em;
   }
 
   .left-homepage {
@@ -60,7 +62,7 @@
   .right-homepage {
     background-color: var(--homepage-bg);
     min-width: 15%;
-    margin-left: 1%;
+    
     padding: 1em;
     height: 100vh;
 
