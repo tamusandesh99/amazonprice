@@ -20,21 +20,27 @@
 
     .homepage-top-menu{
       min-width: 100%;
-      margin: auto;
+      display: flex;
       border-bottom: 1px var(--border-color);
 
       .menu-button{
-        // margin-right: 1em;
+        margin-left: 1em;
+        font-size: 0.9em;
+        color:  rgb(206, 199, 199);
+        font-weight: 600;
+        letter-spacing: -1px;
         &:hover{
-          background-color: red;
+          border-bottom: 3px solid rgb(206, 199, 199);
         }
+      }
+      .menu-button.active {
+        border-bottom: 3px solid rgb(206, 199, 199);
       }
       button{
         min-width: 15%;
         background-color: inherit;
       }
     }
-
   }
 
   .left-homepage {

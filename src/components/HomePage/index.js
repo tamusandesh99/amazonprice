@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { get_top_posts } from "../../actions/posts";
+import { get_all_posts } from "../../actions/posts";
 import { connect } from "react-redux";
 import { AiFillHome, AiTwotoneTags } from "react-icons/ai";
 import { GiOpenFolder } from "react-icons/gi";
@@ -9,11 +9,18 @@ import { BiSolidHelpCircle } from "react-icons/bi";
 import "./index.scss";
 
 const HomePage = (isAuthenticated) => {
-  const [topPosts, setTopPosts] = useState([]);
+  const [activeButton, setActiveButton] = useState("Recent Posts");
+  const [allPosts, setAllPosts] = useState([]);
+  const [displayedPosts, setDisplayedPosts] = useState([]);
+  const [totalPostsLength, setTotalPostsLength] = useState(0);
+  const [postsPerPage, setPostsPerPage] = useState(5);
+
   useEffect(() => {
-    get_top_posts()
+    get_all_posts()
       .then((data) => {
-        setTopPosts(data);
+        setAllPosts(data);
+        setTotalPostsLength(data.length);
+        setDisplayedPosts(data.slice(0, postsPerPage));
       })
       .catch((error) => {
         console.error("Error loading posts:", error);
@@ -21,6 +28,12 @@ const HomePage = (isAuthenticated) => {
   }, []);
 
   let navigate = useNavigate();
+
+  const loadMorePosts = () => {
+    const newPostsPerPage = postsPerPage + 5;
+    setPostsPerPage(newPostsPerPage);
+    setDisplayedPosts(allPosts.slice(0, newPostsPerPage));
+  };
 
   const handleButtonClick = (webLink, username, title, tech_stack) => {
     navigate(`/posts/${encodeURIComponent(webLink)}`, {
@@ -47,14 +60,18 @@ const HomePage = (isAuthenticated) => {
   const loginLink = (
     <Fragment>
       <div className="nav-item">
-        <Link className="link-item" to="/login">Login to make a post</Link>
+        <Link className="link-item" to="/login">
+          Login to make a post
+        </Link>
       </div>
     </Fragment>
   );
   const postLink = (
     <Fragment>
       <div className="nav-item">
-        <Link className="link-item" to="/submitpost">Submit Post</Link>
+        <Link className="link-item" to="/submitpost">
+          Submit Post
+        </Link>
       </div>
     </Fragment>
   );
@@ -93,12 +110,40 @@ const HomePage = (isAuthenticated) => {
         </div>
         <div className="center-homepage">
           <div className="homepage-top-menu">
-            <button className="menu-button">Recent Posts</button>
-            <button className="menu-button">Most Comments</button>
-            <button className="menu-button">Most Liked</button>
-            <button className="menu-button">All Posts</button>
+            <button
+              className={`menu-button ${
+                activeButton === "Recent Posts" ? "active" : ""
+              }`}
+              onClick={() => setActiveButton("Recent Posts")}
+            >
+              Recent Posts
+            </button>
+            <button
+              className={`menu-button ${
+                activeButton === "Most Comments" ? "active" : ""
+              }`}
+              onClick={() => setActiveButton("Most Comments")}
+            >
+              Most Comments
+            </button>
+            <button
+              className={`menu-button ${
+                activeButton === "Most Liked" ? "active" : ""
+              }`}
+              onClick={() => setActiveButton("Most Liked")}
+            >
+              Most Liked
+            </button>
+            <button
+              className={`menu-button ${
+                activeButton === "All Posts" ? "active" : ""
+              }`}
+              onClick={() => setActiveButton("All Posts")}
+            >
+              All Posts
+            </button>
           </div>
-          {topPosts.map((post, index) => (
+          {displayedPosts.map((post, index) => (
             <div
               className="single-post"
               onClick={() =>
@@ -139,7 +184,9 @@ const HomePage = (isAuthenticated) => {
           <div className="load-all-websites">
             <ul className="load-websites">
               <div>
-                <Link to="/posts">see all posts</Link>
+                {displayedPosts.length < totalPostsLength && (
+                  <button onClick={loadMorePosts}>See More Posts</button>
+                )}
               </div>
             </ul>
             <ul className="load-websites">
@@ -160,7 +207,8 @@ const HomePage = (isAuthenticated) => {
             ligula massa, varius a, semper congue, euismod non, mi.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisc, varius a, semper congue, euismod non, mi.
+            Lorem ipsum dolor sit amet, consectetur adipisc, varius a, semper
+            congue, euismod non, mi.
           </p>
         </div>
       </div>
@@ -170,7 +218,7 @@ const HomePage = (isAuthenticated) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  topPosts: state.posts.top_posts,
+  // topPosts: state.posts.top_posts,
 });
 
 export default connect(mapStateToProps)(HomePage);
