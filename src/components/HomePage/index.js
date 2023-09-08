@@ -93,7 +93,9 @@ const HomePage = (isAuthenticated) => {
         </div>
         <div className="center-homepage">
           <div className="homepage-top-menu">
-            
+            <button className="menu-button">Recent Posts</button>
+            <button className="menu-button">Most Comments</button>
+            <button className="menu-button">Most Liked</button>
           </div>
           {topPosts.map((post, index) => (
             <div

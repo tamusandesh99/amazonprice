@@ -3,10 +3,6 @@
   margin: auto;
   display: flex;
 
-  .link-item{
-    color: white;
-  }
-
   p {
     margin: auto;
     color: white;
@@ -19,9 +15,23 @@
     border-right: 1px var(--border-color); 
     min-width: 69%;
     flex: 1;
-    // height: 100vh; 
     margin-right: 0.6em;
     margin-left: 0.5em;
+
+    .homepage-top-menu{
+      min-width: 100%;
+      margin: auto;
+      border-bottom: 1px var(--border-color);
+
+      .menu-button{
+        margin-right: 3em;
+      }
+      button{
+        min-width: 15%;
+        background-color: inherit;
+      }
+    }
+
   }
 
   .left-homepage {
