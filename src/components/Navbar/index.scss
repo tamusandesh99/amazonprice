@@ -9,21 +9,23 @@ nav {
   height: 7vh;
   display: grid;
   place-content: center;
+  
 
   .nav-logo-items {
-    border: 1px solid green;
     // width: min(100%, 70em);
     width: min(70em, 70em);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 
-    .nav-link-right {
-      border: 1px solid yellow;
+    .nav-link-right { 
       min-width: 15%;
       display: flex;
       align-items: center;
       text-align: right;
+      border-left: 1px var(--border-color);
+      border-right: 1px var(--border-color);
 
       button {
         background-color: inherit;
@@ -38,10 +40,10 @@ nav {
       align-items: center;
       padding: 0.5rem;
       text-decoration: none;
-      border: 1px solid lightblue;
     }
     .navbar-brand {
-      border: 1px solid yellow;
+      border-left: 1px var(--border-color);
+      border-right: 1px var(--border-color);
       text-decoration: none;
       min-width: 15%;
       padding: 0.5rem;

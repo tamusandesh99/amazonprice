@@ -47,14 +47,14 @@ const HomePage = (isAuthenticated) => {
   const loginLink = (
     <Fragment>
       <div className="nav-item">
-        <Link to="/login">Login to make a post</Link>
+        <Link className="link-item" to="/login">Login to make a post</Link>
       </div>
     </Fragment>
   );
   const postLink = (
     <Fragment>
       <div className="nav-item">
-        <Link to="/submitpost">Submit Post</Link>
+        <Link className="link-item" to="/submitpost">Submit Post</Link>
       </div>
     </Fragment>
   );
@@ -92,7 +92,9 @@ const HomePage = (isAuthenticated) => {
           </div>
         </div>
         <div className="center-homepage">
-          <p>Rate my website</p>
+          <div className="homepage-top-menu">
+            
+          </div>
           {topPosts.map((post, index) => (
             <div
               className="single-post"
