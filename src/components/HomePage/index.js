@@ -13,7 +13,7 @@ const HomePage = (isAuthenticated) => {
   const [allPosts, setAllPosts] = useState([]);
   const [displayedPosts, setDisplayedPosts] = useState([]);
   const [totalPostsLength, setTotalPostsLength] = useState(0);
-  const [postsPerPage, setPostsPerPage] = useState(5);
+  const [postsPerPage, setPostsPerPage] = useState(20);
 
   useEffect(() => {
     get_all_posts()
