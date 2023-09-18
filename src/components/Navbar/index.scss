@@ -16,19 +16,18 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    
     .nav-link-right {
       min-width: 15%;
-      display: flex;
-      align-items: center;
-      text-align: right;
       border-left: 1px var(--border-color);
       border-right: 1px var(--border-color);
 
-      button {
-        background-color: inherit;
-        font-size: inherit;
+      .login, .signup, .profile, .logout {
+        // width: 10em;
+        font-size: 1rem;
         border: 0;
+        margin-left: 1em;
+        background-color: var(--icon-color);
       }
     }
     .nav-link-center {
@@ -58,6 +57,7 @@ nav {
 
     color: white;
   }
+
 }
 
 .banner {

@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import "./index.scss";
 import { useNavigate, Link, Await } from "react-router-dom";
 import axios from "axios";
-import {create_user_post} from '../../actions/posts'
+import { create_user_post } from "../../actions/posts";
 import Cookies from "js-cookie";
 
-const UserPost = ({userPosts}) => {
+const UserPost = ({ userPosts }) => {
   const [postData, setPostData] = useState({
     title: "",
     website_link: "",
@@ -15,14 +15,20 @@ const UserPost = ({userPosts}) => {
 
   const { title, website_link, tech_stack } = postData;
   const [successMessage, setSuccessMessage] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
 
   const onChange = (e) =>
     setPostData({ ...postData, [e.target.name]: e.target.value });
 
+    const handleImageUpload = (event) => {
+      const file = event.target.files[0];
+      setSelectedImage(file);
+    };
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log('e')
+    console.log("e");
     //  create_user_post(title, website_link, tech_stack); need fix here
     const config = {
       withCredentials: true,
@@ -48,7 +54,7 @@ const UserPost = ({userPosts}) => {
       console.error(error);
       setSuccessMessage("An error occurred. Please try again.");
     }
-  }
+  };
   return (
     <>
       <form className="login-form" onSubmit={onSubmit}>
@@ -74,6 +80,7 @@ const UserPost = ({userPosts}) => {
             required
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="password">Tech Stacks Used:</label>
           <input
@@ -82,6 +89,16 @@ const UserPost = ({userPosts}) => {
             name="tech_stack"
             value={tech_stack}
             onChange={onChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="image">Image Upload</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            onChange={handleImageUpload}
           />
         </div>
         <div className="form-group">

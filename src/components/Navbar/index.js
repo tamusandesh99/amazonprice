@@ -19,10 +19,10 @@ const Navbar = ({ isAuthenticated, logout }) => {
   const authLinks = (
     <Fragment>
       <div className="nav-link-right">
-        <NavLink className="nav-link" to="/profile">
+        <NavLink className="nav-link profile" to="/profile">
           Profile
         </NavLink>
-        <button onClick={handleLogout} className="nav-link" to="/">
+        <button onClick={handleLogout} className="nav-link logout" to="/">
           Logout
         </button>
       </div>
@@ -31,10 +31,10 @@ const Navbar = ({ isAuthenticated, logout }) => {
   const guestLinks = (
     <div className="nav-link-right">
       <Fragment>
-        <NavLink className="nav-link" to="/login">
+        <NavLink className="nav-link login" to="/login">
           Login
         </NavLink>
-        <NavLink className="nav-link" to="/register">
+        <NavLink className="nav-link signup" to="/register">
           Signup
         </NavLink>
       </Fragment>
