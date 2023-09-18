@@ -21,10 +21,14 @@ const UserPost = ({ userPosts }) => {
   const onChange = (e) =>
     setPostData({ ...postData, [e.target.name]: e.target.value });
 
-    const handleImageUpload = (event) => {
-      const file = event.target.files[0];
-      setSelectedImage(file);
-    };
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(file);
+  };
+
+  const removeImage = () => {
+    setSelectedImage(null); // Clear the selected image
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -100,6 +104,16 @@ const UserPost = ({ userPosts }) => {
             accept="image/*"
             onChange={handleImageUpload}
           />
+          {selectedImage && (
+            <img
+              src={URL.createObjectURL(selectedImage)}
+              alt="Selected Image"
+              className="image-preview"
+            />
+          )}
+          <button onClick={removeImage} className="remove-image-button">
+            Remove Image
+          </button>
         </div>
         <div className="form-group">
           <button type="submit">Post</button>
