@@ -36,60 +36,50 @@ const UserProfile = ({ username, user_posts_global }) => {
   return (
     <>
       <div className="user-dashboard">
-        {/* <div>Username: {username}</div>
-        <div className="form-group">
-          <ul>
-            {user_posts.map((post, index) => (
-              <li key={index}>
-                Title: {post.title}
-                <br />
-                Website Link: {post.website_link}
-                <br />
-                Tech Stack: {post.tech_stack}
-                <br />
-              </li>
+        <div className="total-user-posts">
+          {user_posts.map((post, index) => (
+              <div
+                className="single-post"
+                onClick={() =>
+                  handleButtonClick(
+                    post.website_link,
+                    post.username,
+                    post.title,
+                    post.tech_stack
+                  )
+                }
+                key={index}
+              >
+                <div className="post-info">
+                  <p className="post-username">{post.username}</p>
+                  <p className="post-title">{post.title}</p>
+                  <p className="post-tech-stack">{post.tech_stack}</p>
+                </div>
+                <div className="website-preview">
+                  <button
+                    className="preview-button"
+                    onClick={() =>
+                      handleButtonClick(
+                        post.website_link,
+                        post.username,
+                        post.title,
+                        post.tech_stack
+                      )
+                    }
+                  >
+                    <img
+                      src={post.website_link + '/favicon.ico'}
+                      alt={post.title}
+                    />
+                  </button>
+                </div>
+              </div>
             ))}
-          </ul>
-        </div> */}
+        </div>
 
-        {user_posts.map((post, index) => (
-            <div
-              className="single-post"
-              onClick={() =>
-                handleButtonClick(
-                  post.website_link,
-                  post.username,
-                  post.title,
-                  post.tech_stack
-                )
-              }
-              key={index}
-            >
-              <div className="post-info">
-                <p className="post-username">{post.username}</p>
-                <p className="post-title">{post.title}</p>
-                <p className="post-tech-stack">{post.tech_stack}</p>
-              </div>
-              <div className="website-preview">
-                <button
-                  className="preview-button"
-                  onClick={() =>
-                    handleButtonClick(
-                      post.website_link,
-                      post.username,
-                      post.title,
-                      post.tech_stack
-                    )
-                  }
-                >
-                  <img
-                    src={post.website_link + '/favicon.ico'}
-                    alt={post.title}
-                  />
-                </button>
-              </div>
-            </div>
-          ))}
+          <div className="user-profile">
+            <p>test test</p>
+          </div>
       </div>
     </>
   );
