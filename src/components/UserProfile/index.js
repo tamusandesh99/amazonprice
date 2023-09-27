@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { update_profile } from "../../actions/profile";
+import profilepicture from '../../assets/background-pictures/banner.jpg'
 import "./index.scss";
 
 const UserProfile = ({ username, user_posts_global }) => {
@@ -78,7 +79,13 @@ const UserProfile = ({ username, user_posts_global }) => {
         </div>
 
           <div className="user-profile">
-            <p>test test</p>
+            <div className="user-profile-picture">
+              <img src={profilepicture} />
+            </div>
+           <div className="user-details">
+            <p>{username}</p>
+            <button className="user-edit-profile">Edit Profile</button>
+           </div>
           </div>
       </div>
     </>
