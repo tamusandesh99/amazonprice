@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import "./index.scss";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import { connect } from "react-redux";
 import { checkAuthenticated } from "../../actions/auth";
 import { load_user } from "../../actions/profile";
@@ -16,6 +17,7 @@ const HomeLayout = ({ children, checkAuthenticated, load_user }) => {
     <Fragment>
       <Navbar></Navbar>
       {children}
+      {/* <Footer></Footer> */}
     </Fragment>
   );
 };
