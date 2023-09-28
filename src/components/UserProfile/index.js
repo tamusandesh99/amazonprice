@@ -85,7 +85,7 @@ const UserProfile = ({ username, user_posts_global }) => {
           </div>
           <div className="user-profile-lower-container">
             <h3>{username}</h3>
-            <h4>Description</h4>
+            <p>Description</p>
             <button className="user-edit-profile">Edit Profile</button>
           </div>
         </div>
