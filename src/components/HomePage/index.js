@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, ScrollRestoration } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { get_all_posts } from "../../actions/posts";
 import { connect } from "react-redux";
@@ -181,20 +181,21 @@ const HomePage = (isAuthenticated) => {
               </div>
             </div>
           ))}
-          <div className="load-all-websites">
-            <ul className="load-websites">
+          <div className="load-all-posts">
+            <ul className="load-posts">
               <div>
                 {displayedPosts.length < totalPostsLength && (
                   <button onClick={loadMorePosts}>See More Posts</button>
                 )}
               </div>
             </ul>
-            <ul className="load-websites">
+            <ul className="load-posts">
               <div>
                 {isAuthenticated.isAuthenticated ? postLink : loginLink}
               </div>
             </ul>
           </div>
+          <ScrollRestoration/>
         </div>
         <div className="right-homepage">
           <button onClick={postButton} className="">
