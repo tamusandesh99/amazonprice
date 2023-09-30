@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { useNavigate, ScrollRestoration } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { get_all_posts } from "../../actions/posts";
 import { connect } from "react-redux";
@@ -14,6 +14,12 @@ const HomePage = (isAuthenticated) => {
   const [displayedPosts, setDisplayedPosts] = useState([]);
   const [totalPostsLength, setTotalPostsLength] = useState(0);
   const [postsPerPage, setPostsPerPage] = useState(20);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  let navigate = useNavigate();
+  let location = useLocation();
+
+  
 
   useEffect(() => {
     get_all_posts()
@@ -27,7 +33,26 @@ const HomePage = (isAuthenticated) => {
       });
   }, []);
 
-  let navigate = useNavigate();
+
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+  };
+
+  useEffect(() => {
+    return () => {
+      localStorage.setItem("scrollPosition", scrollPosition);
+    };
+  }, [scrollPosition]);
+
+  // Retrieve the stored scroll position from localStorage
+  useEffect(() => {
+    const storedScrollPosition = parseInt(localStorage.getItem("scrollPosition"), 10);
+    if (!isNaN(storedScrollPosition)) {
+      // Scroll to the stored position
+      window.scrollTo(0, storedScrollPosition);
+    }
+  }, []);
+
 
   const loadMorePosts = () => {
     const newPostsPerPage = postsPerPage + 5;
@@ -78,7 +103,7 @@ const HomePage = (isAuthenticated) => {
 
   return (
     <>
-      <div className="main-page">
+      <div className="main-page" >
         <div className="left-homepage">
           <div className="icon-text-container" onClick={() => navigateTo("/")}>
             <div className="icon-text-container-inner">
@@ -143,44 +168,46 @@ const HomePage = (isAuthenticated) => {
               All Posts
             </button>
           </div>
-          {displayedPosts.map((post, index) => (
-            <div
-              className="single-post"
-              onClick={() =>
-                handleButtonClick(
-                  post.website_link,
-                  post.username,
-                  post.title,
-                  post.tech_stack
-                )
-              }
-              key={index}
-            >
-              <div className="post-info">
-                <p className="post-username">{post.username}</p>
-                <p className="post-title">{post.title}</p>
-                <p className="post-tech-stack">{post.tech_stack}</p>
+          <div className="homepage-bottom-page" id="scrollable-element" onScroll={handleScroll}>
+            {displayedPosts.map((post, index) => (
+              <div
+                className="single-post"
+                onClick={() =>
+                  handleButtonClick(
+                    post.website_link,
+                    post.username,
+                    post.title,
+                    post.tech_stack
+                  )
+                }
+                key={index}
+              >
+                <div className="post-info">
+                  <p className="post-username">{post.username}</p>
+                  <p className="post-title">{post.title}</p>
+                  <p className="post-tech-stack">{post.tech_stack}</p>
+                </div>
+                <div className="website-preview">
+                  <button
+                    className="preview-button"
+                    onClick={() =>
+                      handleButtonClick(
+                        post.website_link,
+                        post.username,
+                        post.title,
+                        post.tech_stack
+                      )
+                    }
+                  >
+                    <img
+                      src={post.website_link + "/favicon.ico"}
+                      alt={post.title}
+                    />
+                  </button>
+                </div>
               </div>
-              <div className="website-preview">
-                <button
-                  className="preview-button"
-                  onClick={() =>
-                    handleButtonClick(
-                      post.website_link,
-                      post.username,
-                      post.title,
-                      post.tech_stack
-                    )
-                  }
-                >
-                  <img
-                    src={post.website_link + '/favicon.ico'}
-                    alt={post.title}
-                  />
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
           <div className="load-all-posts">
             <ul className="load-posts">
               <div>
@@ -195,7 +222,6 @@ const HomePage = (isAuthenticated) => {
               </div>
             </ul>
           </div>
-          <ScrollRestoration/>
         </div>
         <div className="right-homepage">
           <button onClick={postButton} className="">
@@ -223,4 +249,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(HomePage);
-
