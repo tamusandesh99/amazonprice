@@ -5,9 +5,11 @@ import {
   USER_POST_SUCCESS,
   USER_POST_LOAD_FAIL,
   USER_POST_LOAD_SUCCESS,
+  POSTS_LOAD_FAIL,
+  POSTS_LOAD_SUCCESS
 } from "./types";
 
-export const get_all_posts = async () => {
+export const get_all_posts = () => async (dispatch) => {
   try {
     const res = await axios.get(
       `${process.env.REACT_APP_API_URL}/profile/get_posts`
@@ -18,7 +20,21 @@ export const get_all_posts = async () => {
       const postsWithUsername = posts.map((post) => ({ ...post, username }));
       return [...acc, ...postsWithUsername];
     }, []);
-    return postsWithUsernames;
+
+    console.log('posts')
+
+    if(res.data.error){
+      dispatch({
+        type: POSTS_LOAD_FAIL
+      })
+    }
+    else{
+      dispatch({
+        type: POSTS_LOAD_SUCCESS,
+        payload: postsWithUsernames,
+      })
+    }
+    // return postsWithUsernames;
   } catch (err) {
     console.error("Error loading posts:", err);
     throw err;

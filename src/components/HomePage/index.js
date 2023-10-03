@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { get_all_posts } from "../../actions/posts";
 import { connect } from "react-redux";
@@ -8,7 +8,7 @@ import { GiOpenFolder } from "react-icons/gi";
 import { BiSolidHelpCircle } from "react-icons/bi";
 import "./index.scss";
 
-const HomePage = (isAuthenticated) => {
+const HomePage = ({ isAuthenticated, all_Posts }) => {
   const [activeButton, setActiveButton] = useState("Recent Posts");
   const [allPosts, setAllPosts] = useState([]);
   const [displayedPosts, setDisplayedPosts] = useState([]);
@@ -17,20 +17,25 @@ const HomePage = (isAuthenticated) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   let navigate = useNavigate();
-  let location = useLocation();
-
-  
 
   useEffect(() => {
-    get_all_posts()
-      .then((data) => {
-        setAllPosts(data);
-        setTotalPostsLength(data.length);
-        setDisplayedPosts(data.slice(0, postsPerPage));
-      })
-      .catch((error) => {
-        console.error("Error loading posts:", error);
-      });
+    // get_all_posts()
+    //   .then((data) => {
+    //     setAllPosts(data);
+    //     setTotalPostsLength(data.length);
+    //     setDisplayedPosts(data.slice(0, postsPerPage));
+    //     console.log('post rendered')
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error loading posts:", error);
+    //   });
+
+    setDisplayedPosts(all_Posts)
+    setTotalPostsLength(all_Posts.length)
+
+    if(isAuthenticated == null){
+      console.log("p")
+    }
   }, []);
 
 
@@ -216,11 +221,11 @@ const HomePage = (isAuthenticated) => {
                 )}
               </div>
             </ul>
-            <ul className="load-posts">
+            {/* <ul className="load-posts">
               <div>
                 {isAuthenticated.isAuthenticated ? postLink : loginLink}
               </div>
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div className="right-homepage">
@@ -245,7 +250,7 @@ const HomePage = (isAuthenticated) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  // topPosts: state.posts.top_posts,
+  all_Posts: state.posts.all_posts,
 });
 
 export default connect(mapStateToProps)(HomePage);
