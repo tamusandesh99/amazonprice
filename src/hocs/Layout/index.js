@@ -7,24 +7,22 @@ import { checkAuthenticated } from "../../actions/auth";
 import { load_user } from "../../actions/profile";
 import { get_all_posts } from "../../actions/posts";
 
-const HomeLayout = ({ children, checkAuthenticated, load_user }) => {
+const HomeLayout = ({ children, checkAuthenticated, load_user, get_all_posts }) => {
 
   useEffect(() => {
-    // Dispatch the get_all_posts action and await its completion
-    get_all_posts()
-      .then((data) => {
-        // The data from the API call is available here
-        console.log("Posts data:", data);
+    const fetchData = async () => {
+      try {
+        const posts = await get_all_posts(); // Dispatch the action
   
-        // Dispatch other actions or perform any necessary logic here
-  
-        // For example, you can dispatch checkAuthenticated and load_user here if needed
+        // Dispatch other actions if needed
         checkAuthenticated();
         load_user();
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error loading posts:", error);
-      });
+      }
+    };
+  
+    fetchData(); // Call the async function
   }, []);
 
   return (
@@ -36,5 +34,5 @@ const HomeLayout = ({ children, checkAuthenticated, load_user }) => {
   );
 };
 
-export default connect(null,{checkAuthenticated, load_user})(HomeLayout);
+export default connect(null,{checkAuthenticated, load_user, get_all_posts})(HomeLayout);
 

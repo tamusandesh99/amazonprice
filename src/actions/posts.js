@@ -21,7 +21,6 @@ export const get_all_posts = () => async (dispatch) => {
       return [...acc, ...postsWithUsername];
     }, []);
 
-    console.log('posts')
 
     if(res.data.error){
       dispatch({

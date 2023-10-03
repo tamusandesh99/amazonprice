@@ -17,7 +17,6 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   let navigate = useNavigate();
-
   useEffect(() => {
     // get_all_posts()
     //   .then((data) => {
@@ -33,10 +32,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     setDisplayedPosts(all_Posts)
     setTotalPostsLength(all_Posts.length)
 
-    if(isAuthenticated == null){
-      console.log("p")
-    }
-  }, []);
+  }, [isAuthenticated]);
 
 
   const handleScroll = () => {
@@ -76,7 +72,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
   };
 
   const postButton = () => {
-    if (isAuthenticated.isAuthenticated) {
+    if (isAuthenticated?.isAuthenticated) {
       navigate("/submitpost");
     } else {
       navigate("/register");
