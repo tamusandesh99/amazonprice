@@ -72,10 +72,10 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
   };
 
   const postButton = () => {
-    if (isAuthenticated.isAuthenticated == null) {
-      navigate("/register");
+    if (isAuthenticated) {
+      navigate("/submitpost");
     } else {
-      navigate("/submmitpost");
+      navigate("/login");
     }
   };
 
