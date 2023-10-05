@@ -12,6 +12,7 @@ const HomeLayout = ({ children, checkAuthenticated, load_user, get_all_posts }) 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('this is re render')
         const posts = await get_all_posts(); // Dispatch the action
   
         // Dispatch other actions if needed
