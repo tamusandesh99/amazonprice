@@ -14,7 +14,7 @@
     border-left: 1px var(--border-color);
     border-right: 1px var(--border-color);
     margin-right: 0.6em;
-    margin-left: 0.5em;
+    // margin-left: 0.5em;
     display: grid;
     min-width: 69%;
     flex: 1;
@@ -59,10 +59,13 @@
 
   .left-homepage {
     min-width: 15%;
+    max-width: 15%;
     height: 100vh;
     padding-right: 1em;
+    margin-left: .5em;
     display: grid;
     place-content: center;
+    border: 1px solid red;
     // font-size: 1.3em;
 
     .icon-text-container {
@@ -97,6 +100,7 @@
   .right-homepage {
     background-color: var(--homepage-bg);
     min-width: 15%;
+    max-width: 15%;
     padding: 1em;
     height: 100vh;
     border-left: 1px var(--border-color);
