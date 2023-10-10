@@ -64,7 +64,7 @@ const UserLogin = ({ login, isAuthenticated }) => {
             <button type="submit">Login</button>
           </div>
         </form>
-        <p>
+        <p className="">
           Don't have an account? <Link to="/register">Signup</Link>
         </p>
       </div>

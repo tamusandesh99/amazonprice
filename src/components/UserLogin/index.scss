@@ -8,6 +8,11 @@
   padding: 1em;
   border: 1px var(--border-color);
 
+  p {
+    margin-top: 1em;
+    color: white;
+    text-align: center;
+  }
   .login-form {
 
     .form-group {
@@ -15,9 +20,6 @@
       align-items: center;
       font-size: 1.5em;
       // border: 1px solid red;
-      p {
-        color: white;
-      }
 
       input {
         width: 50em;

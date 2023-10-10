@@ -3,6 +3,9 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { register } from "../../actions/auth";
+import {IoMdMail} from 'react-icons/io'
+import { ImUser } from "react-icons/im"
+import { HiMiniLockClosed } from "react-icons/hi2";
 import CSRFToken from "../CSRFToken";
 import "./index.scss";
 
@@ -56,22 +59,24 @@ const Register = ({ register, isAuthenticated }) => {
 
   return (
     <>
-      <div className="submit-form-container">
-        <form className="contact-form" onSubmit={onSubmit}>
+      <div className="form-container">
+        <form className="register-form" onSubmit={onSubmit}>
           <CSRFToken />
+          <div className="form-title">Register</div>
           <div className="form-group">
-            <label htmlFor="website">Email:</label>
+            <IoMdMail className="form-icon"></IoMdMail>
             <input
               type="text"
               id="email"
               name="email"
               value={email}
               onChange={onChange}
+              placeholder="Enter your Email"
               required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="passowrd">Username:</label>
+            <ImUser className="form-icon" />
             <input
               type="text"
               id="username"
@@ -79,22 +84,24 @@ const Register = ({ register, isAuthenticated }) => {
               value={username}
               onChange={onChange}
               minLength="6"
+              placeholder="Username"
               required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Password:</label>
+            <HiMiniLockClosed className="form-icon" />
             <input
-              type="text"
+              type="password"
               id="password"
               name="password"
               value={password}
               onChange={onChange}
               minLength="6"
+              placeholder="Password"
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-button">
             <button type="submit">Register</button>
           </div>
         </form>
