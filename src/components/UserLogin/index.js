@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
+import {ImUser} from 'react-icons/im'
+import {HiMiniLockClosed} from 'react-icons/hi2'
 import CSRFToken from "../CSRFToken";
 import "./index.scss";
 import { useNavigate, Link } from "react-router-dom";
@@ -27,13 +29,14 @@ const UserLogin = ({ login, isAuthenticated }) => {
       navigate("/"); // Redirect to home page after successful login
     }
   }, [isAuthenticated, navigate]);
-
+  
   return (
     <>
       <form className="login-form" onSubmit={handleLogin}>
         <CSRFToken />
+        <div className="form-group">Login</div>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
+        <ImUser className="user-icon"></ImUser>
           <input
             type="text"
             id="username"
@@ -41,10 +44,11 @@ const UserLogin = ({ login, isAuthenticated }) => {
             value={username}
             onChange={onChange}
             required
+            placeholder="Enter you username"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <HiMiniLockClosed></HiMiniLockClosed>
           <input
             type="password"
             id="password"
@@ -52,6 +56,7 @@ const UserLogin = ({ login, isAuthenticated }) => {
             value={password}
             onChange={onChange}
             required
+            placeholder="Password"
           />
         </div>
         <div className="form-group">

@@ -5,15 +5,8 @@
     margin: 0 auto;
   
     .form-group {
-      margin-bottom: 20px;
+      display: flex;
       p{
-        color: white;
-      }
-  
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
         color: white;
       }
   
