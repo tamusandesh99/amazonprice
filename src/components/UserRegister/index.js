@@ -3,15 +3,14 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { register } from "../../actions/auth";
-import {IoMdMail} from 'react-icons/io'
-import { ImUser } from "react-icons/im"
+import { IoMdMail } from "react-icons/io";
+import { ImUser } from "react-icons/im";
 import { HiMiniLockClosed } from "react-icons/hi2";
 import CSRFToken from "../CSRFToken";
 import "./index.scss";
 
-
-axios.defaults.xsrfHeaderName = 'x-csrftoken'
-axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = "x-csrftoken";
+axios.defaults.xsrfCookieName = "csrftoken";
 
 const Register = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -55,14 +54,15 @@ const Register = ({ register, isAuthenticated }) => {
       navigate("/login"); // Navigate to login page after account creation
     }
   }, [accountCreated, navigate]);
-  
 
   return (
     <>
       <div className="form-container">
         <form className="register-form" onSubmit={onSubmit}>
           <CSRFToken />
-          <div className="form-title">Register</div>
+          <div className="form-title">
+            <p>Register</p>
+          </div>
           <div className="form-group">
             <IoMdMail className="form-icon"></IoMdMail>
             <input

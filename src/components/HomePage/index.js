@@ -1,11 +1,12 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { get_all_posts } from "../../actions/posts";
 import { connect } from "react-redux";
 import { AiFillHome, AiTwotoneTags } from "react-icons/ai";
 import { GiOpenFolder } from "react-icons/gi";
 import { BiSolidHelpCircle } from "react-icons/bi";
+import {BiHeart as PostLikesIcon} from 'react-icons/bi'
+import {LiaCommentAltSolid as PostCommentsIcon} from 'react-icons/lia'
 import "./index.scss";
 
 const HomePage = ({ isAuthenticated, all_Posts }) => {
@@ -187,6 +188,10 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
                   <p className="post-username">{post.username}</p>
                   <p className="post-title">{post.title}</p>
                   <p className="post-tech-stack">{post.tech_stack}</p>
+                <div className="post-likes-comments"> 
+                  <PostLikesIcon className="post-icons"/>
+                  <PostCommentsIcon className="post-icons" />
+                </div>
                 </div>
                 <div className="website-preview">
                   <button

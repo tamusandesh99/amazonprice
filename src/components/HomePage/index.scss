@@ -51,6 +51,7 @@
         border-bottom: 3px solid rgb(206, 199, 199);
       }
       button {
+      border:none;
         min-width: 15%;
         background-color: inherit;
       }
@@ -131,8 +132,14 @@
       }
 
       .post-info {
-        //   border: 1px solid rgba(238, 237, 239, 0.631);
+        // border: 1px solid red;
         padding: 1em 2em 1em 2em;
+
+        .post-icons{
+          margin-right: .5em;
+          color:white;
+          font-size: 1rem;
+        }
       }
 
       .website-preview {

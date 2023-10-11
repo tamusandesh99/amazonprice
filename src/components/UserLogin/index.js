@@ -35,7 +35,9 @@ const UserLogin = ({ login, isAuthenticated }) => {
       <div className="form-container">
         <form className="login-form" onSubmit={handleLogin}>
           <CSRFToken />
-          <div className="form-title">Login</div>
+          <div className="form-title">
+            <p>Login</p>
+          </div>
           <div className="form-group">
             <ImUser className="form-icon"></ImUser>
             <input
