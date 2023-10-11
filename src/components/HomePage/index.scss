@@ -8,6 +8,9 @@
     margin: auto;
     color: white;
   }
+  button {
+    border: none;
+  }
 
   .center-homepage {
     background-color: var(--homepage-bg);
@@ -136,7 +139,7 @@
         padding: 1em 2em 1em 2em;
 
         .post-icons{
-          margin-right: .5em;
+          margin: 2em .5em 0 0 ;
           color:white;
           font-size: 1rem;
         }
@@ -170,9 +173,6 @@
           height: 100%;
         }
       }
-    }
-    button {
-      border: none;
     }
     img {
       min-width: 40%;
