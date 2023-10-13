@@ -13,17 +13,17 @@ const SinglePost = () => {
   return (
     <>
       <div className="single-post-page">
-        <div className="left-page">
+        <div className="left-post-page">
           <p>User: {username}</p>
           <p>Title: {title}</p>
           <p>Tech Stack: {tech_stack}</p>
         </div>
-        <div className="center-page">
+        <div className="center-post-page">
           <p>Title: {title}</p>
           <iframe title="user-website" src={webLink} />
         </div>
 
-        <div className="right-page"></div>
+        <div className="right-post-page"></div>
       </div>
     </>
   );
