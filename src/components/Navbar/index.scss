@@ -19,6 +19,9 @@ nav {
     
     .nav-link-right {
       min-width: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-left: 1px var(--border-color);
       border-right: 1px var(--border-color);
 

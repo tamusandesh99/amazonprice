@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import SinglePost from '../SinglePost'
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -70,6 +71,8 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
         tech_stack: tech_stack,
       },
     });
+
+
   };
 
   const postButton = () => {
