@@ -14,12 +14,14 @@ const SinglePost = () => {
     <>
       <div className="single-post-page">
         <div className="left-post-page">
-          <p>User: {username}</p>
-          <p>Title: {title}</p>
+        <p>Title: {title}</p>
+          <p>By {username}</p>
           <p>Tech Stack: {tech_stack}</p>
         </div>
         <div className="center-post-page">
-          <p>Title: {title}</p>
+          <div className="center-post-title">
+            <p>Title: {title}</p>
+          </div>
           <iframe title="user-website" src={webLink} />
         </div>
 
