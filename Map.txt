@@ -1,0 +1,14 @@
+Post Api change:
+- title
+- tech stack
+- website url 
+- image 
+- image url 
+- description 
+- (take comments)
+
+Login/Regiser
+- design needed
+
+Mobile
+- responsible design needed

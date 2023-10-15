@@ -23,8 +23,13 @@ const SinglePost = () => {
             <p>Title: {title}</p>
           </div>
           <iframe title="user-website" src={webLink} />
-        </div>
 
+          <div className="post-comments-container">
+            <textarea className="post-comment-box" placeholder="Say something nice to {username}" >
+
+            </textarea>
+          </div>
+        </div>
         <div className="right-post-page"></div>
       </div>
     </>
