@@ -9,13 +9,13 @@ const SinglePost = () => {
   const location = useLocation();
   const { username, title, tech_stack } = location.state;
 
-  const [userComments, setUserComments] = useState(['okok', 'this is ok']);
-  const [newComment, setNewComment] = useState('');
+  const [userComments, setUserComments] = useState(["okok", "this is ok"]);
+  const [newComment, setNewComment] = useState("");
 
   const addComment = () => {
     if (newComment.trim() !== "") {
       setUserComments([...userComments, newComment]);
-      setNewComment(''); // Clear the input field
+      setNewComment(""); // Clear the input field
     }
   };
 
@@ -32,6 +32,8 @@ const SinglePost = () => {
             <p>Title: {title}</p>
           </div>
           <iframe title="user-website" src={webLink} />
+          <iframe title="user-website" src={webLink} />
+         
 
           <div className="post-comments-container">
             <textarea
