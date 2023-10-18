@@ -32,22 +32,24 @@ const SinglePost = () => {
             <p>Title: {title}</p>
           </div>
           <iframe title="user-website" src={webLink} />
-          <iframe title="user-website" src={webLink} />
+          {/* <iframe title="user-website" src={webLink} /> */}
          
 
           <div className="post-comments-container">
-            <textarea
-              className="post-comment-box"
-              placeholder={`Say something nice to ${username}`}
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && e.target.value.trim() !== "") {
-                  addComment();
-                }
-              }}
-            ></textarea>
-            <button onClick={addComment}>Post Comment</button>
+            <div className="add-comment">
+              <textarea
+                className="post-comment-box"
+                placeholder={`Say something nice to ${username}`}
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && e.target.value.trim() !== "") {
+                    addComment();
+                  }
+                }}
+              ></textarea>
+              <button onClick={addComment}>Post Comment</button>
+            </div>
             {userComments.map((comment, index) => (
               <div key={index} className="user-comment">
                 {comment}
