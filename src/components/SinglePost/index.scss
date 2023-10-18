@@ -49,8 +49,8 @@
 
     .post-comments-container {
       display: grid;
-      place-items: center;
-      min-width: 100%;
+    //   place-items: center;
+      min-width: 90%;
     //   border: 1px solid red;
       margin-top: 10%;
       // margin-bottom: 10%;
@@ -75,6 +75,14 @@
           font-size: 1.2rem;
           max-width: 20%;
           min-height: 3vh;
+        }
+      }
+      .all-comments{
+        margin-top: 2%;
+        color: white;
+        .user-comment{
+            border: 1px solid red;
+            margin-bottom: 5%;
         }
       }
     }

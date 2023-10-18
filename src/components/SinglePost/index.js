@@ -50,11 +50,14 @@ const SinglePost = () => {
               ></textarea>
               <button onClick={addComment}>Post Comment</button>
             </div>
-            {userComments.map((comment, index) => (
-              <div key={index} className="user-comment">
-                {comment}
-              </div>
-            ))}
+            <div className="all-comments">
+              {userComments.map((comment, index) => (
+                <div key={index} className="user-comment">
+                  {comment}
+                  <p>username</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <div className="right-post-page"></div>
