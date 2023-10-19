@@ -50,7 +50,7 @@
     .post-comments-container {
       display: grid;
     //   place-items: center;
-      min-width: 90%;
+      max-width: 90%;
     //   border: 1px solid red;
       margin-top: 10%;
       // margin-bottom: 10%;
@@ -81,8 +81,12 @@
         margin-top: 2%;
         color: white;
         .user-comment{
-            border: 1px solid red;
+            // border: 1px solid red;
             margin-bottom: 5%;
+
+            p{
+                margin-left: 1em;
+            }
         }
       }
     }

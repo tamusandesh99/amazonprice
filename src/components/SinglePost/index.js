@@ -9,7 +9,26 @@ const SinglePost = () => {
   const location = useLocation();
   const { username, title, tech_stack } = location.state;
 
-  const [userComments, setUserComments] = useState(["okok", "this is ok"]);
+  const [userComments, setUserComments] = useState([
+    "Kind-hearted, he is kindhearted and very polite, but you should not use his good manners for your interests",
+    "I love to have deep, interesting conversations, it allows me to see life from a new perspective.",
+    "Dude, stop making same mistake over and over again, how many times you can fail on the same step?",
+    "Kids don’t read these days and they don’t play on playgrounds anymore.",
+    "Not again, come on guys, have some mercy .... Talking about WoW when my subscription ran out and I'm broke AF.",
+    "When I’m hungry my brain works on half speed, it is relevant to my level of motivation as well.",
+    "How can people live without music? I can’t even handle single day without it.",
+    "I hate rude people, people who lack manners and people who constantly tell lies.",
+    "Awesome topic, whenever I get confused I come here and my problems are solved in no time.",
+    "Kind-hearted, he is kindhearted and very polite, but you should not use his good manners for your interests",
+    "I love to have deep, interesting conversations, it allows me to see life from a new perspective.",
+    "Dude, stop making same mistake over and over again, how many times you can fail on the same step?",
+    "Kids don’t read these days and they don’t play on playgrounds anymore.",
+    "Not again, come on guys, have some mercy .... Talking about WoW when my subscription ran out and I'm broke AF.",
+    "When I’m hungry my brain works on half speed, it is relevant to my level of motivation as well.",
+    "How can people live without music? I can’t even handle single day without it.",
+    "I hate rude people, people who lack manners and people who constantly tell lies.",
+    "Awesome topic, whenever I get confused I come here and my problems are solved in no time.",
+  ]);
   const [newComment, setNewComment] = useState("");
 
   const addComment = () => {
@@ -33,7 +52,6 @@ const SinglePost = () => {
           </div>
           <iframe title="user-website" src={webLink} />
           {/* <iframe title="user-website" src={webLink} /> */}
-         
 
           <div className="post-comments-container">
             <div className="add-comment">
@@ -53,8 +71,9 @@ const SinglePost = () => {
             <div className="all-comments">
               {userComments.map((comment, index) => (
                 <div key={index} className="user-comment">
-                  {comment}
-                  <p>username</p>
+                  <span className="comment-post-username">username</span>
+                  <p>{comment}</p>
+                  <button>Reply</button>
                 </div>
               ))}
             </div>
