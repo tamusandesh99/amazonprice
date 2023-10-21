@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import commentPicture from '../../assets/pictures/comment-pic.jpg'
 import "./index.scss";
 
 const SinglePost = () => {
@@ -71,9 +72,12 @@ const SinglePost = () => {
             <div className="all-comments">
               {userComments.map((comment, index) => (
                 <div key={index} className="user-comment">
-                  <span className="comment-post-username">username</span>
-                  <p>{comment}</p>
-                  <button>Reply</button>
+                  <div className="user-profile-picture"> <img src={commentPicture}/> </div>
+                  <div className="user-comment-text">
+                    <span className="comment-post-username">username</span>
+                    <p>{comment}</p>
+                    <button>Reply</button>
+                  </div>
                 </div>
               ))}
             </div>
