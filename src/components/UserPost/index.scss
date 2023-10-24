@@ -54,16 +54,29 @@
         margin-top: 1%;
       }
 
-      .uploaded-image {
-        position: relative;
+
+
+      .post-with-images {
         display: flex;
         padding: 1%;
         margin-top: 1%;
         border: 2px VAR(--border-color);
 
-        .image-preview{
+        .image-preview-container{
+          position: relative;
+          .image-preview {
+          }
+          margin-right: 1%;
 
-          // margin-left: 10%;
+          .remove-image-button {
+            position: absolute;
+            top: 2%; 
+            right: 2%; 
+            color: white;
+            background-color: inherit;
+            border: none;
+            font-size: 1em;
+          }
         }
 
         img {
@@ -71,30 +84,18 @@
           min-height: 15vh;
           max-height: 15vh;
         }
-
-        .remove-image-button {
-          position: absolute;
-          top: 10px; /* Adjust the top position as needed */
-          left: 10px; /* Adjust the right position as needed */
-          // background-color: red; /* Example button styling */
-          color: white; /* Example button styling */
-          border: none; /* Example button styling */
-          padding: 5px 10px; /* Example button styling */
-        }
       }
-    }
-
-    button {
-      padding: 8px 16px;
-      background-color: var(--icon-color);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: rgb(8, 66, 50);
+      button {
+        padding: 8px 16px;
+        background-color: var(--icon-color);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: rgb(8, 66, 50);
+        }
       }
     }
   }

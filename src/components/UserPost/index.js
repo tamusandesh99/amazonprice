@@ -5,7 +5,7 @@ import { useNavigate, Link, Await } from "react-router-dom";
 import axios from "axios";
 import { create_user_post } from "../../actions/posts";
 import Cookies from "js-cookie";
-import {TfiTrash} from 'react-icons/tfi'
+import { TfiTrash } from "react-icons/tfi";
 
 const UserPost = ({ userPosts }) => {
   const [postData, setPostData] = useState({
@@ -22,16 +22,16 @@ const UserPost = ({ userPosts }) => {
   const onChange = (e) =>
     setPostData({ ...postData, [e.target.name]: e.target.value });
 
-    const handleImageUpload = (event) => {
-      const newFiles = Array.from(event.target.files); // Convert the FileList to an array
-      setSelectedImages([...selectedImages, ...newFiles]);
-    };
+  const handleImageUpload = (event) => {
+    const newFiles = Array.from(event.target.files); // Convert the FileList to an array
+    setSelectedImages([...selectedImages, ...newFiles]);
+  };
 
-    const removeImage = (index) => {
-      const updatedImages = [...selectedImages];
-      updatedImages.splice(index, 1);
-      setSelectedImages(updatedImages);
-    };
+  const removeImage = (index) => {
+    const updatedImages = [...selectedImages];
+    updatedImages.splice(index, 1);
+    setSelectedImages(updatedImages);
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -90,7 +90,7 @@ const UserPost = ({ userPosts }) => {
             />
           </div>
           <div className="form-group user-post-image">
-          <div className="uploaded-image">
+          <div className={`post-without-images ${selectedImages.length > 0 ? 'post-with-images' : ''}`}>
               {selectedImages.map((image, index) => (
                 <div key={index} className="image-preview-container">
                   <img
@@ -98,16 +98,16 @@ const UserPost = ({ userPosts }) => {
                     alt="Selected Image"
                     className="image-preview"
                   />
-                  <button
+                  <h2
                     onClick={() => removeImage(index)}
                     className="remove-image-button"
                   >
                     <TfiTrash />
-                  </button>
+                  </h2>
                 </div>
               ))}
             </div>
-              <input
+            <input
               type="file"
               id="image"
               className="image-upload-input"
