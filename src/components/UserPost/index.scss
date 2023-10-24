@@ -1,7 +1,9 @@
 .user-post-container {
   // border: 1px solid red;
-  p{
-    color: rgb(190, 157, 97);
+  p {
+    color: rgb(238, 236, 231);
+    font-weight: 600;
+    margin-bottom: 3%;
   }
   .user-post-form {
     display: flex;
@@ -31,18 +33,27 @@
         background-color: var(--body-bg);
       }
 
-      input{
-        // outline: 1px var(--border-color);
+      input {
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 0.125rem rgb(105, 104, 104);
+        }
       }
       textarea {
-        outline: 1px var(--border-color);
-        height: 20vh;
+        outline: none;
+        min-height: 20vh;
+        max-height: 20vh;
+        resize: none;
+
+        &:focus{
+          box-shadow: 0 0 0 0.125rem rgb(105, 104, 104);
+        }
       }
     }
 
     button {
       padding: 8px 16px;
-      background-color: #007bff;
+      background-color: var(--icon-color);
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -50,7 +61,7 @@
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: #0056b3;
+        background-color: rgb(8, 66, 50);
       }
     }
   }
