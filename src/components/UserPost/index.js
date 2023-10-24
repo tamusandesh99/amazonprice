@@ -61,64 +61,57 @@ const UserPost = ({ userPosts }) => {
   };
   return (
     <>
-      <form className="login-form" onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={title}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Website Link</label>
-          <input
-            type="text"
-            id="website_link"
-            name="website_link"
-            value={website_link}
-            onChange={onChange}
-            required
-          />
-        </div>
+      <div className="user-post-container">
 
-        <div className="form-group">
-          <label htmlFor="password">Tech Stacks Used:</label>
-          <input
-            type="text"
-            id="tech_stack"
-            name="tech_stack"
-            value={tech_stack}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="image">Image Upload</label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-          {selectedImage && (
-            <img
-              src={URL.createObjectURL(selectedImage)}
-              alt="Selected Image"
-              className="image-preview"
+        <form className="user-post-form" onSubmit={onSubmit}>
+          <p>Make a post</p>
+          <div className="form-group">
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={title}
+              onChange={onChange}
+              placeholder="Title"
+              required
             />
-          )}
-          <button onClick={removeImage} className="remove-image-button">
-            Remove Image
-          </button>
-        </div>
-        <div className="form-group">
-          <button type="submit">Post</button>
-        </div>
-      </form>
+          </div>
+
+          <div className="form-group">
+            <textarea
+              type="text"
+              id="tech_stack"
+              name="tech_stack"
+              value={tech_stack}
+              onChange={onChange}
+              placeholder="Description"
+            />
+          </div>
+          {/* <div className="form-group">
+            <label htmlFor="image">Image Upload</label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              onChange={handleImageUpload}
+            />
+            {selectedImage && (
+              <img
+                src={URL.createObjectURL(selectedImage)}
+                alt="Selected Image"
+                className="image-preview"
+              />
+            )}
+            <button onClick={removeImage} className="remove-image-button">
+              Remove Image
+            </button>
+          </div> */}
+          <div className="form-group">
+            <button type="submit">Post</button>
+          </div>
+        </form>
+      </div>
       <p>
         Don't have an account? <Link to="/register">Signup</Link>
       </p>
