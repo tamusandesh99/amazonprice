@@ -45,8 +45,41 @@
         max-height: 20vh;
         resize: none;
 
-        &:focus{
+        &:focus {
           box-shadow: 0 0 0 0.125rem rgb(105, 104, 104);
+        }
+      }
+
+      .image-upload-input {
+        margin-top: 1%;
+      }
+
+      .uploaded-image {
+        position: relative;
+        display: flex;
+        padding: 1%;
+        margin-top: 1%;
+        border: 2px VAR(--border-color);
+
+        .image-preview{
+
+          // margin-left: 10%;
+        }
+
+        img {
+          // max-width: 100%;
+          min-height: 15vh;
+          max-height: 15vh;
+        }
+
+        .remove-image-button {
+          position: absolute;
+          top: 10px; /* Adjust the top position as needed */
+          left: 10px; /* Adjust the right position as needed */
+          // background-color: red; /* Example button styling */
+          color: white; /* Example button styling */
+          border: none; /* Example button styling */
+          padding: 5px 10px; /* Example button styling */
         }
       }
     }

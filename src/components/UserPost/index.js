@@ -5,6 +5,7 @@ import { useNavigate, Link, Await } from "react-router-dom";
 import axios from "axios";
 import { create_user_post } from "../../actions/posts";
 import Cookies from "js-cookie";
+import {TfiTrash} from 'react-icons/tfi'
 
 const UserPost = ({ userPosts }) => {
   const [postData, setPostData] = useState({
@@ -15,20 +16,22 @@ const UserPost = ({ userPosts }) => {
 
   const { title, website_link, tech_stack } = postData;
   const [successMessage, setSuccessMessage] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImages, setSelectedImages] = useState([]);
   const navigate = useNavigate();
 
   const onChange = (e) =>
     setPostData({ ...postData, [e.target.name]: e.target.value });
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    setSelectedImage(file);
-  };
+    const handleImageUpload = (event) => {
+      const newFiles = Array.from(event.target.files); // Convert the FileList to an array
+      setSelectedImages([...selectedImages, ...newFiles]);
+    };
 
-  const removeImage = () => {
-    setSelectedImage(null); // Clear the selected image
-  };
+    const removeImage = (index) => {
+      const updatedImages = [...selectedImages];
+      updatedImages.splice(index, 1);
+      setSelectedImages(updatedImages);
+    };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -62,7 +65,6 @@ const UserPost = ({ userPosts }) => {
   return (
     <>
       <div className="user-post-container">
-
         <form className="user-post-form" onSubmit={onSubmit}>
           <p>Make a post</p>
           <div className="form-group">
@@ -87,34 +89,40 @@ const UserPost = ({ userPosts }) => {
               placeholder="Description"
             />
           </div>
-          {/* <div className="form-group">
-            <label htmlFor="image">Image Upload</label>
-            <input
+          <div className="form-group user-post-image">
+          <div className="uploaded-image">
+              {selectedImages.map((image, index) => (
+                <div key={index} className="image-preview-container">
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt="Selected Image"
+                    className="image-preview"
+                  />
+                  <button
+                    onClick={() => removeImage(index)}
+                    className="remove-image-button"
+                  >
+                    <TfiTrash />
+                  </button>
+                </div>
+              ))}
+            </div>
+              <input
               type="file"
               id="image"
-              name="image"
+              className="image-upload-input"
               accept="image/*"
               onChange={handleImageUpload}
             />
-            {selectedImage && (
-              <img
-                src={URL.createObjectURL(selectedImage)}
-                alt="Selected Image"
-                className="image-preview"
-              />
-            )}
-            <button onClick={removeImage} className="remove-image-button">
-              Remove Image
-            </button>
-          </div> */}
+          </div>
           <div className="form-group">
             <button type="submit">Post</button>
           </div>
+          <p>
+            Don't have an account? <Link to="/register">Signup</Link>
+          </p>
         </form>
       </div>
-      <p>
-        Don't have an account? <Link to="/register">Signup</Link>
-      </p>
     </>
   );
 };
