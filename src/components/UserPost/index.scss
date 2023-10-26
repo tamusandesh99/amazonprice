@@ -85,6 +85,16 @@
           max-height: 15vh;
         }
       }
+
+      .image-upload-label, .link-upload-label{
+        padding: 0.5em;
+        border: 1px solid red;
+        font-size: 0.7em;
+        input[type="file"] {
+          display: none; /* Hide the default file input */
+        }
+      }
+
       button {
         padding: 8px 16px;
         background-color: var(--icon-color);

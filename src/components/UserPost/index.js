@@ -6,6 +6,7 @@ import axios from "axios";
 import { create_user_post } from "../../actions/posts";
 import Cookies from "js-cookie";
 import { TfiTrash } from "react-icons/tfi";
+import { BiImageAdd } from "react-icons/bi";
 
 const UserPost = ({ userPosts }) => {
   const [postData, setPostData] = useState({
@@ -17,6 +18,9 @@ const UserPost = ({ userPosts }) => {
   const { title, website_link, tech_stack } = postData;
   const [successMessage, setSuccessMessage] = useState("");
   const [selectedImages, setSelectedImages] = useState([]);
+  const [selectedLink, setSelectedLink] = useState([]);
+  const [showInput, setShowInput] = useState(false);
+  const [link, setLink] = useState("");
   const navigate = useNavigate();
 
   const onChange = (e) =>
@@ -31,6 +35,30 @@ const UserPost = ({ userPosts }) => {
     const updatedImages = [...selectedImages];
     updatedImages.splice(index, 1);
     setSelectedImages(updatedImages);
+  };
+
+  const handleLinkButtonClick = () => {
+    setShowInput(true);
+  };
+
+  const handleLinkInputChange = (e) => {
+    setLink(e.target.value);
+  };
+
+  const handleLinkInputBlur = () => {
+    if (link.trim() === "") {
+      setShowInput(false);
+    }
+  };
+
+  const addLink = () => {
+    setSelectedLink([...selectedLink, { url: link }]);
+    setLink("");
+  };
+  const removeLink = (index) => {
+    const updatedLinks = [...selectedLink];
+    updatedLinks.splice(index, 1);
+    setSelectedLink(updatedLinks);
   };
 
   const onSubmit = async (e) => {
@@ -89,8 +117,50 @@ const UserPost = ({ userPosts }) => {
               placeholder="Description"
             />
           </div>
-          <div className="form-group user-post-image">
-          <div className={`post-without-images ${selectedImages.length > 0 ? 'post-with-images' : ''}`}>
+          <div className="form-group">
+            <div
+              className={`post-without-link ${
+                selectedLink.length > 0 ? "post-with-link" : ""
+              }`}
+            >
+              {selectedLink.map((link, index) => (
+                <div key={index} className="image-preview-container">
+                  <a href={link.url} target="_blank" rel="noreferrer">
+                    {link.url}
+                  </a>
+                  <h2
+                    onClick={() => removeLink(index)}
+                    className="remove-image-button"
+                  >
+                    <TfiTrash />
+                  </h2>
+                </div>
+              ))}
+            </div>
+
+            <div className="link-input-container">
+              {showInput ? (
+                <div>
+                  <input
+                    type="url"
+                    className="link-input"
+                    placeholder="Paste your link here"
+                    value={link}
+                    onChange={handleLinkInputChange}
+                    autoFocus
+                  />
+                  <button onClick={addLink}>Add Link</button>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+
+            <div
+              className={`post-without-images ${
+                selectedImages.length > 0 ? "post-with-images" : ""
+              }`}
+            >
               {selectedImages.map((image, index) => (
                 <div key={index} className="image-preview-container">
                   <img
@@ -107,13 +177,24 @@ const UserPost = ({ userPosts }) => {
                 </div>
               ))}
             </div>
-            <input
-              type="file"
-              id="image"
-              className="image-upload-input"
-              accept="image/*"
-              onChange={handleImageUpload}
-            />
+            <label className="image-upload-label">
+              <input
+                type="file"
+                id="image"
+                className="image-upload-input"
+                accept="image/*"
+                onChange={handleImageUpload}
+              />
+              <BiImageAdd />
+              Add Image
+            </label>
+            <label
+              className="link-upload-label"
+              onClick={handleLinkButtonClick}
+            >
+              <BiImageAdd />
+              Add Link
+            </label>
           </div>
           <div className="form-group">
             <button type="submit">Post</button>
