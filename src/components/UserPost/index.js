@@ -20,6 +20,7 @@ const UserPost = ({ userPosts }) => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [selectedLink, setSelectedLink] = useState([]);
   const [showInput, setShowInput] = useState(false);
+  const [isInputFocused, setInputFocused] = useState(false);
   const [link, setLink] = useState("");
   const navigate = useNavigate();
 
@@ -49,6 +50,7 @@ const UserPost = ({ userPosts }) => {
     if (link.trim() === "") {
       setShowInput(false);
     }
+    setInputFocused(false); // Unfocus the input
   };
 
   const addLink = () => {
@@ -148,6 +150,8 @@ const UserPost = ({ userPosts }) => {
                     value={link}
                     onChange={handleLinkInputChange}
                     autoFocus
+                    onBlur={handleLinkInputBlur}
+                    // Add this onBlur event
                   />
                   <button onClick={addLink}>Add Link</button>
                 </div>
