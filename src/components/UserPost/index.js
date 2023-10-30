@@ -57,6 +57,13 @@ const UserPost = ({ userPosts }) => {
     setSelectedLink([...selectedLink, { url: link }]);
     setLink("");
   };
+
+  const handleLinkInputKeyDown = (e) => {
+    if (e.key === "Enter") {
+      addLink();
+      e.preventDefault(); // Prevent the default Enter behavior (like form submission)
+    }
+  };
   const removeLink = (index) => {
     const updatedLinks = [...selectedLink];
     updatedLinks.splice(index, 1);
@@ -151,9 +158,10 @@ const UserPost = ({ userPosts }) => {
                     onChange={handleLinkInputChange}
                     autoFocus
                     onBlur={handleLinkInputBlur}
+                    onKeyDown={handleLinkInputKeyDown}
                     // Add this onBlur event
                   />
-                  <button onClick={addLink}>Add Link</button>
+                  <a onClick={addLink}>Add Link</a>
                 </div>
               ) : (
                 ""
