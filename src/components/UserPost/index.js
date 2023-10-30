@@ -23,6 +23,7 @@ const UserPost = ({ userPosts }) => {
   const [isInputFocused, setInputFocused] = useState(false);
   const [link, setLink] = useState("");
   const navigate = useNavigate();
+  const urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
 
   const onChange = (e) =>
     setPostData({ ...postData, [e.target.name]: e.target.value });
@@ -50,12 +51,16 @@ const UserPost = ({ userPosts }) => {
     if (link.trim() === "") {
       setShowInput(false);
     }
-    setInputFocused(false); // Unfocus the input
+    setInputFocused(false); 
   };
 
   const addLink = () => {
-    setSelectedLink([...selectedLink, { url: link }]);
-    setLink("");
+    if (urlPattern.test(link)) {
+      setSelectedLink([...selectedLink, { url: link }]);
+      setLink("");
+    } else {
+      alert("Invalid URL. Please enter a valid URL.");
+    }
   };
 
   const handleLinkInputKeyDown = (e) => {
