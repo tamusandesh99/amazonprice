@@ -70,6 +70,10 @@
           color: white;
           vertical-align: middle;
           font-size: 1.5em;
+          &:hover {
+            transition: color 0.3s;
+            color: rgb(14, 182, 137);
+          }
         }
       }
 
