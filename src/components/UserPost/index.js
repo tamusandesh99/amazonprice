@@ -138,13 +138,13 @@ const UserPost = ({ userPosts }) => {
               }`}
             >
               {selectedLink.map((link, index) => (
-                <div key={index} className="image-preview-container">
+                <div key={index} className="link-preview-container">
                   <a href={link.url} target="_blank" rel="noreferrer">
                     {link.url}
                   </a>
                   <h2
                     onClick={() => removeLink(index)}
-                    className="remove-image-button"
+                    className="remove-link-button"
                   >
                     <TfiTrash />
                   </h2>
