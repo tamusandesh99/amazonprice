@@ -7,6 +7,7 @@ import { create_user_post } from "../../actions/posts";
 import Cookies from "js-cookie";
 import { TfiTrash } from "react-icons/tfi";
 import { BiImageAdd } from "react-icons/bi";
+import {BsLink45Deg} from 'react-icons/bs'
 
 const UserPost = ({ userPosts }) => {
   const [postData, setPostData] = useState({
@@ -194,24 +195,26 @@ const UserPost = ({ userPosts }) => {
                 </div>
               ))}
             </div>
-            <label className="image-upload-label">
-              <input
-                type="file"
-                id="image"
-                className="image-upload-input"
-                accept="image/*"
-                onChange={handleImageUpload}
-              />
-              <BiImageAdd />
-              Add Image
-            </label>
-            <label
-              className="link-upload-label"
-              onClick={handleLinkButtonClick}
-            >
-              <BiImageAdd />
-              Add Link
-            </label>
+            <div className="label-container">
+              <label className="image-upload-label">
+                <input
+                  type="file"
+                  id="image"
+                  className="image-upload-input"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                />
+                <BiImageAdd className="image-icon"/>
+                Add Image
+              </label>
+              <label
+                className="link-upload-label"
+                onClick={handleLinkButtonClick}
+              >
+                <BsLink45Deg className="link-icon" />
+                Add Link
+              </label>
+            </div>
           </div>
           <div className="form-group">
             <button type="submit">Post</button>

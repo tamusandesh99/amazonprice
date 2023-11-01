@@ -125,12 +125,25 @@
         }
       }
 
+      .label-container{
+        border: 1px solid red;
+        margin-top: 1%;
+      }
+
       .image-upload-label, .link-upload-label{
         padding: 0.5em;
-        border: 1px solid red;
+        margin-right: 1%;
+        color: white;
         font-size: 0.7em;
+        display: flex;
+        flex-direction: row;
         input[type="file"] {
           display: none; /* Hide the default file input */
+        }
+
+        .link-icon, .image-icon{
+            color: white;
+            font-size: 2em;
         }
       }
 
