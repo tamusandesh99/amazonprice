@@ -1,4 +1,4 @@
-.form-container {
+.form-container-login {
   max-width: 30%;
   display: grid;
   place-content: center;
@@ -29,10 +29,10 @@
       // border: 1px solid red;
 
       input {
-        width: 50em;
+        width: 100%;
         // padding: 2em;
-        margin: 1.2em;
-        font-size: 1rem;
+        margin: 10%;
+        font-size: 1.2rem;
         outline: none;
         border: none;
         background-color: inherit;
@@ -42,12 +42,13 @@
 
       .form-icon {
         color: white;
-        font-size: 2em;
+        font-size: 1.5em;
       }
     }
     .form-button {
       button {
         min-width: 100%;
+        margin-top: 10%;
         min-height: 3vh;
         font-size: 1.2rem;
         background-color: #007bff;

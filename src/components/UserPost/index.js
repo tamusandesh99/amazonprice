@@ -7,7 +7,8 @@ import { create_user_post } from "../../actions/posts";
 import Cookies from "js-cookie";
 import { TfiTrash } from "react-icons/tfi";
 import { BiImageAdd } from "react-icons/bi";
-import {BsLink45Deg} from 'react-icons/bs'
+import {BsLink45Deg} from 'react-icons/bs' 
+import {IoAddCircle} from 'react-icons/io5' 
 
 const UserPost = ({ userPosts }) => {
   const [postData, setPostData] = useState({
@@ -167,7 +168,7 @@ const UserPost = ({ userPosts }) => {
                     onKeyDown={handleLinkInputKeyDown}
                     // Add this onBlur event
                   />
-                  <a onClick={addLink}>Add Link</a>
+                <a onClick={addLink}> <IoAddCircle /> </a>
                 </div>
               ) : (
                 ""

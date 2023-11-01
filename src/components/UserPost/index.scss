@@ -52,8 +52,26 @@
 
       .link-input-container {
         margin-top: 1%;
-      }
 
+        input {
+          max-width: 70%;
+          min-width: 70%;
+          padding: 1em 1em 0.5em 1em;
+          background-color: inherit;
+          outline: none;
+          border-radius: 0px;
+          border-bottom: 2px solid rgb(133, 131, 131);
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 0 0 rgb(105, 104, 104);
+          }
+        }
+        a{
+          color: white;
+          vertical-align: middle;
+          font-size: 1.5em;
+        }
+      }
 
       .post-with-images {
         display: flex;
@@ -64,7 +82,7 @@
         scrollbar-width: 10px;
         -webkit-scrollbar: none;
         -webkit-appearance: none;
-    
+
         &::-webkit-scrollbar {
           width: 0;
           background-color: inherit;
@@ -80,17 +98,16 @@
           width: 8px; /* Adjust the width as needed */
         }
 
-        .image-preview-container{
+        .image-preview-container {
           position: relative;
           .image-preview {
-            
           }
           margin-right: 1%;
 
           .remove-image-button {
             position: absolute;
-            top: 2%; 
-            right: 2%; 
+            top: 2%;
+            right: 2%;
             color: white;
             background-color: inherit;
             border: none;
@@ -105,34 +122,33 @@
         }
       }
 
-      .post-with-link{
+      .post-with-link {
         // border: 1px solid red;
-        
-        .link-preview-container{
+
+        .link-preview-container {
           display: flex;
 
-          a{
+          a {
             color: white;
             font-size: 1rem;
             margin-right: 1%;
           }
 
-          h2{
+          h2 {
             font-size: 1.2em;
             color: white;
           }
-
         }
       }
 
-      .label-container{
+      .label-container {
         // border: 1px solid red;
         margin-top: 1%;
         display: flex;
-        
       }
 
-      .image-upload-label, .link-upload-label{
+      .image-upload-label,
+      .link-upload-label {
         padding: 0.5em;
         margin-right: 1%;
         color: white;
@@ -140,15 +156,29 @@
         display: flex;
         align-items: center;
         flex-direction: row;
-        
+        transition: color 0.3s;
         input[type="file"] {
           display: none; /* Hide the default file input */
         }
 
-        .link-icon, .image-icon{
-            color: white;
+        .link-icon,
+        .image-icon {
+          font-size: 1.4em;
+          transition: color 0.3s;
+          // border: 1px solid red;
+        }
+
+        &:hover {
+          transition: color 0.3s;
+          color: rgb(14, 182, 137);
+          .link-icon,
+          .image-icon {
+            transition: color 0.3s;
+            color: rgb(14, 182, 137);
+
             font-size: 1.4em;
             // border: 1px solid red;
+          }
         }
       }
 

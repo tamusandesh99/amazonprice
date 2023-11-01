@@ -32,7 +32,7 @@ const UserLogin = ({ login, isAuthenticated }) => {
 
   return (
     <>
-      <div className="form-container">
+      <div className="form-container-login">
         <form className="login-form" onSubmit={handleLogin}>
           <CSRFToken />
           <div className="form-title">
