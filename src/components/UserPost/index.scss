@@ -126,8 +126,10 @@
       }
 
       .label-container{
-        border: 1px solid red;
+        // border: 1px solid red;
         margin-top: 1%;
+        display: flex;
+        
       }
 
       .image-upload-label, .link-upload-label{
@@ -136,14 +138,17 @@
         color: white;
         font-size: 0.7em;
         display: flex;
+        align-items: center;
         flex-direction: row;
+        
         input[type="file"] {
           display: none; /* Hide the default file input */
         }
 
         .link-icon, .image-icon{
             color: white;
-            font-size: 2em;
+            font-size: 1.4em;
+            // border: 1px solid red;
         }
       }
 
