@@ -8,6 +8,7 @@ import {
   POSTS_LOAD_FAIL,
   POSTS_LOAD_SUCCESS
 } from "./types";
+import samplePosts from "../assets/samplePosts";
 
 export const get_all_posts = () => async (dispatch) => {
   try {
@@ -21,19 +22,25 @@ export const get_all_posts = () => async (dispatch) => {
       return [...acc, ...postsWithUsername];
     }, []);
 
+    dispatch({
+      type: POSTS_LOAD_SUCCESS,
+      payload: samplePosts,
+    });
 
-    if(res.data.error){
-      dispatch({
-        type: POSTS_LOAD_FAIL
-      })
-    }
-    else{
-      dispatch({
-        type: POSTS_LOAD_SUCCESS,
-        payload: postsWithUsernames,
-      })
-    }
-    // return postsWithUsernames;
+    //Uncomment when backend and database is hosted
+    // if(res.data.error){
+    //   dispatch({
+    //     type: POSTS_LOAD_FAIL
+    //   })
+    // }
+    // else{
+    //   dispatch({
+    //     type: POSTS_LOAD_SUCCESS,
+    //     payload: postsWithUsernames,
+
+    //   })
+    // }
+
   } catch (err) {
     console.error("Error loading posts:", err);
     throw err;
