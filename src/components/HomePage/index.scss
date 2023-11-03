@@ -59,6 +59,10 @@
         background-color: inherit;
       }
     }
+
+    .post-likes-comments{
+
+    }
   }
 
   .left-homepage {
@@ -137,19 +141,34 @@
       }
 
       .post-info {
-        // border: 1px solid red;
-        padding: 1em 2em 1em 2em;
-
+        padding: 1em 1em 1em 2em;
+        
+        
         .post-icons {
-          margin: 2em 0.5em 0 0;
+          margin: .5em 0em 0 0;
           color: white;
           font-size: 1rem;
+        }
+        
+        .post-likes-comments{
+          margin-top: 1rem;
+          max-width: 5em;
+          // border: 1px solid red;
+          display: flex;
+
+          p{
+            font-size: 0.8em;
+          }
         }
       }
 
       .website-preview {
         margin-left: auto;
-        width: 10%;
+        max-width: 10%;
+        button {
+          width: 100%;
+          height: 100%;
+        }
       }
 
       .post-username {
@@ -165,14 +184,6 @@
       }
       .post-tech-stack {
         font-size: 0.7em;
-      }
-
-      .website-preview {
-        // border: 1px solid red;
-        button {
-          width: 100%;
-          height: 100%;
-        }
       }
     }
     img {

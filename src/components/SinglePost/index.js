@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import commentPicture from '../../assets/pictures/comment-pic.jpg'
+import commentPicture from "../../assets/pictures/comment-pic.jpg";
 import "./index.scss";
 
 const SinglePost = () => {
   const { id } = useParams();
   const webLink = decodeURIComponent(id);
   const location = useLocation();
-  const { username, title, tech_stack } = location.state;
+  const { username, title, description, link } = location.state;
 
   const [userComments, setUserComments] = useState([
     "Kind-hearted, he is kindhearted and very polite, but you should not use his good manners for your interests",
@@ -45,13 +45,13 @@ const SinglePost = () => {
         <div className="left-post-page">
           <p>Title: {title}</p>
           <p>By {username}</p>
-          <p>Tech Stack: {tech_stack}</p>
         </div>
         <div className="center-post-page">
           <div className="center-post-title">
-            <p>Title: {title}</p>
+            <p>{title}</p>
+            <p>{description}</p>
           </div>
-          <iframe title="user-website" src={webLink} />
+          {/* <iframe title="user-website" src={webLink} /> */}
           {/* <iframe title="user-website" src={webLink} /> */}
 
           <div className="post-comments-container">
@@ -72,7 +72,10 @@ const SinglePost = () => {
             <div className="all-comments">
               {userComments.map((comment, index) => (
                 <div key={index} className="user-comment">
-                  <div className="user-profile-picture"> <img src={commentPicture}/> </div>
+                  <div className="user-profile-picture">
+                    {" "}
+                    <img src={commentPicture} />{" "}
+                  </div>
                   <div className="user-comment-text">
                     <span className="comment-post-username">username</span>
                     <p>{comment}</p>

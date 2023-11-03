@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
-import SinglePost from '../SinglePost'
+import SinglePost from "../SinglePost";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { AiFillHome, AiTwotoneTags } from "react-icons/ai";
 import { GiOpenFolder } from "react-icons/gi";
 import { BiSolidHelpCircle } from "react-icons/bi";
-import {BiHeart as PostLikesIcon} from 'react-icons/bi'
-import {LiaCommentAltSolid as PostCommentsIcon} from 'react-icons/lia'
+import { BiHeart as PostLikesIcon } from "react-icons/bi";
+import { LiaCommentAltSolid as PostCommentsIcon } from "react-icons/lia";
 import "./index.scss";
 
 const HomePage = ({ isAuthenticated, all_Posts }) => {
@@ -31,11 +31,9 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     //     console.error("Error loading posts:", error);
     //   });
 
-    setDisplayedPosts(all_Posts)
-    setTotalPostsLength(all_Posts.length)
-
+    setDisplayedPosts(all_Posts);
+    setTotalPostsLength(all_Posts.length);
   }, [isAuthenticated]);
-
 
   const handleScroll = () => {
     setScrollPosition(window.scrollY);
@@ -49,13 +47,15 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
 
   // Retrieve the stored scroll position from localStorage
   useEffect(() => {
-    const storedScrollPosition = parseInt(localStorage.getItem("scrollPosition"), 10);
+    const storedScrollPosition = parseInt(
+      localStorage.getItem("scrollPosition"),
+      10
+    );
     if (!isNaN(storedScrollPosition)) {
       // Scroll to the stored position
       window.scrollTo(0, storedScrollPosition);
     }
   }, []);
-
 
   const loadMorePosts = () => {
     const newPostsPerPage = postsPerPage + 5;
@@ -63,16 +63,15 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     setDisplayedPosts(allPosts.slice(0, newPostsPerPage));
   };
 
-  const handleButtonClick = (webLink, username, title, tech_stack) => {
-    navigate(`/posts/${encodeURIComponent(webLink)}`, {
+  const handleButtonClick = (link, username, title, description) => {
+    navigate(`/posts/${encodeURIComponent(title)}`, {
       state: {
         username: username,
         title: title,
-        tech_stack: tech_stack,
+        description: description,
+        link: link
       },
     });
-
-
   };
 
   const postButton = () => {
@@ -108,7 +107,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
 
   return (
     <>
-      <div className="main-page" >
+      <div className="main-page">
         <div className="left-homepage">
           <div className="icon-text-container" onClick={() => navigateTo("/")}>
             <div className="icon-text-container-inner">
@@ -173,7 +172,11 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
               All Posts
             </button>
           </div>
-          <div className="homepage-bottom-page" id="scrollable-element" onScroll={handleScroll}>
+          <div
+            className="homepage-bottom-page"
+            id="scrollable-element"
+            onScroll={handleScroll}
+          >
             {displayedPosts.map((post, index) => (
               <div
                 className="single-post"
@@ -190,28 +193,33 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
                 <div className="post-info">
                   <p className="post-username">{post.username}</p>
                   <p className="post-title">{post.title}</p>
-                  <p className="post-tech-stack">{post.tech_stack}</p>
-                <div className="post-likes-comments"> 
-                  <PostLikesIcon className="post-icons"/>
-                  <PostCommentsIcon className="post-icons" />
-                </div>
+                  <p className="post-tech-stack">{post.description}</p>
+                  <div className="post-likes-comments">
+                    <p>
+                      <PostLikesIcon className="post-icons" /> {post.likes}
+                    </p>
+                    <p>
+                      <PostCommentsIcon className="post-icons" />{" "}
+                      {post.comments.length}
+                    </p>
+                  </div>
                 </div>
                 <div className="website-preview">
                   <button
                     className="preview-button"
                     onClick={() =>
                       handleButtonClick(
-                        post.website_link,
+                        post.link,
                         post.username,
                         post.title,
-                        post.tech_stack
+                        post.description
                       )
                     }
                   >
-                    <img
-                      src={post.website_link + "/favicon.ico"}
+                    {/* <img
+                      src={post.link + "/favicon.ico"}
                       alt={post.title}
-                    />
+                    /> */}
                   </button>
                 </div>
               </div>
