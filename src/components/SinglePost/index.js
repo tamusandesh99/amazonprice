@@ -8,7 +8,8 @@ const SinglePost = () => {
   const { id } = useParams();
   const webLink = decodeURIComponent(id);
   const location = useLocation();
-  const { username, title, description, link } = location.state;
+  const { username, title, description, link, likes, comments } =
+    location.state;
 
   const [userComments, setUserComments] = useState([
     "Kind-hearted, he is kindhearted and very polite, but you should not use his good manners for your interests",
@@ -70,15 +71,17 @@ const SinglePost = () => {
               <button onClick={addComment}>Post Comment</button>
             </div>
             <div className="all-comments">
-              {userComments.map((comment, index) => (
+              {comments.map((comment, index) => (
                 <div key={index} className="user-comment">
                   <div className="user-profile-picture">
                     {" "}
                     <img src={commentPicture} />{" "}
                   </div>
                   <div className="user-comment-text">
-                    <span className="comment-post-username">username</span>
-                    <p>{comment}</p>
+                    <span className="comment-post-username">
+                      {comment.username}
+                    </span>
+                    <p>{comment.text}</p>
                     <button>Reply</button>
                   </div>
                 </div>

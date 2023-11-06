@@ -184,10 +184,12 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
                 className="single-post"
                 onClick={() =>
                   handleButtonClick(
-                    post.website_link,
+                    post.link,
                     post.username,
                     post.title,
-                    post.tech_stack
+                    post.description,
+                    post.likes,
+                    post.comments
                   )
                 }
                 key={index}
