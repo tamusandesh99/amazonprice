@@ -63,13 +63,15 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     setDisplayedPosts(allPosts.slice(0, newPostsPerPage));
   };
 
-  const handleButtonClick = (link, username, title, description) => {
+  const handleButtonClick = (link, username, title, description, likes, comments) => {
     navigate(`/posts/${encodeURIComponent(title)}`, {
       state: {
         username: username,
         title: title,
         description: description,
-        link: link
+        link: link,
+        likes: likes,
+        comments: comments
       },
     });
   };

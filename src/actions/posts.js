@@ -6,7 +6,7 @@ import {
   USER_POST_LOAD_FAIL,
   USER_POST_LOAD_SUCCESS,
   POSTS_LOAD_FAIL,
-  POSTS_LOAD_SUCCESS
+  POSTS_LOAD_SUCCESS,
 } from "./types";
 import samplePosts from "../assets/samplePosts";
 
@@ -40,7 +40,6 @@ export const get_all_posts = () => async (dispatch) => {
 
     //   })
     // }
-
   } catch (err) {
     console.error("Error loading posts:", err);
     throw err;
@@ -73,7 +72,7 @@ export const get_top_posts = async (dispatch) => {
     //     payload: postsWithUsernames,
     //   });
     // }
-     return postsWithUsernames;
+    return postsWithUsernames;
   } catch (err) {
     console.error("Error loading posts:", err);
     throw err;
