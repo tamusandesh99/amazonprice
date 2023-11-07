@@ -63,7 +63,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     setDisplayedPosts(allPosts.slice(0, newPostsPerPage));
   };
 
-  const handleButtonClick = (link, username, title, description, likes, comments) => {
+  const handleButtonClick = (link, username, title, description, likes, comments, image) => {
     navigate(`/posts/${encodeURIComponent(title)}`, {
       state: {
         username: username,
@@ -71,10 +71,19 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
         description: description,
         link: link,
         likes: likes,
-        comments: comments
+        comments: comments,
+        image: image
       },
     });
   };
+
+  const [userComments, setUserComments] = useState([]);
+
+  const addComment = (newComment) => {
+    // Update the comments state with the new comment
+    setUserComments([...userComments, newComment]);
+  };
+
 
   const postButton = () => {
     if (isAuthenticated) {
@@ -189,7 +198,8 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
                     post.title,
                     post.description,
                     post.likes,
-                    post.comments
+                    post.comments,
+                    post.image
                   )
                 }
                 key={index}
@@ -208,7 +218,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
                     </p>
                   </div>
                 </div>
-                <div className="website-preview">
+                {/* <div className="website-preview">
                   <button
                     className="preview-button"
                     onClick={() =>
@@ -220,12 +230,8 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
                       )
                     }
                   >
-                    {/* <img
-                      src={post.link + "/favicon.ico"}
-                      alt={post.title}
-                    /> */}
                   </button>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
