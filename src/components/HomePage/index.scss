@@ -19,7 +19,8 @@
     margin-right: 0.6em;
     // margin-left: 0.5em;
     display: grid;
-    min-width: 69%;
+    min-width: 48.3em;
+    max-width: 48.3em;
     flex: 1;
     overflow-y: scroll;
     max-height: 100vh;
@@ -34,7 +35,7 @@
 
     .homepage-top-menu {
       display: flex;
-      min-width: 100%;
+      min-width: 48.3em;
       min-height: 3rem;
       max-height: 3rem;
       overflow-y: auto;
@@ -66,8 +67,8 @@
   }
 
   .left-homepage {
-    min-width: 15%;
-    max-width: 15%;
+    min-width: 10.5em;
+    max-width: 10.5em;
     height: 100vh;
     padding-right: 1em;
     margin-left: 0.5em;
@@ -109,8 +110,8 @@
 
   .right-homepage {
     background-color: var(--homepage-bg);
-    min-width: 15%;
-    max-width: 15%;
+    min-width: 10.5em;
+    max-width: 10.5em;
     padding: 1em;
     height: 100vh;
     border-left: 1px var(--border-color);

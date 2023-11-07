@@ -218,20 +218,6 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
                     </p>
                   </div>
                 </div>
-                {/* <div className="website-preview">
-                  <button
-                    className="preview-button"
-                    onClick={() =>
-                      handleButtonClick(
-                        post.link,
-                        post.username,
-                        post.title,
-                        post.description
-                      )
-                    }
-                  >
-                  </button>
-                </div> */}
               </div>
             ))}
           </div>

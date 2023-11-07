@@ -25,7 +25,8 @@
     flex-direction: column;
     //   justify-content: center;
     align-items: center;
-    min-width: 69%;
+    min-width: 48.3em;
+    max-width: 48.3em;
     flex: 1;
     overflow-y: scroll;
     max-height: 100vh;
@@ -38,11 +39,6 @@
       background-color: transparent;
     }
 
-    iframe {
-      max-width: 80%;
-      min-width: 80%;
-      min-height: 80vh;
-    }
     .center-post-title {
       border: 1px solid red;
     }
@@ -104,11 +100,11 @@
   }
 
   .left-post-page {
-    min-width: 15%;
-    max-width: 15%;
+    min-width: 10.5em;
+    max-width: 10.5em;
     height: 100vh;
     padding-right: 1em;
-    margin-left: 0.5em;
+    margin-left: 0.4em;
     display: grid;
     place-content: center;
     // border: 1px solid red;
@@ -145,8 +141,8 @@
 
   .right-post-page {
     background-color: var(--homepage-bg);
-    min-width: 15%;
-    max-width: 15%;
+    min-width: 10.5em;
+    max-width: 10.5em;
     padding: 1em;
     height: 100vh;
     border-left: 1px var(--border-color);
