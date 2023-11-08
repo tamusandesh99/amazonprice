@@ -3,6 +3,7 @@ import SinglePost from "../SinglePost";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import MakePostButton from "../MakePostButton";
 import "./index.scss";
 
 import { AiFillHome, AiTwotoneTags } from "react-icons/ai";
@@ -50,27 +51,20 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     if (order === "Most Liked") {
       const sortedPosts = [...displayedPosts].sort((a, b) => b.likes - a.likes);
       setDisplayedPosts(sortedPosts);
-      setActiveButton(order);
     } else if (order === "Most Comments") {
       const sortedPosts = [...displayedPosts].sort(
         (a, b) => b.comments.length - a.comments.length
       );
       setDisplayedPosts(sortedPosts);
-      setActiveButton(order);
     } else if (order === "Recent Posts") {
       const sortedPosts = [...displayedPosts].sort((a, b) => b.id - a.id);
       setDisplayedPosts(sortedPosts);
-      setActiveButton(order);
     } else {
-      console.log("whatever");
+      setActiveButton(order);
     }
-  };
+    setActiveButton(order);
 
-  // const loadMorePosts = () => {
-  //   const newPostsPerPage = postsPerPage + 5;
-  //   setPostsPerPage(newPostsPerPage);
-  //   setDisplayedPosts(allPosts.slice(0, newPostsPerPage));
-  // };
+  };
 
   const handleButtonClick = (
     link,
@@ -196,9 +190,9 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
             </button>
             <button
               className={`menu-button ${
-                activeButton === "Most Liked" ? "active" : ""
+                activeButton === "Hot" ? "active" : ""
               }`}
-              onClick={() => sortPosts("Most Liked")}
+              onClick={() => sortPosts("Hot")}
             >
               <AiTwotoneFire className="homepage-top-menu-icons" />
               Hot (Coming Soon)
@@ -253,9 +247,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
           </div>
         </div>
         <div className="right-homepage">
-          <button onClick={postButton} className="">
-            Make a post
-          </button>
+          <MakePostButton />
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
             risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing

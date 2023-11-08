@@ -42,13 +42,18 @@
       border-bottom: 1px var(--border-color);
 
       .menu-button {
-        margin-left: 1em;
+        
+        margin-left: 1.3em;
         font-size: 0.9em;
         color: rgb(206, 199, 199);
         font-weight: 600;
         letter-spacing: -1px;
         &:hover {
           border-bottom: 3px solid rgb(206, 199, 199);
+        }
+
+        .homepage-top-menu-icons{
+          margin-right: 0.2em;
         }
       }
       .menu-button.active {
