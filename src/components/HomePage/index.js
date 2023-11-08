@@ -11,11 +11,10 @@ import { LiaCommentAltSolid as PostCommentsIcon } from "react-icons/lia";
 import "./index.scss";
 
 const HomePage = ({ isAuthenticated, all_Posts }) => {
-  const [activeButton, setActiveButton] = useState("All Posts");
-  const [allPosts, setAllPosts] = useState([]);
+  const [activeButton, setActiveButton] = useState("Recent Posts");
+  // const [allPosts, setAllPosts] = useState([]);
 
   const [displayedPosts, setDisplayedPosts] = useState([]);
-  const [sortingOrder, setSortingOrder] = useState("Recent Posts");
 
   const [totalPostsLength, setTotalPostsLength] = useState(0);
   const [postsPerPage, setPostsPerPage] = useState(20);
@@ -59,18 +58,17 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
       );
       setDisplayedPosts(sortedPosts);
       setActiveButton(order);
-    } else {
-      // Sort by default (e.g., Recent Posts)
-      setDisplayedPosts([...displayedPosts]);
-      setActiveButton('All Posts');
+    } 
+    else{
+      console.log('whatever')
     }
   };
 
-  const loadMorePosts = () => {
-    const newPostsPerPage = postsPerPage + 5;
-    setPostsPerPage(newPostsPerPage);
-    setDisplayedPosts(allPosts.slice(0, newPostsPerPage));
-  };
+  // const loadMorePosts = () => {
+  //   const newPostsPerPage = postsPerPage + 5;
+  //   setPostsPerPage(newPostsPerPage);
+  //   setDisplayedPosts(allPosts.slice(0, newPostsPerPage));
+  // };
 
   const handleButtonClick = (
     link,
@@ -159,14 +157,14 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
         </div>
         <div className="center-homepage">
           <div className="homepage-top-menu">
-          <button
+          {/* <button
               className={`menu-button ${
                 activeButton === "All Posts" ? "active" : ""
               }`}
               onClick={() => sortPosts("All Posts")}
             >
               All Posts
-            </button>
+            </button> */}
             <button
               className={`menu-button ${
                 activeButton === "Recent Posts" ? "active" : ""
@@ -190,6 +188,14 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
               onClick={() => sortPosts("Most Liked")}
             >
               Most Liked
+            </button>
+            <button
+              className={`menu-button ${
+                activeButton === "Most Liked" ? "active" : ""
+              }`}
+              onClick={() => sortPosts("Most Liked")}
+            >
+              Hot (Coming Soon)
             </button>
           </div>
           <div
@@ -233,16 +239,11 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
           <div className="load-all-posts">
             <ul className="load-posts">
               <div>
-                {displayedPosts.length < totalPostsLength && (
+                {/* {displayedPosts.length < totalPostsLength && (
                   <button onClick={loadMorePosts}>See More Posts</button>
-                )}
+                )} */}
               </div>
             </ul>
-            {/* <ul className="load-posts">
-              <div>
-                {isAuthenticated.isAuthenticated ? postLink : loginLink}
-              </div>
-            </ul> */}
           </div>
         </div>
         <div className="right-homepage">
