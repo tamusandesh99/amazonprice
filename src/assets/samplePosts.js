@@ -7,10 +7,10 @@ const samplePosts = [
       "Spent the weekend hiking in the mountains. The views were breathtaking!",
     image: "mountain_hike.jpg",
     link: "https://example.com/hiking-adventure",
-    likes: 10,
+    likes: 13,
     comments: [
       { id: 1, username: "Alice", text: "Amazing photo!", date: "2023-11-05T09:30:00Z" },
-  { id: 2, username: "Bob", text: "Incredible view!", date: "2023-11-05T10:15:00Z" },
+  { id: 2, username: "Bob", text: "Incredible view!", date: "2023-11-05T13:15:00Z" },
   { id: 3, username: "Charlie", text: "Nature's beauty!", date: "2023-11-05T11:00:00Z" },
   { id: 4, username: "David", text: "I'm speechless!", date: "2023-11-05T12:45:00Z" },
   { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
@@ -23,7 +23,7 @@ const samplePosts = [
     description: "Tried a new recipe today. It's a mouthwatering delight!",
     image: "homemade_dish.jpg",
     link: "https://example.com/delicious-recipe",
-    likes: 10,
+    likes: 17,
     comments: [
       { id: 6, username: "Frank", text: "Breathtaking!", date: "2023-11-05T14:15:00Z" },
       { id: 7, username: "Grace", text: "Lovely photo!", date: "2023-11-05T15:00:00Z" },
@@ -40,7 +40,7 @@ const samplePosts = [
       "Unboxed the latest gadgets in the tech world. Check out my reviews!",
     image: "tech_gadgets.jpg",
     link: "https://example.com/gadget-reviews",
-    likes: 10,
+    likes: 23,
     comments: [
       { id: 11, username: "Karen", text: "Fantastic shot!", date: "2023-11-05T18:00:00Z" },
       { id: 12, username: "Liam", text: "I love this place!", date: "2023-11-05T18:45:00Z" },
@@ -57,7 +57,7 @@ const samplePosts = [
       "Visited multiple countries in Europe. Such a culturally rich experience!",
     image: "europe_travel.jpg",
     link: "https://example.com/europe-travel",
-    likes: 10,
+    likes: 43,
     comments: [
       { id: 16, username: "Peter", text: "I want to visit!", date: "2023-11-05T21:45:00Z" },
       { id: 17, username: "Quinn", text: "Wow, just wow!", date: "2023-11-05T22:30:00Z" },
@@ -73,7 +73,7 @@ const samplePosts = [
     description: "Explored the dense jungles and encountered unique wildlife.",
     image: "jungle_adventures.jpg",
     link: "https://example.com/jungle-exploration",
-    likes: 10,
+    likes: 47,
     comments: [
       { id: 21, username: "Victoria", text: "This is breathtaking!", date: "2023-11-05T01:30:00Z" },
       { id: 22, username: "William", text: "Absolutely stunning!", date: "2023-11-05T02:15:00Z" },
@@ -89,7 +89,7 @@ const samplePosts = [
     description: "Captured the beauty of a serene sunset at the beach.",
     image: "beach_sunset.jpg",
     link: "https://example.com/sunset-moments",
-    likes: 10,
+    likes: 67,
     comments: [
       { id: 26, username: "Ava", text: "Wow, amazing!", date: "2023-11-05T05:15:00Z" },
       { id: 27, username: "Benjamin", text: "This is a masterpiece!", date: "2023-11-05T06:00:00Z" },
@@ -105,7 +105,7 @@ const samplePosts = [
     description: "Showcasing my latest art creations. Art is my passion!",
     image: "artistic_works.jpg",
     link: "https://example.com/art-portfolio",
-    likes: 10,
+    likes: 41,
     comments: [
       { id: 31, username: "Finn", text: "Fantastic shot!", date: "2023-11-05T09:00:00Z" },
       { id: 32, username: "Grace", text: "I love this place!", date: "2023-11-05T09:45:00Z" },
@@ -122,7 +122,7 @@ const samplePosts = [
       "Took my mountain bike on an epic adventure. Trails and adrenaline!",
     image: "mountain_biking.jpg",
     link: "https://example.com/biking-journey",
-    likes: 10,
+    likes: 33,
     comments: [
       { id: 36, username: "Karen", text: "I want to visit!", date: "2023-11-05T12:45:00Z" },
       { id: 37, username: "Liam", text: "This is incredible!", date: "2023-11-05T13:30:00Z" },
@@ -139,7 +139,7 @@ const samplePosts = [
       "Exploring various cuisines and documenting culinary adventures.",
     image: "culinary_delights.jpg",
     link: "https://example.com/foodie-blog",
-    likes: 10,
+    likes: 11,
     comments: [
       { id: 41, username: "Peter", text: "I'm in love!", date: "2023-11-05T16:30:00Z" },
       { id: 42, username: "Quinn", text: "Nature's wonders!", date: "2023-11-05T17:15:00Z" },
@@ -155,7 +155,7 @@ const samplePosts = [
     description: "My cozy reading nook and the latest books on my shelf.",
     image: "reading_corner.jpg",
     link: "https://example.com/book-lover",
-    likes: 10,
+    likes: 24,
     comments: [
       { id: 46, username: "Victoria", text: "This is breathtaking!", date: "2023-11-05T20:15:00Z" },
       { id: 47, username: "William", text: "Absolutely stunning!", date: "2023-11-05T21:00:00Z" },
@@ -172,7 +172,7 @@ const samplePosts = [
       "Capturing the beauty of nature's creatures in their natural habitat.",
     image: "wildlife_photography.jpg",
     link: "https://example.com/wildlife-photos",
-    likes: 10,
+    likes: 19,
     comments: [
       { id: 51, username: "Ava", text: "This is a masterpiece!", date: "2023-11-05T00:00:00Z" },
       { id: 52, username: "Benjamin", text: "Speechless!", date: "2023-11-05T00:45:00Z" },
@@ -188,7 +188,7 @@ const samplePosts = [
     description: "Showcasing the latest additions to my car collection.",
     image: "car_collection.jpg",
     link: "https://example.com/car-enthusiast",
-    likes: 10,
+    likes: 22,
     comments: [
       { id: 56, username: "Finn", text: "I love this place!", date: "2023-11-05T03:45:00Z" },
       { id: 57, username: "Grace", text: "Nature's masterpiece!", date: "2023-11-05T04:30:00Z" },
@@ -204,13 +204,13 @@ const samplePosts = [
     description: "My fitness transformation journey and workout tips.",
     image: "fitness_transformation.jpg",
     link: "https://example.com/fitness-blog",
-    likes: 10,
+    likes: 16,
     comments: [
       { id: 61, username: "Katherine", text: "Amazing view!", date: "2023-11-05T07:30:00Z" },
       { id: 62, username: "Landon", text: "This is paradise!", date: "2023-11-05T08:15:00Z" },
       { id: 63, username: "Mason", text: "I'm blown away!", date: "2023-11-05T09:00:00Z" },
       { id: 64, username: "Nora", text: "Incredible beauty!", date: "2023-11-05T09:45:00Z" },
-      { id: 65, username: "Oliver", text: "I want to be there!", date: "2023-11-05T10:30:00Z" },
+      { id: 65, username: "Oliver", text: "I want to be there!", date: "2023-11-05T30:30:00Z" },
     ],
   },
   {
@@ -220,7 +220,7 @@ const samplePosts = [
     description: "Sharing my DIY creations and home improvement projects.",
     image: "diy_projects.jpg",
     link: "https://example.com/diy-creations",
-    likes: 10,
+    likes: 30,
     comments: [
       { id: 66, username: "Peyton", text: "Speechless!", date: "2023-11-05T11:15:00Z" },
       { id: 67, username: "Quincy", text: "Wow, just wow!", date: "2023-11-05T12:00:00Z" },
@@ -237,7 +237,7 @@ const samplePosts = [
       "Exploring the latest fashion trends and personal style journeys.",
     image: "fashion_trends.jpg",
     link: "https://example.com/fashion-inspiration",
-    likes: 10,
+    likes: 22,
     comments: [
       { id: 71, username: "Uma", text: "I'm amazed!", date: "2023-11-05T15:00:00Z" },
       { id: 72, username: "Victor", text: "I want to visit!", date: "2023-11-05T15:45:00Z" },
@@ -253,7 +253,7 @@ const samplePosts = [
     description: "Gaming highlights and reviews from my gaming world.",
     image: "gaming_highlights.jpg",
     link: "https://example.com/gaming-adventures",
-    likes: 10,
+    likes: 9,
     comments: [
       { id: 76, username: "Zane", text: "Nature's masterpiece!", date: "2023-11-05T18:45:00Z" },
       { id: 77, username: "Alice", text: "Breathtaking photo!", date: "2023-11-05T19:30:00Z" },
@@ -269,7 +269,7 @@ const samplePosts = [
     description: "Discovering cozy homes and interior design inspirations.",
     image: "cozy_homes.jpg",
     link: "https://example.com/home-inspo",
-    likes: 10,
+    likes: 27,
     comments: [
       { id: 81, username: "Evelyn", text: "I want to be there!", date: "2023-11-05T22:30:00Z" },
       { id: 82, username: "Felix", text: "Absolutely stunning!", date: "2023-11-05T23:15:00Z" },
@@ -285,7 +285,7 @@ const samplePosts = [
     description: "Discovering cozy homes and interior design inspirations.",
     image: "cozy_homes.jpg",
     link: "https://example.com/home-inspo",
-    likes: 10,
+    likes: 23,
     comments: [
       { id: 86, username: "James", text: "This is a masterpiece!", date: "2023-11-05T02:15:00Z" },
       { id: 87, username: "Katherine", text: "Speechless!", date: "2023-11-05T03:00:00Z" },
@@ -301,7 +301,7 @@ const samplePosts = [
     description: "Discovering cozy homes and interior design inspirations.",
     image: "cozy_homes.jpg",
     link: "https://example.com/home-inspo",
-    likes: 10,
+    likes: 37,
     comments: [
       { id: 91, username: "Oliver", text: "This is magical!", date: "2023-11-05T06:00:00Z" },
       { id: 92, username: "Peyton", text: "Nature's beauty!", date: "2023-11-05T06:45:00Z" },
@@ -318,7 +318,7 @@ const samplePosts = [
     description: "Discovering cozy homes and interior design inspirations.",
     image: "cozy_homes.jpg",
     link: "https://example.com/home-inspo",
-    likes: 10,
+    likes: 27,
     comments: [
       { id: 96, username: "Tristan", text: "Incredible beauty!", date: "2023-11-05T09:45:00Z" },
       { id: 97, username: "Uma", text: "Absolutely beautiful!", date: "2023-11-05T10:30:00Z" },
