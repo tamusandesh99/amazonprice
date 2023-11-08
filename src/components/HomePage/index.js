@@ -3,12 +3,17 @@ import SinglePost from "../SinglePost";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import "./index.scss";
+
 import { AiFillHome, AiTwotoneTags } from "react-icons/ai";
 import { GiOpenFolder } from "react-icons/gi";
 import { BiSolidHelpCircle } from "react-icons/bi";
 import { BiHeart as PostLikesIcon } from "react-icons/bi";
 import { LiaCommentAltSolid as PostCommentsIcon } from "react-icons/lia";
-import "./index.scss";
+import { FaComments } from "react-icons/fa";
+import { FaStopwatch } from "react-icons/fa";
+import { RiHeartsFill } from "react-icons/ri";
+import { AiTwotoneFire } from "react-icons/ai";
 
 const HomePage = ({ isAuthenticated, all_Posts }) => {
   const [activeButton, setActiveButton] = useState("Recent Posts");
@@ -53,14 +58,11 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
       setDisplayedPosts(sortedPosts);
       setActiveButton(order);
     } else if (order === "Recent Posts") {
-      const sortedPosts = [...displayedPosts].sort(
-        (a, b) => b.id - a.id
-      );
+      const sortedPosts = [...displayedPosts].sort((a, b) => b.id - a.id);
       setDisplayedPosts(sortedPosts);
       setActiveButton(order);
-    } 
-    else{
-      console.log('whatever')
+    } else {
+      console.log("whatever");
     }
   };
 
@@ -157,7 +159,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
         </div>
         <div className="center-homepage">
           <div className="homepage-top-menu">
-          {/* <button
+            {/* <button
               className={`menu-button ${
                 activeButton === "All Posts" ? "active" : ""
               }`}
@@ -171,6 +173,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
               }`}
               onClick={() => sortPosts("Recent Posts")}
             >
+              <FaStopwatch className="homepage-top-menu-icons" />
               Recent Posts
             </button>
             <button
@@ -179,6 +182,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
               }`}
               onClick={() => sortPosts("Most Comments")}
             >
+              <FaComments className="homepage-top-menu-icons" />
               Most Comments
             </button>
             <button
@@ -187,6 +191,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
               }`}
               onClick={() => sortPosts("Most Liked")}
             >
+              <RiHeartsFill className="homepage-top-menu-icons" />
               Most Liked
             </button>
             <button
@@ -195,6 +200,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
               }`}
               onClick={() => sortPosts("Most Liked")}
             >
+              <AiTwotoneFire className="homepage-top-menu-icons" />
               Hot (Coming Soon)
             </button>
           </div>
