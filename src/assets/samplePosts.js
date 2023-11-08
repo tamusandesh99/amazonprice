@@ -47,6 +47,9 @@ const samplePosts = [
       { id: 13, username: "Mia", text: "Nature's beauty!", date: "2023-11-05T19:30:00Z" },
       { id: 14, username: "Noah", text: "Stunning view!", date: "2023-11-05T20:15:00Z" },
       { id: 15, username: "Olivia", text: "Absolutely breathtaking!", date: "2023-11-05T21:00:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+
     ],
   },
   {
@@ -63,6 +66,9 @@ const samplePosts = [
       { id: 17, username: "Quinn", text: "Wow, just wow!", date: "2023-11-05T22:30:00Z" },
       { id: 18, username: "Ryan", text: "Nature's wonders!", date: "2023-11-05T23:15:00Z" },
       { id: 19, username: "Sophia", text: "I'm in love!", date: "2023-11-05T00:00:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
       { id: 20, username: "Thomas", text: "This is incredible!", date: "2023-11-05T00:45:00Z" },
     ],
   },
@@ -80,6 +86,10 @@ const samplePosts = [
       { id: 23, username: "Xavier", text: "I'm lost for words!", date: "2023-11-05T03:00:00Z" },
       { id: 24, username: "Yasmine", text: "I want to be there!", date: "2023-11-05T03:45:00Z" },
       { id: 25, username: "Zachary", text: "Incredible photo!", date: "2023-11-05T04:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
     ],
   },
   {
@@ -96,6 +106,8 @@ const samplePosts = [
       { id: 28, username: "Chloe", text: "Speechless!", date: "2023-11-05T06:45:00Z" },
       { id: 29, username: "Daniel", text: "Nature's beauty!", date: "2023-11-05T07:30:00Z" },
       { id: 30, username: "Emma", text: "I'm in awe!", date: "2023-11-05T08:15:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
     ],
   },
   {
@@ -112,6 +124,8 @@ const samplePosts = [
       { id: 33, username: "Henry", text: "Nature's masterpiece!", date: "2023-11-05T10:30:00Z" },
       { id: 34, username: "Isabel", text: "Absolutely stunning!", date: "2023-11-05T11:15:00Z" },
       { id: 35, username: "James", text: "Unbelievable!", date: "2023-11-05T12:00:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
     ],
   },
   {
@@ -129,6 +143,10 @@ const samplePosts = [
       { id: 38, username: "Mia", text: "Stunning view!", date: "2023-11-05T14:15:00Z" },
       { id: 39, username: "Noah", text: "Amazing photo!", date: "2023-11-05T15:00:00Z" },
       { id: 40, username: "Olivia", text: "Breathtaking!", date: "2023-11-05T15:45:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+      { id: 5, username: "Eve", text: "Wish I was there!", date: "2023-11-05T13:30:00Z" },
+
     ],
   },
   {
@@ -146,6 +164,8 @@ const samplePosts = [
       { id: 43, username: "Ryan", text: "I'm speechless!", date: "2023-11-05T18:00:00Z" },
       { id: 44, username: "Sophia", text: "Wow, just wow!", date: "2023-11-05T18:45:00Z" },
       { id: 45, username: "Thomas", text: "I'm lost for words!", date: "2023-11-05T19:30:00Z" },
+      { id: 45, username: "Thomas", text: "I'm lost for words!", date: "2023-11-05T19:30:00Z" },
+      { id: 45, username: "Thomas", text: "I'm lost for words!", date: "2023-11-05T19:30:00Z" },
     ],
   },
   {
@@ -162,6 +182,8 @@ const samplePosts = [
       { id: 48, username: "Xavier", text: "I want to be there!", date: "2023-11-05T21:45:00Z" },
       { id: 49, username: "Yasmine", text: "Incredible photo!", date: "2023-11-05T22:30:00Z" },
       { id: 50, username: "Zachary", text: "Wow, amazing!", date: "2023-11-05T23:15:00Z" },
+      { id: 50, username: "Zachary", text: "Wow, amazing!", date: "2023-11-05T23:15:00Z" },
+      { id: 50, username: "Zachary", text: "Wow, amazing!", date: "2023-11-05T23:15:00Z" },
     ],
   },
   {
@@ -177,6 +199,8 @@ const samplePosts = [
       { id: 51, username: "Ava", text: "This is a masterpiece!", date: "2023-11-05T00:00:00Z" },
       { id: 52, username: "Benjamin", text: "Speechless!", date: "2023-11-05T00:45:00Z" },
       { id: 53, username: "Chloe", text: "Nature's beauty!", date: "2023-11-05T01:30:00Z" },
+      { id: 53, username: "Chloe", text: "Nature's beauty!", date: "2023-11-05T01:30:00Z" },
+      { id: 54, username: "Daniel", text: "I'm in awe!", date: "2023-11-05T02:15:00Z" },
       { id: 54, username: "Daniel", text: "I'm in awe!", date: "2023-11-05T02:15:00Z" },
       { id: 55, username: "Emma", text: "Fantastic shot!", date: "2023-11-05T03:00:00Z" },
     ],
@@ -191,6 +215,8 @@ const samplePosts = [
     likes: 22,
     comments: [
       { id: 56, username: "Finn", text: "I love this place!", date: "2023-11-05T03:45:00Z" },
+      { id: 57, username: "Grace", text: "Nature's masterpiece!", date: "2023-11-05T04:30:00Z" },
+      { id: 57, username: "Grace", text: "Nature's masterpiece!", date: "2023-11-05T04:30:00Z" },
       { id: 57, username: "Grace", text: "Nature's masterpiece!", date: "2023-11-05T04:30:00Z" },
       { id: 58, username: "Henry", text: "Absolutely stunning!", date: "2023-11-05T05:15:00Z" },
       { id: 59, username: "Isabel", text: "Unbelievable!", date: "2023-11-05T06:00:00Z" },
@@ -210,6 +236,8 @@ const samplePosts = [
       { id: 62, username: "Landon", text: "This is paradise!", date: "2023-11-05T08:15:00Z" },
       { id: 63, username: "Mason", text: "I'm blown away!", date: "2023-11-05T09:00:00Z" },
       { id: 64, username: "Nora", text: "Incredible beauty!", date: "2023-11-05T09:45:00Z" },
+      { id: 65, username: "Oliver", text: "I want to be there!", date: "2023-11-05T30:30:00Z" },
+      { id: 65, username: "Oliver", text: "I want to be there!", date: "2023-11-05T30:30:00Z" },
       { id: 65, username: "Oliver", text: "I want to be there!", date: "2023-11-05T30:30:00Z" },
     ],
   },
@@ -241,6 +269,8 @@ const samplePosts = [
     comments: [
       { id: 71, username: "Uma", text: "I'm amazed!", date: "2023-11-05T15:00:00Z" },
       { id: 72, username: "Victor", text: "I want to visit!", date: "2023-11-05T15:45:00Z" },
+      { id: 72, username: "Victor", text: "I want to visit!", date: "2023-11-05T15:45:00Z" },
+      { id: 72, username: "Victor", text: "I want to visit!", date: "2023-11-05T15:45:00Z" },
       { id: 73, username: "Willow", text: "I'm speechless!", date: "2023-11-05T16:30:00Z" },
       { id: 74, username: "Xander", text: "This is breathtaking!", date: "2023-11-05T17:15:00Z" },
       { id: 75, username: "Yara", text: "Unbelievable!", date: "2023-11-05T18:00:00Z" },
@@ -257,6 +287,9 @@ const samplePosts = [
     comments: [
       { id: 76, username: "Zane", text: "Nature's masterpiece!", date: "2023-11-05T18:45:00Z" },
       { id: 77, username: "Alice", text: "Breathtaking photo!", date: "2023-11-05T19:30:00Z" },
+      { id: 78, username: "Bennett", text: "Incredible shot!", date: "2023-11-05T20:15:00Z" },
+      { id: 78, username: "Bennett", text: "Incredible shot!", date: "2023-11-05T20:15:00Z" },
+      { id: 78, username: "Bennett", text: "Incredible shot!", date: "2023-11-05T20:15:00Z" },
       { id: 78, username: "Bennett", text: "Incredible shot!", date: "2023-11-05T20:15:00Z" },
       { id: 79, username: "Clara", text: "I'm in awe!", date: "2023-11-05T21:00:00Z" },
       { id: 80, username: "Dominic", text: "Wow, what a place!", date: "2023-11-05T21:45:00Z" },
@@ -288,6 +321,9 @@ const samplePosts = [
     likes: 23,
     comments: [
       { id: 86, username: "James", text: "This is a masterpiece!", date: "2023-11-05T02:15:00Z" },
+      { id: 87, username: "Katherine", text: "Speechless!", date: "2023-11-05T03:00:00Z" },
+      { id: 87, username: "Katherine", text: "Speechless!", date: "2023-11-05T03:00:00Z" },
+      { id: 87, username: "Katherine", text: "Speechless!", date: "2023-11-05T03:00:00Z" },
       { id: 87, username: "Katherine", text: "Speechless!", date: "2023-11-05T03:00:00Z" },
       { id: 88, username: "Landon", text: "Nature's wonder!", date: "2023-11-05T03:45:00Z" },
       { id: 89, username: "Mason", text: "Incredible shot!", date: "2023-11-05T04:30:00Z" },
@@ -324,6 +360,8 @@ const samplePosts = [
       { id: 97, username: "Uma", text: "Absolutely beautiful!", date: "2023-11-05T10:30:00Z" },
       { id: 98, username: "Victor", text: "Wow, just wow!", date: "2023-11-05T11:15:00Z" },
       { id: 99, username: "Willow", text: "I'm amazed!", date: "2023-11-05T12:00:00Z" },
+      { id: 100, username: "Xander", text: "This is breathtaking!", date: "2023-11-05T12:45:00Z" },
+      { id: 100, username: "Xander", text: "This is breathtaking!", date: "2023-11-05T12:45:00Z" },
       { id: 100, username: "Xander", text: "This is breathtaking!", date: "2023-11-05T12:45:00Z" },
     ],
   },
