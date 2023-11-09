@@ -26,7 +26,6 @@ nav {
       // align-items: center;
       border-left: 1px var(--border-color);
       border-right: 1px var(--border-color);
-      
 
       .login,
       .signup,
@@ -40,7 +39,12 @@ nav {
         font-weight: 600;
         border: 0;
         margin: 0.5em;
-        background-color: var(--icon-color);
+        background-image: var(--gradient-background);
+        &:hover {
+          box-shadow: 0 0.5em 0.5em -0.4em rgb(101, 229, 229);
+          transform: scale(1.1);
+          background-image: var(--gradient-background-hover);
+        }
       }
     }
     .nav-link-center {
@@ -68,7 +72,6 @@ nav {
       color: white;
       text-transform: uppercase;
       font-weight: 700;
-
     }
   }
 }
