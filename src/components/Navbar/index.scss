@@ -16,25 +16,36 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
     .nav-link-right {
-      min-width: 15%;
+      min-width: 10.5em;
+      max-width: 10.5em;
       display: flex;
       justify-content: center;
-      align-items: center;
+      // justify-content: space-around;
+      // align-items: center;
       border-left: 1px var(--border-color);
       border-right: 1px var(--border-color);
+      
 
-      .login, .signup, .profile, .logout {
-        // width: 10em;
+      .login,
+      .signup,
+      .profile,
+      .logout {
+        border-radius: 4px;
+        text-align: center;
+        max-width: 5.5em;
+        min-width: 5.5em;
         font-size: 1rem;
+        font-weight: 600;
         border: 0;
-        margin-left: 1em;
+        margin: 0.5em;
         background-color: var(--icon-color);
       }
     }
     .nav-link-center {
-      min-width: 70%;
+      min-width: 48.3em;
+      max-width: 48.3em;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -42,25 +53,24 @@ nav {
       text-decoration: none;
     }
     .navbar-brand {
+      text-align: center;
       border-left: 1px var(--border-color);
       border-right: 1px var(--border-color);
       text-decoration: none;
-      min-width: 15%;
+      min-width: 10.5em;
+      max-width: 10.5em;
       padding: 0.5rem;
     }
+
+    .nav-link {
+      text-decoration: none;
+      padding: 0.3rem;
+      color: white;
+      text-transform: uppercase;
+      font-weight: 700;
+
+    }
   }
-
-  div {
-    list-style: none;
-  }
-
-  .nav-link {
-    text-decoration: none;
-    padding: 0.5rem;
-
-    color: white;
-  }
-
 }
 
 .banner {
@@ -73,7 +83,4 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  .banner-content {
-  }
 }

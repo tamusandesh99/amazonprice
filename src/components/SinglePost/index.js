@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import commentPicture from "../../assets/pictures/comment-pic.jpg";
 import "./index.scss";
+import MakePostButton from "../MakePostButton";
+import commentPicture from "../../assets/pictures/comment-pic.jpg";
 
 const SinglePost = () => {
   const { id } = useParams();
@@ -78,7 +79,9 @@ const SinglePost = () => {
             </div>
           </div>
         </div>
-        <div className="right-post-page"></div>
+        <div className="right-post-page">
+          <MakePostButton />
+        </div>
       </div>
     </>
   );
