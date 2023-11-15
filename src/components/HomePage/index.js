@@ -17,7 +17,7 @@ import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
 
 const HomePage = ({ isAuthenticated, all_Posts }) => {
-  const [activeButton, setActiveButton] = useState("Recent Posts");
+  const [activeButton, setActiveButton] = useState("Hot");
   // const [allPosts, setAllPosts] = useState([]);
 
   const [displayedPosts, setDisplayedPosts] = useState([]);
@@ -59,11 +59,18 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     } else if (order === "Recent Posts") {
       const sortedPosts = [...displayedPosts].sort((a, b) => b.id - a.id);
       setDisplayedPosts(sortedPosts);
-    } else {
-      setActiveButton(order);
+    } else if(order === "Hot") {
+      const sortedPosts = [...displayedPosts].sort((a, b) => {
+        const scoreA = (a.likes + a.comments.length * 2) / (Date.now() - a.timestamp);
+        const scoreB = (b.likes + b.comments.length * 2) / (Date.now() - b.timestamp);
+        return scoreB - scoreA;
+      });
+      setDisplayedPosts(sortedPosts);
+    }
+    else{
+      //nothing
     }
     setActiveButton(order);
-
   };
 
   const handleButtonClick = (
@@ -153,14 +160,15 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
         </div>
         <div className="center-homepage">
           <div className="homepage-top-menu">
-            {/* <button
+          <button
               className={`menu-button ${
-                activeButton === "All Posts" ? "active" : ""
+                activeButton === "Hot" ? "active" : ""
               }`}
-              onClick={() => sortPosts("All Posts")}
+              onClick={() => sortPosts("Hot")}
             >
-              All Posts
-            </button> */}
+              <AiTwotoneFire className="homepage-top-menu-icons" />
+              Hot 
+            </button>
             <button
               className={`menu-button ${
                 activeButton === "Recent Posts" ? "active" : ""
@@ -187,15 +195,6 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
             >
               <RiHeartsFill className="homepage-top-menu-icons" />
               Most Liked
-            </button>
-            <button
-              className={`menu-button ${
-                activeButton === "Hot" ? "active" : ""
-              }`}
-              onClick={() => sortPosts("Hot")}
-            >
-              <AiTwotoneFire className="homepage-top-menu-icons" />
-              Hot (Coming Soon)
             </button>
           </div>
           <div
@@ -248,16 +247,17 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
         </div>
         <div className="right-homepage">
           <MakePostButton />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-            risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
-            nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-            ligula massa, varius a, semper congue, euismod non, mi.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisc, varius a, semper
-            congue, euismod non, mi.
-          </p>
+
+          <div className="right-homepage-about">
+            <p>
+              Welcome to Reviewers Hub! Express yourself through personalized
+              posts on our user-friendly platform.
+            </p>
+            <p>
+              Share your stories, impart knowledge, or explore ideas with ease.
+              Engage with a vibrant community and discover diverse perspectives.
+            </p>
+          </div>
         </div>
       </div>
     </>

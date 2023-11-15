@@ -12,22 +12,16 @@ import samplePosts from "../assets/samplePosts";
 
 export const get_all_posts = () => async (dispatch) => {
   try {
-    const res = await axios.get(
-      `${process.env.REACT_APP_API_URL}/profile/get_posts`
-    );
-    const { user_profiles } = res.data;
-    const postsWithUsernames = user_profiles.reduce((acc, profile) => {
-      const { username, posts } = profile;
-      const postsWithUsername = posts.map((post) => ({ ...post, username }));
-      return [...acc, ...postsWithUsername];
-    }, []);
+    // const res = await axios.get(
+    //   `${process.env.REACT_APP_API_URL}/profile/get_posts`
+    // );
+    // const { user_profiles } = res.data;
+    // const postsWithUsernames = user_profiles.reduce((acc, profile) => {
+    //   const { username, posts } = profile;
+    //   const postsWithUsername = posts.map((post) => ({ ...post, username }));
+    //   return [...acc, ...postsWithUsername];
+    // }, []);
 
-    dispatch({
-      type: POSTS_LOAD_SUCCESS,
-      payload: samplePosts,
-    });
-
-    //Uncomment when backend and database is hosted
     // if(res.data.error){
     //   dispatch({
     //     type: POSTS_LOAD_FAIL
@@ -40,6 +34,12 @@ export const get_all_posts = () => async (dispatch) => {
 
     //   })
     // }
+
+    dispatch({
+      type: POSTS_LOAD_SUCCESS,
+      payload: samplePosts,
+    });
+    
   } catch (err) {
     console.error("Error loading posts:", err);
     throw err;
