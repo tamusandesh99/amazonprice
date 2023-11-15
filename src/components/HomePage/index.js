@@ -21,7 +21,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
   // const [allPosts, setAllPosts] = useState([]);
 
   const [displayedPosts, setDisplayedPosts] = useState([]);
-
+  const [originalOrder, setOriginalOrder] = useState([]);
   const [totalPostsLength, setTotalPostsLength] = useState(0);
   const [postsPerPage, setPostsPerPage] = useState(20);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -40,12 +40,15 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     //   });
 
     setDisplayedPosts(all_Posts);
+    setOriginalOrder(all_Posts);
     setTotalPostsLength(all_Posts.length);
   }, [isAuthenticated]);
 
   const handleScroll = () => {
     setScrollPosition(window.scrollY);
   };
+
+  
 
   const sortPosts = (order) => {
     if (order === "Most Liked") {
@@ -60,7 +63,8 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
       const sortedPosts = [...displayedPosts].sort((a, b) => b.id - a.id);
       setDisplayedPosts(sortedPosts);
     } else if(order === "Hot") {
-      const sortedPosts = [...displayedPosts].sort((a, b) => {
+
+      const sortedPosts = [...originalOrder].sort((a, b) => {
         const scoreA = (a.likes + a.comments.length * 2) / (Date.now() - a.timestamp);
         const scoreB = (b.likes + b.comments.length * 2) / (Date.now() - b.timestamp);
         return scoreB - scoreA;
