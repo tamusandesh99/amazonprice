@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomeLayout from "./hocs/Layout";
 import SinglePost from "./components/SinglePost";
-import AllPosts from "./components/AllPosts";
 import UserPost from "./components/UserPost";
 import UserLogin from "./components/UserLogin";
 import HomePage from "./components/HomePage";
@@ -19,7 +18,7 @@ function App() {
           <HomeLayout>
             <Routes>
               <Route exact path="/" element={<HomePage />} />
-              <Route exact path="/posts" element={<AllPosts />} />
+              {/* <Route exact path="/posts" element={<AllPosts />} /> */}
               <Route exact path="/posts/:id" element={<SinglePost />} />
               <Route exact path="/submitpost" element={<UserPost />} />
               <Route exact path="/login" element={<UserLogin />} />

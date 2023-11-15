@@ -3,12 +3,10 @@ import SinglePost from "../SinglePost";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import MakePostButton from "../MakePostButton";
+import Rightside from "../Rightside";
+import Leftside from "../Leftside";
 import "./index.scss";
 
-import { AiFillHome, AiTwotoneTags } from "react-icons/ai";
-import { GiOpenFolder } from "react-icons/gi";
-import { BiSolidHelpCircle } from "react-icons/bi";
 import { BiHeart as PostLikesIcon } from "react-icons/bi";
 import { LiaCommentAltSolid as PostCommentsIcon } from "react-icons/lia";
 import { FaComments } from "react-icons/fa";
@@ -48,7 +46,6 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     setScrollPosition(window.scrollY);
   };
 
-  
 
   const sortPosts = (order) => {
     if (order === "Most Liked") {
@@ -99,17 +96,6 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     });
   };
 
-  const postButton = () => {
-    if (isAuthenticated) {
-      navigate("/submitpost");
-    } else {
-      navigate("/login");
-    }
-  };
-
-  const navigateTo = (path) => {
-    navigate(path);
-  };
 
   const loginLink = (
     <Fragment>
@@ -134,33 +120,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     <>
       <div className="main-page">
         <div className="left-homepage">
-          <div className="icon-text-container" onClick={() => navigateTo("/")}>
-            <div className="icon-text-container-inner">
-              <AiFillHome className="left-content icon" />
-              <button className="left-content icon-text">Home</button>
-            </div>
-          </div>
-          <div
-            className="icon-text-container"
-            onClick={() => navigateTo("/posts")}
-          >
-            <div className="icon-text-container-inner">
-              <GiOpenFolder className="left-content icon" />
-              <button className="left-content icon-text">Posts</button>
-            </div>
-          </div>
-          <div className="icon-text-container" onClick={() => navigateTo("/")}>
-            <div className="icon-text-container-inner">
-              <AiTwotoneTags className="left-content icon" />
-              <button className="left-content icon-text">Tags</button>
-            </div>
-          </div>
-          <div className="icon-text-container" onClick={() => navigateTo("/")}>
-            <div className="icon-text-container-inner">
-              <BiSolidHelpCircle className="left-content icon" />
-              <button className="left-content icon-text">Help</button>
-            </div>
-          </div>
+         <Leftside />
         </div>
         <div className="center-homepage">
           <div className="homepage-top-menu">
@@ -250,18 +210,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
           </div>
         </div>
         <div className="right-homepage">
-          <MakePostButton />
-
-          <div className="right-homepage-about">
-            <p>
-              Welcome to Reviewers Hub! Express yourself through personalized
-              posts on our user-friendly platform.
-            </p>
-            <p>
-              Share your stories, impart knowledge, or explore ideas with ease.
-              Engage with a vibrant community and discover diverse perspectives.
-            </p>
-          </div>
+          <Rightside />
         </div>
       </div>
     </>

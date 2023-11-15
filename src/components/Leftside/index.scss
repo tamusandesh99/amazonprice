@@ -1,0 +1,41 @@
+.left-side-page {
+    min-width: 10.5em;
+    max-width: 10.5em;
+    height: 100vh;
+    padding-right: 1em;
+    margin-left: 0.5em;
+    display: grid;
+    place-content: center;
+    // border: 1px solid red;
+    // font-size: 1.3em;
+
+    .icon-text-container {
+      display: flex;
+      align-items: center;
+      color: white;
+      transition: color 0.3s;
+
+      :hover {
+        transition: color 0.3s;
+        color: var(--icon-color);
+        .icon-text-container-inner {
+          color: var(--icon-color);
+        }
+      }
+
+      .icon-text-container-inner {
+        .icon {
+          margin-right: 0.4em;
+        }
+      }
+
+      .icon-text {
+        font-size: 1em;
+        font-weight: 500;
+      }
+      button {
+        background: none;
+        color: white;
+      }
+    }
+  }
