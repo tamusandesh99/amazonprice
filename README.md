@@ -2,8 +2,9 @@
 
 Reviewers Hub is a web platform where users can create and share personalized posts. This project is currently under development and aims to provide a dynamic and user-friendly space for expressing ideas, sharing stories, and engaging with a vibrant community.
 
-#### Current Pogress
+### Current Pogress
 ![Project Image](./src/assets/pictures/main-page.png)
+![Project Image](./src/assets/pictures/post.png)
 ![Project Image](./src/assets/pictures/profile.png)
 ![Project Image](./src/assets/pictures/signup.png)
 ## Features
