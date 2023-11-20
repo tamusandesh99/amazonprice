@@ -2,12 +2,17 @@ nav {
   position: relative;
   z-index: 2;
   background-color: var(--navbar-bg);
+
+
 }
 
 .main-nav-container {
-  width: 100vw;
+  
+  // width: 100vw;
   height: 7vh;
-  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   place-content: center;
 
   .nav-logo-items {
@@ -22,7 +27,7 @@ nav {
       max-width: 10.5em;
       display: flex;
       justify-content: center;
-      // justify-content: space-around;
+      justify-content: space-around;
       // align-items: center;
       border-left: 1px var(--border-color);
       border-right: 1px var(--border-color);
@@ -48,6 +53,7 @@ nav {
       }
     }
     .nav-link-center {
+      border: 1px solid red;
       min-width: 48.3em;
       max-width: 48.3em;
       display: flex;

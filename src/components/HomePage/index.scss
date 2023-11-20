@@ -19,7 +19,7 @@
     margin-right: 0.6em;
     // margin-left: 0.5em;
     display: grid;
-    min-width: 48.3em;
+    // min-width: 48.3em;
     max-width: 48.3em;
     flex: 1;
     overflow-y: scroll;
@@ -70,7 +70,7 @@
     .single-post {
       display: flex;
       margin-top: 1%;
-      width: 100%;
+      max-width: 100%;
       border-bottom: 1px var(--border-color);
 
       &:hover {
