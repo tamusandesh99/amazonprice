@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { BiHeart as PostLikesIcon } from "react-icons/bi";
+import { LiaCommentAltSolid as PostCommentsIcon } from "react-icons/lia";
 
 import "./index.scss";
 import MakePostButton from "../MakePostButton";
@@ -45,6 +47,20 @@ const SinglePost = () => {
             <div className="user-post-content">
               <h>{title}</h>
               <p>{description}</p>
+            </div>
+            <div className="post-likes-comments">
+              <div className="likes-comments-item">
+                <p>
+                  <PostLikesIcon className="post-icons" /> {likes}
+                </p>
+              </div>
+
+              <div className="likes-comments-item">
+                <p>
+                  <PostCommentsIcon className="post-icons" />
+                  {comments.length} comments
+                </p>
+              </div>
             </div>
             <div className="add-comment">
               <textarea

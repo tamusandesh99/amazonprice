@@ -53,6 +53,7 @@
         }
       }
 
+
       .user-post-content {
         margin-top: 0.5em;
         h{
@@ -63,6 +64,32 @@
         p{
           margin-top: 1.5em;
           font-size: 1.1rem;
+        }
+      }
+
+      .post-likes-comments {
+        display: flex;
+        
+        
+        .likes-comments-item {
+          border-top: 1px var(--border-color);
+          max-width: 10em;
+          display: flex;
+          font-size: 0.8em;
+          margin-right: 1em;
+          align-items: center;
+          margin-top: 1rem;
+          
+          p{
+            padding: 0.2em;
+            display: flex;
+            align-items: center;
+          }
+        }
+
+        .post-icons{
+          margin-right: 5px;
+          font-size: 1.7em;
         }
       }
 
