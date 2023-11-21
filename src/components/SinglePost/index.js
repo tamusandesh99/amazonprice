@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+
 import "./index.scss";
 import MakePostButton from "../MakePostButton";
+import LeftSide from "../Leftside";
 import commentPicture from "../../assets/pictures/comment-pic.jpg";
 
 const SinglePost = () => {
   const { id } = useParams();
   const webLink = decodeURIComponent(id);
   const location = useLocation();
-  const { username, title, description, link, likes, comments,image } =
+  const { username, title, description, link, likes, comments, image } =
     location.state;
 
-  const [userComments, setUserComments] = useState(
-   comments
-  );
+  const [userComments, setUserComments] = useState(comments);
   const [newComment, setNewComment] = useState("");
   const addComment = () => {
     if (newComment.trim() !== "") {
       const newCommentObject = {
         text: newComment,
-        username: "Your Username", 
-        // date: new Date().toISOString(), 
+        username: "Your Username",
+        // date: new Date().toISOString(),
       };
 
       // Update the userComments state with the new comment
@@ -34,18 +34,18 @@ const SinglePost = () => {
     <>
       <div className="single-post-page">
         <div className="left-post-page">
-          <p>Title: {title}</p>
-          <p>By {username}</p>
+          <LeftSide />
         </div>
         <div className="center-post-page">
-          <div className="center-post-title">
-            <p>{title}</p>
-            <p>{description}</p>
-          </div>
-          {/* <iframe title="user-website" src={webLink} /> */}
-          {/* <iframe title="user-website" src={webLink} /> */}
-
-          <div className="post-comments-container">
+          <div className="user-post-container">
+            <div className="user-post-info">
+              <img src={commentPicture} />
+              <p>{username}</p>
+            </div>
+            <div className="user-post-content">
+              <h>{title}</h>
+              <p>{description}</p>
+            </div>
             <div className="add-comment">
               <textarea
                 className="post-comment-box"
@@ -60,6 +60,11 @@ const SinglePost = () => {
               ></textarea>
               <button onClick={addComment}>Post Comment</button>
             </div>
+          </div>
+          {/* <iframe title="user-website" src={webLink} /> */}
+          {/* <iframe title="user-website" src={webLink} /> */}
+
+          <div className="post-comments-container">
             <div className="all-comments">
               {userComments.map((comment, index) => (
                 <div key={index} className="user-comment">
