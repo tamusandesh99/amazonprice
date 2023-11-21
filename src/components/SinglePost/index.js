@@ -14,7 +14,8 @@ const SinglePost = () => {
   const webLink = decodeURIComponent(id);
   const location = useLocation();
   const { username, title, description, link, likes, comments, image } =
-    location.state;
+  location.state;
+  const [likedNumber, setLikedNumber] = useState(likes)
 
   const [userComments, setUserComments] = useState(comments);
   const [newComment, setNewComment] = useState("");
@@ -31,6 +32,11 @@ const SinglePost = () => {
       setNewComment(""); // Clear the input field
     }
   };
+
+  const postLiked = () =>{
+    console.log('pl')
+      setLikedNumber(likedNumber + 1)
+  }
 
   return (
     <>
@@ -51,7 +57,7 @@ const SinglePost = () => {
             <div className="post-likes-comments">
               <div className="likes-comments-item">
                 <p>
-                  <PostLikesIcon className="post-icons" /> {likes}
+                  <PostLikesIcon className="post-icons" onClick={postLiked}/> {likedNumber}
                 </p>
               </div>
 

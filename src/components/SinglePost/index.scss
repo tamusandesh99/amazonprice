@@ -69,6 +69,7 @@
 
       .post-likes-comments {
         display: flex;
+        // max-width: 12em;
         
         
         .likes-comments-item {
@@ -84,12 +85,19 @@
             padding: 0.2em;
             display: flex;
             align-items: center;
+            color: rgb(181, 173, 173);
           }
         }
 
         .post-icons{
           margin-right: 5px;
           font-size: 1.7em;
+
+          &:hover{
+            transition: 0.5s;
+            font-size: 2em;
+            color: var(--icon-color);
+          }
         }
       }
 
