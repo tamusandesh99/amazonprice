@@ -94,8 +94,9 @@
           font-size: 1.7em;
 
           &:hover{
+            font-weight: 700;
             transition: 0.5s;
-            font-size: 2em;
+            transform: scale(1.5, 1.5);
             color: var(--icon-color);
           }
         }
