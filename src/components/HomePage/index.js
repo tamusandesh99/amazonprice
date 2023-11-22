@@ -144,15 +144,6 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
             </button>
             <button
               className={`menu-button ${
-                activeButton === "Most Comments" ? "active" : ""
-              }`}
-              onClick={() => sortPosts("Most Comments")}
-            >
-              <FaComments className="homepage-top-menu-icons" />
-              Most Comments
-            </button>
-            <button
-              className={`menu-button ${
                 activeButton === "Most Liked" ? "active" : ""
               }`}
               onClick={() => sortPosts("Most Liked")}
@@ -160,6 +151,16 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
               <RiHeartsFill className="homepage-top-menu-icons" />
               Most Liked
             </button>
+            <button
+              className={`menu-button ${
+                activeButton === "Most Comments" ? "active" : ""
+              }`}
+              onClick={() => sortPosts("Most Comments")}
+            >
+              <FaComments className="homepage-top-menu-icons" />
+              Most Comments
+            </button>
+            
           </div>
           <div
             className="homepage-bottom-page"
