@@ -98,7 +98,7 @@ const SinglePost = () => {
                       <span>{comment.date}</span>
                     </div>
                     <p className="comment-user-text">{comment.text}</p>
-                    <button>Reply</button>
+                    <button>Reply(coming soon)</button>
                   </div>
                 </div>
               ))}
