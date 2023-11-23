@@ -89,8 +89,9 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
     comments,
     image
   ) => {
-    const defaultLikes = (likes !== undefined && likes !== "") ? likes : 0;
-  const defaultComments = (comments !== undefined && comments !== "") ? comments : 0;
+    const defaultLikes = likes !== undefined && likes !== "" ? likes : 0;
+    const defaultComments =
+      comments !== undefined && comments !== "" ? comments : 0;
     navigate(`/posts/${encodeURIComponent(title)}`, {
       state: {
         username: username,
