@@ -18,23 +18,29 @@ const SinglePost = () => {
   const [likedNumber, setLikedNumber] = useState(likes);
   const [userComments, setUserComments] = useState(comments || []);
   const [newComment, setNewComment] = useState("");
+  const [replyComment, setReplyComment] = useState("");
   const [replyIndex, setReplyIndex] = useState(null);
 
   const addComment = (AtUsername) => {
-    if (newComment.trim() !== "") {
-      let newCommentText = newComment;
-
-      if (AtUsername !== undefined) {
-        newCommentText = `@${AtUsername} ${newComment}`;
+    if (AtUsername != undefined) {
+      if (replyComment.trim() !== "") {
+        let newCommentText = `@${AtUsername} ${replyComment}`;
+        const newCommentObject = {
+          text: newCommentText,
+          username: "Your Username",
+          // date: new Date().toISOString(),
+        };
+        setUserComments([...userComments, newCommentObject]);
+        setReplyComment("");
+        setReplyIndex(null);
       }
-  
+    } else {
+      let newCommentText = newComment;
       const newCommentObject = {
         text: newCommentText,
         username: "Your Username",
         // date: new Date().toISOString(),
       };
-
-      // Update the userComments state with the new comment
       setUserComments([...userComments, newCommentObject]);
       setNewComment("");
       setReplyIndex(null);
@@ -122,8 +128,8 @@ const SinglePost = () => {
                         <textarea
                           className="post-comment-box"
                           placeholder={`Reply to ${userComments[replyIndex].username}`}
-                          value={newComment}
-                          onChange={(e) => setNewComment(e.target.value)}
+                          value={replyComment}
+                          onChange={(e) => setReplyComment(e.target.value)}
                           onKeyDown={(e) => {
                             if (
                               e.key === "Enter" &&
