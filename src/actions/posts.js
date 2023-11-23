@@ -118,7 +118,6 @@ export const create_user_post =
   //this is for sample post no db no backend
   export const make_sample_post = (postData) => async (dispatch) => {
     try {
-      console.log('postData:', postData);
       dispatch({
         type: ADD_SAMPLE_POST,
         payload: postData,

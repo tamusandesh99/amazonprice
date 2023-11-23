@@ -15,16 +15,21 @@ const SinglePost = () => {
   const location = useLocation();
   const { username, title, description, links, likes, comments, images } =
     location.state;
-console.log(location.state)
   const [likedNumber, setLikedNumber] = useState(likes);
   const [userComments, setUserComments] = useState(comments || []);
   const [newComment, setNewComment] = useState("");
   const [replyIndex, setReplyIndex] = useState(null);
 
-  const addComment = () => {
+  const addComment = (AtUsername) => {
     if (newComment.trim() !== "") {
+      let newCommentText = newComment;
+
+      if (AtUsername !== undefined) {
+        newCommentText = `@${AtUsername} ${newComment}`;
+      }
+  
       const newCommentObject = {
-        text: newComment,
+        text: newCommentText,
         username: "Your Username",
         // date: new Date().toISOString(),
       };
@@ -88,7 +93,7 @@ console.log(location.state)
                   }
                 }}
               ></textarea>
-              <button onClick={addComment}>Post Comment</button>
+              <button onClick={() => addComment()}>Post Comment</button>
             </div>
           </div>
           {/* <iframe title="user-website" src={webLink} /> */}
@@ -129,7 +134,9 @@ console.log(location.state)
                             }
                           }}
                         ></textarea>
-                        <button onClick={addComment}>Post Reply</button>
+                        <button onClick={() => addComment(comment.username)}>
+                          Post Reply
+                        </button>
                       </div>
                     )}
                   </div>

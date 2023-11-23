@@ -79,7 +79,6 @@ const UserPost = ({ userPosts }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("e");
     //  create_user_post(title, website_link, tech_stack); need fix here
     const config = {
       withCredentials: true,

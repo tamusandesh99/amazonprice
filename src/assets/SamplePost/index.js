@@ -44,19 +44,11 @@ const SamplePost = ({ make_sample_post }) => {
     setSelectedImages(updatedImages);
   };
 
-  const handleLinkButtonClick = () => {
-    setShowInput(true);
-  };
+  const handleLinkButtonClick = () => setShowInput(true);
+const handleLinkInputChange = (e) => setLink(e.target.value);
 
-  const handleLinkInputChange = (e) => {
-    setLink(e.target.value);
-  };
-
-  const handleLinkInputBlur = () => {
-    if (link.trim() === "") {
-      setShowInput(false);
-    }
-    setInputFocused(false);
+const handleLinkInputBlur = () => {
+    if (link.trim() === "") setShowInput(false);
   };
 
   const addLink = () => {
@@ -71,7 +63,7 @@ const SamplePost = ({ make_sample_post }) => {
   const handleLinkInputKeyDown = (e) => {
     if (e.key === "Enter") {
       addLink();
-      e.preventDefault(); // Prevent the default Enter behavior (like form submission)
+      e.preventDefault();
     }
   };
   const removeLink = (index) => {
@@ -90,7 +82,7 @@ const SamplePost = ({ make_sample_post }) => {
           username: 'Your Username',
           title: title,
           description: description,
-          link: link,
+          links: links,
           likes: postData.likes,
           comments: postData.comments,
           image: images,
