@@ -42,7 +42,7 @@ const SinglePost = () => {
   };
 
   const startReply = (index) => {
-    setReplyIndex(index);
+    setReplyIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   return (
@@ -124,7 +124,7 @@ const SinglePost = () => {
                             }
                           }}
                         ></textarea>
-                        <button onClick={addComment}>Post Comment</button>
+                        <button onClick={addComment}>Post Reply</button>
                       </div>
                     )}
                   </div>
