@@ -20,6 +20,8 @@ const SinglePost = () => {
 
   const [userComments, setUserComments] = useState(comments);
   const [newComment, setNewComment] = useState("");
+  const [replyIndex, setReplyIndex] = useState(null);
+
   const addComment = () => {
     if (newComment.trim() !== "") {
       const newCommentObject = {
@@ -30,12 +32,17 @@ const SinglePost = () => {
 
       // Update the userComments state with the new comment
       setUserComments([...userComments, newCommentObject]);
-      setNewComment(""); // Clear the input field
+      setNewComment("");
+      setReplyIndex(null);
     }
   };
 
   const postLiked = () => {
     setLikedNumber(likedNumber + 1);
+  };
+
+  const startReply = (index) => {
+    setReplyIndex(index);
   };
 
   return (
@@ -77,7 +84,8 @@ const SinglePost = () => {
                 onChange={(e) => setNewComment(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && e.target.value.trim() !== "") {
-                    addComment();
+                    e.preventDefault();
+                    setNewComment((newComment) => newComment + "\n");
                   }
                 }}
               ></textarea>
@@ -98,7 +106,27 @@ const SinglePost = () => {
                       <span>{comment.date}</span>
                     </div>
                     <p className="comment-user-text">{comment.text}</p>
-                    <button>Reply(coming soon)</button>
+                    <button onClick={() => {startReply(index)}}>Reply</button>
+                    {replyIndex === index && (
+                      <div className="add-comment">
+                        <textarea
+                          className="post-comment-box"
+                          placeholder={`Reply to ${userComments[replyIndex].username}`}
+                          value={newComment}
+                          onChange={(e) => setNewComment(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (
+                              e.key === "Enter" &&
+                              e.target.value.trim() !== ""
+                            ) {
+                              e.preventDefault();
+                              setNewComment((newComment) => newComment + "\n");
+                            }
+                          }}
+                        ></textarea>
+                        <button onClick={addComment}>Post Comment</button>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
