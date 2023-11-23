@@ -15,10 +15,9 @@ const SinglePost = () => {
   const location = useLocation();
   const { username, title, description, links, likes, comments, images } =
     location.state;
-
+console.log(location.state)
   const [likedNumber, setLikedNumber] = useState(likes);
-
-  const [userComments, setUserComments] = useState(comments);
+  const [userComments, setUserComments] = useState(comments || []);
   const [newComment, setNewComment] = useState("");
   const [replyIndex, setReplyIndex] = useState(null);
 
@@ -72,7 +71,7 @@ const SinglePost = () => {
               <div className="likes-comments-item">
                 <p>
                   <PostCommentsIcon className="post-icons" />
-                  {comments.length} comments
+                  {comments ? comments.length : 0} comments
                 </p>
               </div>
             </div>
@@ -97,47 +96,45 @@ const SinglePost = () => {
 
           <div className="post-comments-container">
             <div className="all-comments">
-              {userComments.length > 0 && userComments.map((comment, index) => (
-                  <div key={index} className="user-comment-container">
-                    <div className="user-comment">
-                      <div className="comment-user-info">
-                        <img src={commentPicture} />
-                        <p>{comment.username}</p>
-                        <span>{comment.date}</span>
-                      </div>
-                      <p className="comment-user-text">{comment.text}</p>
-                      <button
-                        onClick={() => {
-                          startReply(index);
-                        }}
-                      >
-                        Reply
-                      </button>
-                      {replyIndex === index && (
-                        <div className="add-comment">
-                          <textarea
-                            className="post-comment-box"
-                            placeholder={`Reply to ${userComments[replyIndex].username}`}
-                            value={newComment}
-                            onChange={(e) => setNewComment(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (
-                                e.key === "Enter" &&
-                                e.target.value.trim() !== ""
-                              ) {
-                                e.preventDefault();
-                                setNewComment(
-                                  (newComment) => newComment + "\n"
-                                );
-                              }
-                            }}
-                          ></textarea>
-                          <button onClick={addComment}>Post Reply</button>
-                        </div>
-                      )}
+              {userComments.map((comment, index) => (
+                <div key={index} className="user-comment-container">
+                  <div className="user-comment">
+                    <div className="comment-user-info">
+                      <img src={commentPicture} />
+                      <p>{comment.username}</p>
+                      <span>{comment.date}</span>
                     </div>
+                    <p className="comment-user-text">{comment.text}</p>
+                    <button
+                      onClick={() => {
+                        startReply(index);
+                      }}
+                    >
+                      Reply
+                    </button>
+                    {replyIndex === index && (
+                      <div className="add-comment">
+                        <textarea
+                          className="post-comment-box"
+                          placeholder={`Reply to ${userComments[replyIndex].username}`}
+                          value={newComment}
+                          onChange={(e) => setNewComment(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (
+                              e.key === "Enter" &&
+                              e.target.value.trim() !== ""
+                            ) {
+                              e.preventDefault();
+                              setNewComment((newComment) => newComment + "\n");
+                            }
+                          }}
+                        ></textarea>
+                        <button onClick={addComment}>Post Reply</button>
+                      </div>
+                    )}
                   </div>
-                ))}
+                </div>
+              ))}
             </div>
           </div>
         </div>

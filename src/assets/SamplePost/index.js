@@ -16,6 +16,8 @@ const SamplePost = ({ make_sample_post }) => {
     description: "",
     images: [],
     links: [],
+    likes: "",
+    comments: [],
   });
 
   const { title, description, images, links } = postData;
@@ -79,8 +81,24 @@ const SamplePost = ({ make_sample_post }) => {
   };
 
   const onSubmit = async (e) => {
-    make_sample_post(postData);
-    e.preventDefault();
+    try {
+      make_sample_post(postData);
+
+      const encodedTitle = encodeURIComponent(title).replace(/%20/g, "_");
+      navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
+        state: {
+          username: 'Your Username',
+          title: title,
+          description: description,
+          link: link,
+          likes: postData.likes,
+          comments: postData.comments,
+          image: images,
+        },
+      });
+
+      e.preventDefault();
+    } catch {}
   };
   return (
     <>
