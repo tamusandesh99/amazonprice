@@ -4,7 +4,8 @@ import {
   USER_POST_LOAD_FAIL,
   USER_POST_LOAD_SUCCESS,
   POSTS_LOAD_FAIL,
-  POSTS_LOAD_SUCCESS
+  POSTS_LOAD_SUCCESS,
+  ADD_SAMPLE_POST
 } from "../actions/types";
 
 const initialState = {
@@ -44,6 +45,11 @@ export default function (state = initialState, action) {
         ...state,
         all_posts: payload,
       };
+    case ADD_SAMPLE_POST:
+      return{
+        ...state,
+        all_posts:[...state.all_posts, payload]
+      }
     default:
       return state;
   }

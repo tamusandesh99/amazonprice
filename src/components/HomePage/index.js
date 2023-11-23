@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
-import SinglePost from "../SinglePost";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { get_all_posts } from "../../actions/posts";
 import Rightside from "../Rightside";
 import Leftside from "../Leftside";
 import "./index.scss";
@@ -14,7 +14,7 @@ import { FaStopwatch } from "react-icons/fa";
 import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
 
-const HomePage = ({ isAuthenticated, all_Posts }) => {
+const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
   const [activeButton, setActiveButton] = useState("Hot");
   // const [allPosts, setAllPosts] = useState([]);
 
@@ -36,6 +36,7 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     //   .catch((error) => {
     //     console.error("Error loading posts:", error);
     //   });
+    const posts = get_all_posts();
 
     setDisplayedPosts(all_Posts);
     setOriginalOrder(all_Posts);
@@ -45,7 +46,6 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
   const handleScroll = () => {
     setScrollPosition(window.scrollY);
   };
-
 
   const sortPosts = (order) => {
     if (order === "Most Liked") {
@@ -59,16 +59,22 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     } else if (order === "Recent Posts") {
       const sortedPosts = [...displayedPosts].sort((a, b) => b.id - a.id);
       setDisplayedPosts(sortedPosts);
-    } else if(order === "Hot") {
-
+    } else if (order === "Hot") {
       const sortedPosts = [...originalOrder].sort((a, b) => {
-        const scoreA = (a.likes + a.comments.length * 2) / (Date.now() - a.timestamp);
-        const scoreB = (b.likes + b.comments.length * 2) / (Date.now() - b.timestamp);
-        return scoreB - scoreA;
+        if (a.comments === undefined) {
+          return b;
+        } else if (b.comments == undefined) {
+          return a;
+        } else {
+          const scoreA =
+            (a.likes + a.comments.length * 2) / (Date.now() - a.timestamp);
+          const scoreB =
+            (b.likes + b.comments.length * 2) / (Date.now() - b.timestamp);
+          return scoreB - scoreA;
+        }
       });
       setDisplayedPosts(sortedPosts);
-    }
-    else{
+    } else {
       //nothing
     }
     setActiveButton(order);
@@ -83,19 +89,20 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     comments,
     image
   ) => {
+    const defaultLikes = (likes !== undefined && likes !== "") ? likes : 0;
+  const defaultComments = (comments !== undefined && comments !== "") ? comments : 0;
     navigate(`/posts/${encodeURIComponent(title)}`, {
       state: {
         username: username,
         title: title,
         description: description,
         link: link,
-        likes: likes,
-        comments: comments,
+        likes: defaultLikes,
+        comments: defaultComments,
         image: image,
       },
     });
   };
-
 
   const loginLink = (
     <Fragment>
@@ -120,18 +127,18 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
     <>
       <div className="main-page">
         <div className="left-homepage">
-         <Leftside />
+          <Leftside />
         </div>
         <div className="center-homepage">
           <div className="homepage-top-menu">
-          <button
+            <button
               className={`menu-button ${
                 activeButton === "Hot" ? "active" : ""
               }`}
               onClick={() => sortPosts("Hot")}
             >
               <AiTwotoneFire className="homepage-top-menu-icons" />
-              Hot 
+              Hot
             </button>
             <button
               className={`menu-button ${
@@ -160,7 +167,6 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
               <FaComments className="homepage-top-menu-icons" />
               Most Comments
             </button>
-            
           </div>
           <div
             className="homepage-bottom-page"
@@ -189,11 +195,11 @@ const HomePage = ({ isAuthenticated, all_Posts }) => {
                   <p className="post-tech-stack">{post.description}</p>
                   <div className="post-likes-comments">
                     <p>
-                      <PostLikesIcon className="post-icons" /> {post.likes}
+                      <PostLikesIcon className="post-icons" /> {post.likes || 0}
                     </p>
                     <p>
                       <PostCommentsIcon className="post-icons" />{" "}
-                      {post.comments.length}
+                      {post.comments ? post.comments.length : 0}
                     </p>
                   </div>
                 </div>
@@ -223,4 +229,4 @@ const mapStateToProps = (state) => ({
   all_Posts: state.posts.all_posts,
 });
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps, { get_all_posts })(HomePage);

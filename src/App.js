@@ -6,6 +6,7 @@ import UserLogin from "./components/UserLogin";
 import HomePage from "./components/HomePage";
 import UserRegister from "./components/UserRegister";
 import UserProfile from "./components/UserProfile";
+import SamplePost from "./assets/SamplePost";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -21,6 +22,7 @@ function App() {
               {/* <Route exact path="/posts" element={<AllPosts />} /> */}
               <Route exact path="/posts/:id" element={<SinglePost />} />
               <Route exact path="/submitpost" element={<UserPost />} />
+              <Route exact path="/samplepost" element={<SamplePost />} />
               <Route exact path="/login" element={<UserLogin />} />
               <Route exact path="/register" element={<UserRegister />} />
               <Route exact path="/profile" element={<UserProfile />} />

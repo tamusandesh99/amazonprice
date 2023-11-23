@@ -45,9 +45,10 @@ nav {
         border: 0;
         margin: 0.5em;
         background-image: var(--gradient-background);
+        transition: 500ms;
         &:hover {
+          transform: scale(1.15, 1.15);
           box-shadow: 0 0.5em 0.5em -0.4em rgb(101, 229, 229);
-          transform: scale(1.1);
           background-image: var(--gradient-background-hover);
         }
       }

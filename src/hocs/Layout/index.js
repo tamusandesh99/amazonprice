@@ -13,7 +13,8 @@ const HomeLayout = ({ children, checkAuthenticated, load_user, get_all_posts }) 
     const fetchData = async () => {
       try {
         console.log('this is re render')
-        const posts = await get_all_posts(); // Dispatch the action
+        //come here when using onine host
+        // const posts = await get_all_posts(); 
   
         // Dispatch other actions if needed
         checkAuthenticated();
