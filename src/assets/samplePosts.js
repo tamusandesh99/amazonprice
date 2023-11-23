@@ -25,12 +25,7 @@ const samplePosts = [
     link: "https://example.com/delicious-recipe",
     likes: 17,
     comments: [
-      { id: 6, username: "Frank", text: "Breathtaking!", date: "2023-11-05T14:15:00Z" },
-      { id: 7, username: "Grace", text: "Lovely photo!", date: "2023-11-05T15:00:00Z" },
-      { id: 8, username: "Henry", text: "Unbelievable!", date: "2023-11-05T15:45:00Z" },
-      { id: 9, username: "Isabel", text: "Nature's masterpiece!", date: "2023-11-05T16:30:00Z" },
-      { id: 10, username: "James", text: "I'm in awe!", date: "2023-11-05T17:15:00Z" },
-    ],
+    ]
   },
   {
     id: 3,
