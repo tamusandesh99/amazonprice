@@ -12,12 +12,14 @@ import { IoAddCircle } from "react-icons/io5";
 
 const SamplePost = ({ make_sample_post }) => {
   const [postData, setPostData] = useState({
+    username: "GuestID_1",
     title: "",
     description: "",
     images: [],
     links: [],
     likes: "",
     comments: [],
+    date: new Date().toISOString(),
   });
 
   const { title, description, images, links } = postData;
@@ -45,9 +47,9 @@ const SamplePost = ({ make_sample_post }) => {
   };
 
   const handleLinkButtonClick = () => setShowInput(true);
-const handleLinkInputChange = (e) => setLink(e.target.value);
+  const handleLinkInputChange = (e) => setLink(e.target.value);
 
-const handleLinkInputBlur = () => {
+  const handleLinkInputBlur = () => {
     if (link.trim() === "") setShowInput(false);
   };
 
@@ -74,12 +76,13 @@ const handleLinkInputBlur = () => {
 
   const onSubmit = async (e) => {
     try {
+      
       make_sample_post(postData);
 
       const encodedTitle = encodeURIComponent(title).replace(/%20/g, "_");
       navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
         state: {
-          username: 'Your Username',
+          username: postData.username,
           title: title,
           description: description,
           links: links,
@@ -92,6 +95,8 @@ const handleLinkInputBlur = () => {
       e.preventDefault();
     } catch {}
   };
+
+
   return (
     <>
       <div className="user-samplepost-container">

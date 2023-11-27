@@ -27,8 +27,8 @@ const SinglePost = () => {
         let newCommentText = `@${AtUsername} ${replyComment}`;
         const newCommentObject = {
           text: newCommentText,
-          username: "Your Username",
-          // date: new Date().toISOString(),
+          username: "GuestID_1",
+          date: new Date().toISOString(),
         };
         setUserComments([...userComments, newCommentObject]);
         setReplyComment("");
@@ -38,8 +38,8 @@ const SinglePost = () => {
       let newCommentText = newComment;
       const newCommentObject = {
         text: newCommentText,
-        username: "Your Username",
-        // date: new Date().toISOString(),
+        username: "GuestID_1",
+        date: new Date().toISOString(),
       };
       setUserComments([...userComments, newCommentObject]);
       setNewComment("");
@@ -70,6 +70,18 @@ const SinglePost = () => {
             <div className="user-post-content">
               <h>{title}</h>
               <p>{description}</p>
+              {/* {images.length > 0 && (
+                <div className="post-images-container">
+                  {images.map((image, index) => (
+                    <img
+                      key={index}
+                      src={image}
+                      alt={`Image ${index + 1}`}
+                      className="post-image"
+                    />
+                  ))}
+                </div>
+              )} */}
             </div>
             <div className="post-likes-comments">
               <div className="likes-comments-item">

@@ -5,7 +5,7 @@ const samplePosts = [
     title: "Exploring the Great Outdoors",
     description:
       "Spent the weekend hiking in the mountains. The views were breathtaking!",
-    image: "mountain_hike.jpg",
+    images: [],
     link: "https://example.com/hiking-adventure",
     likes: 13,
     comments: [
@@ -21,7 +21,7 @@ const samplePosts = [
     username: "sara_smith",
     title: "Delicious Homemade Recipe",
     description: "Tried a new recipe today. It's a mouthwatering delight!",
-    image: "homemade_dish.jpg",
+    images: [],
     link: "https://example.com/delicious-recipe",
     likes: 17,
     comments: [
@@ -33,7 +33,7 @@ const samplePosts = [
     title: "Tech Gadgets Unboxing",
     description:
       "Unboxed the latest gadgets in the tech world. Check out my reviews!",
-    image: "tech_gadgets.jpg",
+    images: [],
     link: "https://example.com/gadget-reviews",
     likes: 23,
     comments: [
@@ -53,7 +53,7 @@ const samplePosts = [
     title: "Traveling Across Europe",
     description:
       "Visited multiple countries in Europe. Such a culturally rich experience!",
-    image: "europe_travel.jpg",
+    images: [],
     link: "https://example.com/europe-travel",
     likes: 43,
     comments: [
@@ -72,7 +72,7 @@ const samplePosts = [
     username: "lisa_jackson",
     title: "Adventures in the Jungle",
     description: "Explored the dense jungles and encountered unique wildlife.",
-    image: "jungle_adventures.jpg",
+    images: [],
     link: "https://example.com/jungle-exploration",
     likes: 47,
     comments: [
@@ -92,7 +92,7 @@ const samplePosts = [
     username: "mike_brown",
     title: "Sunset Serenity",
     description: "Captured the beauty of a serene sunset at the beach.",
-    image: "beach_sunset.jpg",
+    images: "beach_sunset.jpg",
     link: "https://example.com/sunset-moments",
     likes: 67,
     comments: [
@@ -110,7 +110,7 @@ const samplePosts = [
     username: "emily_jones",
     title: "Artistic Creations",
     description: "Showcasing my latest art creations. Art is my passion!",
-    image: "artistic_works.jpg",
+    images: [],
     link: "https://example.com/art-portfolio",
     likes: 41,
     comments: [
@@ -129,7 +129,7 @@ const samplePosts = [
     title: "Biking Adventures",
     description:
       "Took my mountain bike on an epic adventure. Trails and adrenaline!",
-    image: "mountain_biking.jpg",
+    images: [],
     link: "https://example.com/biking-journey",
     likes: 33,
     comments: [
@@ -150,7 +150,7 @@ const samplePosts = [
     title: "Foodie Chronicles",
     description:
       "Exploring various cuisines and documenting culinary adventures.",
-    image: "culinary_delights.jpg",
+    images: [],
     link: "https://example.com/foodie-blog",
     likes: 11,
     comments: [
@@ -168,7 +168,7 @@ const samplePosts = [
     username: "sam_robinson",
     title: "Bookworm's Paradise",
     description: "My cozy reading nook and the latest books on my shelf.",
-    image: "reading_corner.jpg",
+    images: [],
     link: "https://example.com/book-lover",
     likes: 24,
     comments: [
@@ -187,7 +187,7 @@ const samplePosts = [
     title: "Wildlife Photography",
     description:
       "Capturing the beauty of nature's creatures in their natural habitat.",
-    image: "wildlife_photography.jpg",
+    images: [],
     link: "https://example.com/wildlife-photos",
     likes: 19,
     comments: [
@@ -205,7 +205,7 @@ const samplePosts = [
     username: "steve_harris",
     title: "Car Enthusiast's Paradise",
     description: "Showcasing the latest additions to my car collection.",
-    image: "car_collection.jpg",
+    images: [],
     link: "https://example.com/car-enthusiast",
     likes: 22,
     comments: [
@@ -223,7 +223,7 @@ const samplePosts = [
     username: "grace_wilkins",
     title: "Fitness Journey",
     description: "My fitness transformation journey and workout tips.",
-    image: "fitness_transformation.jpg",
+    images: [],
     link: "https://example.com/fitness-blog",
     likes: 16,
     comments: [
@@ -241,7 +241,7 @@ const samplePosts = [
     username: "will_thompson",
     title: "DIY Projects Galore",
     description: "Sharing my DIY creations and home improvement projects.",
-    image: "diy_projects.jpg",
+    images: [],
     link: "https://example.com/diy-creations",
     likes: 30,
     comments: [
@@ -258,7 +258,7 @@ const samplePosts = [
     title: "Fashion Trends",
     description:
       "Exploring the latest fashion trends and personal style journeys.",
-    image: "fashion_trends.jpg",
+    images: "fashion_trends.jpg",
     link: "https://example.com/fashion-inspiration",
     likes: 22,
     comments: [
@@ -276,7 +276,7 @@ const samplePosts = [
     username: "james_hall",
     title: "Gaming Adventures",
     description: "Gaming highlights and reviews from my gaming world.",
-    image: "gaming_highlights.jpg",
+    images: [],
     link: "https://example.com/gaming-adventures",
     likes: 9,
     comments: [
@@ -295,7 +295,7 @@ const samplePosts = [
     username: "sophia_parker",
     title: "Home Sweet Home",
     description: "Discovering cozy homes and interior design inspirations.",
-    image: "cozy_homes.jpg",
+    images: "cozy_homes.jpg",
     link: "https://example.com/home-inspo",
     likes: 27,
     comments: [
@@ -311,7 +311,7 @@ const samplePosts = [
     username: "sophia_parker",
     title: "Home Sweet Home",
     description: "Discovering cozy homes and interior design inspirations.",
-    image: "cozy_homes.jpg",
+    images: [],
     link: "https://example.com/home-inspo",
     likes: 23,
     comments: [
@@ -330,7 +330,7 @@ const samplePosts = [
     username: "sophia_parker",
     title: "Home Sweet Home",
     description: "Discovering cozy homes and interior design inspirations.",
-    image: "cozy_homes.jpg",
+    images: [],
     link: "https://example.com/home-inspo",
     likes: 37,
     comments: [
@@ -347,7 +347,7 @@ const samplePosts = [
     username: "sophia_parker",
     title: "Home Sweet Home",
     description: "Discovering cozy homes and interior design inspirations.",
-    image: "cozy_homes.jpg",
+    images: [],
     link: "https://example.com/home-inspo",
     likes: 27,
     comments: [

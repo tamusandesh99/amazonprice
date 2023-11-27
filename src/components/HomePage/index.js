@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect,useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -25,6 +25,8 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   let navigate = useNavigate();
+  const scrollableElementRef = useRef(null);
+
   useEffect(() => {
     // get_all_posts()
     //   .then((data) => {
@@ -41,10 +43,23 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
     setDisplayedPosts(all_Posts);
     setOriginalOrder(all_Posts);
     setTotalPostsLength(all_Posts.length);
+
+    
   }, [isAuthenticated]);
 
+
+  // working on remembering scroll position
+  useEffect(() => {
+    // Retrieve scroll position from session storage
+    const storedScrollPosition = sessionStorage.getItem("scrollPosition");
+    if (storedScrollPosition !== null) {
+      scrollableElementRef.current.scrollTop = parseFloat(storedScrollPosition);
+    }
+  }, []);
+
   const handleScroll = () => {
-    setScrollPosition(window.scrollY);
+    // Store scroll position in session storage
+    sessionStorage.setItem("scrollPosition", scrollableElementRef.current.scrollTop);
   };
 
   const sortPosts = (order) => {
@@ -87,7 +102,8 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
     description,
     likes,
     comments,
-    image
+    images,
+    date
   ) => {
     const defaultLikes = likes !== undefined && likes !== "" ? likes : 0;
     const defaultComments =
@@ -101,7 +117,8 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
         link: link,
         likes: defaultLikes,
         comments: defaultComments,
-        image: image,
+        images: images,
+        date: date
       },
     });
   };
@@ -186,13 +203,15 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
                     post.description,
                     post.likes,
                     post.comments,
-                    post.image
+                    post.images,
+                    post.date
                   )
                 }
                 key={index}
               >
                 <div className="post-info">
                   <p className="post-username">{post.username}</p>
+                  <p className="post-username">{post.date}</p>
                   <p className="post-title">{post.title}</p>
                   <p className="post-tech-stack">{post.description}</p>
                   <div className="post-likes-comments">
