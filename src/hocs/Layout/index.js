@@ -7,15 +7,19 @@ import { checkAuthenticated } from "../../actions/auth";
 import { load_user } from "../../actions/profile";
 import { get_all_posts } from "../../actions/posts";
 
-const HomeLayout = ({ children, checkAuthenticated, load_user, get_all_posts }) => {
-
+const HomeLayout = ({
+  children,
+  checkAuthenticated,
+  load_user,
+  get_all_posts,
+}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log('this is re render')
+        console.log("this is re render");
         //come here when using onine host
-        // const posts = await get_all_posts(); 
-  
+        // const posts = await get_all_posts();
+
         // Dispatch other actions if needed
         checkAuthenticated();
         load_user();
@@ -23,9 +27,9 @@ const HomeLayout = ({ children, checkAuthenticated, load_user, get_all_posts }) 
         console.error("Error loading posts:", error);
       }
     };
-  
+
     fetchData(); // Call the async function
-  }, []);
+  }, [checkAuthenticated, load_user, get_all_posts]);
 
   return (
     <Fragment>
@@ -36,5 +40,6 @@ const HomeLayout = ({ children, checkAuthenticated, load_user, get_all_posts }) 
   );
 };
 
-export default connect(null,{checkAuthenticated, load_user, get_all_posts})(HomeLayout);
-
+export default connect(null, { checkAuthenticated, load_user, get_all_posts })(
+  HomeLayout
+);

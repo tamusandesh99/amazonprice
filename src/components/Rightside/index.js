@@ -18,6 +18,7 @@ const Rightside = () => {
           <button onClick={postButton} className="">
             Make a sample post
           </button>
+
         </div>
         <div className="right-homepage-about">
           <p>

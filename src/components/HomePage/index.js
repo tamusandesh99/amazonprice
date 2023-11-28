@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect,useRef } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -23,6 +23,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
   const [totalPostsLength, setTotalPostsLength] = useState(0);
   const [postsPerPage, setPostsPerPage] = useState(20);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [initialized, setInitialized] = useState(false);
 
   let navigate = useNavigate();
   const scrollableElementRef = useRef(null);
@@ -38,29 +39,14 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
     //   .catch((error) => {
     //     console.error("Error loading posts:", error);
     //   });
-    const posts = get_all_posts();
-
+    if (!all_Posts.length > 0) {
+      console.log(all_Posts);
+      const posts = get_all_posts();
+    }
     setDisplayedPosts(all_Posts);
     setOriginalOrder(all_Posts);
     setTotalPostsLength(all_Posts.length);
-
-    
   }, [isAuthenticated]);
-
-
-  // working on remembering scroll position
-  useEffect(() => {
-    // Retrieve scroll position from session storage
-    const storedScrollPosition = sessionStorage.getItem("scrollPosition");
-    if (storedScrollPosition !== null) {
-      scrollableElementRef.current.scrollTop = parseFloat(storedScrollPosition);
-    }
-  }, []);
-
-  const handleScroll = () => {
-    // Store scroll position in session storage
-    sessionStorage.setItem("scrollPosition", scrollableElementRef.current.scrollTop);
-  };
 
   const sortPosts = (order) => {
     if (order === "Most Liked") {
@@ -118,7 +104,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
         likes: defaultLikes,
         comments: defaultComments,
         images: images,
-        date: date
+        date: date,
       },
     });
   };
@@ -187,11 +173,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
               Most Comments
             </button>
           </div>
-          <div
-            className="homepage-bottom-page"
-            id="scrollable-element"
-            onScroll={handleScroll}
-          >
+          <div className="homepage-bottom-page" id="scrollable-element">
             {displayedPosts.map((post, index) => (
               <div
                 className="single-post"

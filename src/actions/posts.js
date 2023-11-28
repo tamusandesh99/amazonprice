@@ -36,6 +36,8 @@ export const get_all_posts = () => async (dispatch) => {
     //   })
     // }
 
+    console.log('action')
+
     dispatch({
       type: POSTS_LOAD_SUCCESS,
       payload: samplePosts,
