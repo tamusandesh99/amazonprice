@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { get_all_posts } from "../../actions/posts";
+import { connect, useDispatch, useSelector } from "react-redux";
+
+import { get_all_posts, loadMorePosts } from "../../actions/posts";
 import Rightside from "../Rightside";
 import Leftside from "../Leftside";
 import "./index.scss";
@@ -14,7 +15,7 @@ import { FaStopwatch } from "react-icons/fa";
 import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
 
-const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
+const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
   const [activeButton, setActiveButton] = useState("Hot");
   // const [allPosts, setAllPosts] = useState([]);
 
@@ -26,7 +27,15 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
   const [initialized, setInitialized] = useState(false);
 
   let navigate = useNavigate();
-  const scrollableElementRef = useRef(null);
+  let dispatcher = useDispatch()
+ 
+  const page = useSelector((state) => {
+    return pageNum
+  })
+
+  useEffect(() => {
+    dispatcher(loadMorePosts(page))
+  },[pageNum])
 
   useEffect(() => {
     // get_all_posts()
@@ -212,9 +221,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
           <div className="load-all-posts">
             <ul className="load-posts">
               <div>
-                {/* {displayedPosts.length < totalPostsLength && (
-                  <button onClick={loadMorePosts}>See More Posts</button>
-                )} */}
+              <button onClick={ () => {dispatcher({type: 'increment'})}}>next page</button>
               </div>
             </ul>
           </div>
@@ -230,6 +237,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   all_Posts: state.posts.all_posts,
+  pageNum: state.limit.page
 });
 
 export default connect(mapStateToProps, { get_all_posts })(HomePage);

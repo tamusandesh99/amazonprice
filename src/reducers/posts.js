@@ -5,7 +5,8 @@ import {
   USER_POST_LOAD_SUCCESS,
   POSTS_LOAD_FAIL,
   POSTS_LOAD_SUCCESS,
-  ADD_SAMPLE_POST
+  ADD_SAMPLE_POST,
+  LOAD_MORE_POSTS
 } from "../actions/types";
 
 const initialState = {
@@ -13,7 +14,7 @@ const initialState = {
   user_posts: [],
   all_posts: [],
 };
-
+ 
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
@@ -49,6 +50,12 @@ export default function (state = initialState, action) {
       return{
         ...state,
         all_posts:[...state.all_posts, payload]
+      }
+
+    case LOAD_MORE_POSTS:
+      return{
+        ...state,
+        all_posts:[...new Set([...state.all_posts, payload])]
       }
     default:
       return state;
