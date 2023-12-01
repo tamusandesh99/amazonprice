@@ -27,7 +27,6 @@ const HomeLayout = ({
         console.error("Error loading posts:", error);
       }
     };
-
     fetchData(); // Call the async function
   }, [checkAuthenticated, load_user, get_all_posts]);
 

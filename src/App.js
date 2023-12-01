@@ -1,4 +1,8 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 import HomeLayout from "./hocs/Layout";
 import SinglePost from "./components/SinglePost";
 import UserPost from "./components/UserPost";

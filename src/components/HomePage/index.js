@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector,shallowEqual } from "react-redux";
 
 import { get_all_posts, loadMorePosts } from "../../actions/posts";
 import Rightside from "../Rightside";
@@ -27,15 +27,30 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
   const [initialized, setInitialized] = useState(false);
 
   let navigate = useNavigate();
-  let dispatcher = useDispatch()
- 
-  const page = useSelector((state) => {
-    return pageNum
-  })
+  let dispatcher = useDispatch();
+  const scrollContainerRef = useRef();
+
+  const page = useSelector((state) => state.limit.page, shallowEqual);
 
   useEffect(() => {
-    dispatcher(loadMorePosts(page))
-  },[pageNum])
+    const scrollContainer = scrollContainerRef.current;
+    if (scrollContainer) {
+      // Save scroll position
+      const scrollPosition = scrollContainer.scrollTop;
+
+      return () => {
+        // Restore scroll position
+        scrollContainer.scrollTop = scrollPosition;
+      };
+    }
+  }, []);
+
+
+  useEffect(() => {
+    console.log(page)
+    dispatcher(loadMorePosts(page));
+    setDisplayedPosts(all_Posts);
+  }, [page]);
 
   useEffect(() => {
     // get_all_posts()
@@ -49,12 +64,14 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
     //     console.error("Error loading posts:", error);
     //   });
     if (!all_Posts.length > 0) {
-      console.log(all_Posts);
       const posts = get_all_posts();
+      console.log(all_Posts);
+    } else {
+      console.log(all_Posts)
+      setDisplayedPosts(all_Posts);
+      setOriginalOrder(all_Posts);
+      setTotalPostsLength(all_Posts.length);
     }
-    setDisplayedPosts(all_Posts);
-    setOriginalOrder(all_Posts);
-    setTotalPostsLength(all_Posts.length);
   }, [isAuthenticated]);
 
   const sortPosts = (order) => {
@@ -182,7 +199,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
               Most Comments
             </button>
           </div>
-          <div className="homepage-bottom-page" id="scrollable-element">
+          <div className="homepage-bottom-page" id="scrollable-element" ref={scrollContainerRef}>
             {displayedPosts.map((post, index) => (
               <div
                 className="single-post"
@@ -221,7 +238,13 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
           <div className="load-all-posts">
             <ul className="load-posts">
               <div>
-              <button onClick={ () => {dispatcher({type: 'increment'})}}>next page</button>
+                <button
+                  onClick={() => {
+                    dispatcher({ type: "increment" });
+                  }}
+                >
+                  next page
+                </button>
               </div>
             </ul>
           </div>
@@ -237,7 +260,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   all_Posts: state.posts.all_posts,
-  pageNum: state.limit.page
+  pageNum: state.limit.page,
 });
 
 export default connect(mapStateToProps, { get_all_posts })(HomePage);

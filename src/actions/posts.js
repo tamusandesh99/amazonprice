@@ -12,7 +12,7 @@ import {
 } from "./types";
 import samplePosts from "../assets/samplePosts";
 
-export const get_all_posts = () => async (dispatch) => {
+export const get_all_posts = (initialPostsCount = 5) => async (dispatch) => {
   try {
     // const res = await axios.get(
     //   `${process.env.REACT_APP_API_URL}/profile/get_posts`
@@ -37,7 +37,7 @@ export const get_all_posts = () => async (dispatch) => {
     //   })
     // }
 
-    console.log("action");
+    // const initialPosts = samplePosts.slice(0, initialPostsCount);
 
     dispatch({
       type: POSTS_LOAD_SUCCESS,

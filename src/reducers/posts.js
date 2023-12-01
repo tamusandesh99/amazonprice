@@ -52,10 +52,11 @@ export default function (state = initialState, action) {
         all_posts:[...state.all_posts, payload]
       }
 
-    case LOAD_MORE_POSTS:
-      return{
-        ...state,
-        all_posts:[...new Set([...state.all_posts, payload])]
+      case LOAD_MORE_POSTS:
+        return{
+          ...state,
+          all_posts:[...state.all_posts, payload]
+          
       }
     default:
       return state;
