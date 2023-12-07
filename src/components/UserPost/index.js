@@ -13,11 +13,13 @@ import {IoAddCircle} from 'react-icons/io5'
 const UserPost = ({ userPosts }) => {
   const [postData, setPostData] = useState({
     title: "",
-    website_link: "",
-    tech_stack: "",
+    description: "",
+    images: [],
+    links: [],
+    timeStamp: ""
   });
 
-  const { title, website_link, tech_stack } = postData;
+  const { title, description, images,links, timeStamp } = postData;
   const [successMessage, setSuccessMessage] = useState("");
   const [selectedImages, setSelectedImages] = useState([]);
   const [selectedLink, setSelectedLink] = useState([]);
@@ -89,7 +91,7 @@ const UserPost = ({ userPosts }) => {
       },
     };
 
-    const body = JSON.stringify({ title, website_link, tech_stack });
+    const body = JSON.stringify({ title, description, images, links, timeStamp });
 
     try {
       await axios.post(
@@ -125,9 +127,9 @@ const UserPost = ({ userPosts }) => {
           <div className="form-group">
             <textarea
               type="text"
-              id="tech_stack"
-              name="tech_stack"
-              value={tech_stack}
+              id="description"
+              name="description"
+              value={description}
               onChange={onChange}
               placeholder="Description"
             />
@@ -138,7 +140,7 @@ const UserPost = ({ userPosts }) => {
                 selectedLink.length > 0 ? "post-with-link" : ""
               }`}
             >
-              {selectedLink.map((link, index) => (
+              {selectedLink.map((links, index) => (
                 <div key={index} className="link-preview-container">
                   <a href={link.url} target="_blank" rel="noreferrer">
                     {link.url}
@@ -160,7 +162,7 @@ const UserPost = ({ userPosts }) => {
                     type="url"
                     className="link-input"
                     placeholder="Paste your link here"
-                    value={link}
+                    value={links}
                     onChange={handleLinkInputChange}
                     autoFocus
                     onBlur={handleLinkInputBlur}
@@ -179,10 +181,10 @@ const UserPost = ({ userPosts }) => {
                 selectedImages.length > 0 ? "post-with-images" : ""
               }`}
             >
-              {selectedImages.map((image, index) => (
+              {selectedImages.map((images, index) => (
                 <div key={index} className="image-preview-container">
                   <img
-                    src={URL.createObjectURL(image)}
+                    src={URL.createObjectURL(images)}
                     alt="Selected Image"
                     className="image-preview"
                   />

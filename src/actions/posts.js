@@ -83,8 +83,7 @@ export const get_top_posts = async (dispatch) => {
 };
 
 export const create_user_post =
-  (title, website_link, tech_stack) => async (dispatch) => {
-    console.log(title, website_link, tech_stack);
+  (title, description, images, links, timeStamp) => async (dispatch) => {
     const config = {
       headers: {
         Accept: "application/json",
@@ -93,7 +92,7 @@ export const create_user_post =
       },
     };
 
-    const body = JSON.stringify({ title, website_link, tech_stack });
+    const body = JSON.stringify({ title, description, images, links, timeStamp });
 
     try {
       const res = await axios.post(
