@@ -3,13 +3,15 @@ import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { FaHeart as PostLikesIcon } from "react-icons/fa";
 import { MdModeComment as PostCommentsIcon } from "react-icons/md";
+import { connect } from "react-redux";
+
 
 import "./index.scss";
 import MakePostButton from "../MakePostButton";
 import LeftSide from "../Leftside";
 import commentPicture from "../../assets/pictures/comment-pic.jpg";
 
-const SinglePost = () => {
+const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const { id } = useParams();
   const webLink = decodeURIComponent(id);
   const location = useLocation();
@@ -55,6 +57,13 @@ const SinglePost = () => {
     setReplyIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
+  const handleEdit = () => {
+    
+  }
+  const handleDelete = () => {
+
+  }
+
   return (
     <>
       <div className="single-post-page">
@@ -98,6 +107,12 @@ const SinglePost = () => {
                 </p>
               </div>
             </div>
+            {isAuthenticated && username === ProfileUsername && (
+            <div>
+              <button onClick={() => handleEdit()}>Edit</button>
+              <button onClick={() => handleDelete()}>Delete</button>
+            </div>
+          )}
             <div className="add-comment">
               <textarea
                 className="post-comment-box"
@@ -171,4 +186,10 @@ const SinglePost = () => {
   );
 };
 
-export default SinglePost;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  ProfileUsername: state.profile.username,
+});
+
+
+export default connect(mapStateToProps)(SinglePost);

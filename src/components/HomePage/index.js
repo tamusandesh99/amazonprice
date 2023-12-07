@@ -15,7 +15,7 @@ import { FaStopwatch } from "react-icons/fa";
 import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
 
-const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
+const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, username }) => {
   const [activeButton, setActiveButton] = useState("Hot");
   // const [allPosts, setAllPosts] = useState([]);
 
@@ -51,9 +51,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
     //   });
     if (!all_Posts.length > 0) {
       const posts = get_all_posts();
-      console.log(all_Posts);
     } else {
-      console.log(all_Posts);
       setDisplayedPosts(all_Posts);
       setOriginalOrder(all_Posts);
       setTotalPostsLength(all_Posts.length);
@@ -103,6 +101,8 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
     images,
     date
   ) => {
+    console.log(username)
+    
     const defaultLikes = likes !== undefined && likes !== "" ? likes : 0;
     const defaultComments =
       comments !== undefined && comments !== "" ? comments : [];
@@ -255,6 +255,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  username: state.profile.username,
   all_Posts: state.posts.all_posts,
   pageNum: state.limit.page,
 });

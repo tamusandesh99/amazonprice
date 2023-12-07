@@ -24,7 +24,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         username: "",
-        user_website: "",
+        user_posts: [],
       };
     case UPDATE_USER_PROFILE_FAIL:
       return {

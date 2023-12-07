@@ -16,35 +16,31 @@ export const get_all_posts =
   (initialPostsCount = 5) =>
   async (dispatch) => {
     try {
-      // const res = await axios.get(
-      //   `${process.env.REACT_APP_API_URL}/profile/get_posts`
-      // );
-      // const { user_profiles } = res.data;
-      // const postsWithUsernames = user_profiles.reduce((acc, profile) => {
-      //   const { username, posts } = profile;
-      //   const postsWithUsername = posts.map((post) => ({ ...post, username }));
-      //   return [...acc, ...postsWithUsername];
-      // }, []);
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/profile/get_posts`
+      );
+      const { user_profiles } = res.data;
+      const postsWithUsernames = user_profiles.reduce((acc, profile) => {
+        const { username, posts } = profile;
+        const postsWithUsername = posts.map((post) => ({ ...post, username }));
+        return [...acc, ...postsWithUsername];
+      }, []);
 
-      // if(res.data.error){
-      //   dispatch({
-      //     type: POSTS_LOAD_FAIL
-      //   })
-      // }
-      // else{
-      //   dispatch({
-      //     type: POSTS_LOAD_SUCCESS,
-      //     payload: postsWithUsernames,
+      if(res.data.error){
+        dispatch({
+          type: POSTS_LOAD_FAIL
+        })
+      }
+      else{
+        dispatch({
+          type: POSTS_LOAD_SUCCESS,
+          payload: postsWithUsernames,
 
-      //   })
-      // }
+        })
+      }
 
-      // const initialPosts = samplePosts.slice(0, initialPostsCount);
+      const initialPosts = samplePosts.slice(0, initialPostsCount);
 
-      dispatch({
-        type: POSTS_LOAD_SUCCESS,
-        payload: samplePosts,
-      });
     } catch (err) {
       console.error("Error loading posts:", err);
       throw err;

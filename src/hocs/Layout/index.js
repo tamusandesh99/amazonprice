@@ -18,8 +18,7 @@ const HomeLayout = ({
       try {
         console.log("this is re render");
         //come here when using onine host
-        // const posts = await get_all_posts();
-
+        const posts = await get_all_posts();
         // Dispatch other actions if needed
         checkAuthenticated();
         load_user();
