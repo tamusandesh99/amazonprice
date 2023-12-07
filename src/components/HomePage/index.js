@@ -184,6 +184,15 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, pageNum }) => {
               <FaComments className="homepage-top-menu-icons" />
               Most Comments
             </button>
+            <button
+              className={`menu-button ${
+                activeButton === "Most Comments" ? "active" : ""
+              }`}
+              onClick={() => sortPosts("Most Comments")}
+            >
+              <FaComments className="homepage-top-menu-icons" />
+              Sample Posts
+            </button>
           </div>
           <div className="homepage-bottom-page" id="scrollable-element">
             {displayedPosts.map((post, index) => (

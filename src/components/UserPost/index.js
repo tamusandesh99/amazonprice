@@ -7,8 +7,8 @@ import { create_user_post } from "../../actions/posts";
 import Cookies from "js-cookie";
 import { TfiTrash } from "react-icons/tfi";
 import { BiImageAdd } from "react-icons/bi";
-import {BsLink45Deg} from 'react-icons/bs' 
-import {IoAddCircle} from 'react-icons/io5' 
+import { BsLink45Deg } from "react-icons/bs";
+import { IoAddCircle } from "react-icons/io5";
 
 const UserPost = ({ userPosts }) => {
   const [postData, setPostData] = useState({
@@ -16,10 +16,11 @@ const UserPost = ({ userPosts }) => {
     description: "",
     images: [],
     links: [],
-    timeStamp: ""
+    likes:"",
+    comments:[],
   });
 
-  const { title, description, images,links, timeStamp } = postData;
+  const { title, description, images, links, timeStamp } = postData;
   const [successMessage, setSuccessMessage] = useState("");
   const [selectedImages, setSelectedImages] = useState([]);
   const [selectedLink, setSelectedLink] = useState([]);
@@ -55,7 +56,7 @@ const UserPost = ({ userPosts }) => {
     if (link.trim() === "") {
       setShowInput(false);
     }
-    setInputFocused(false); 
+    setInputFocused(false);
   };
 
   const addLink = () => {
@@ -91,7 +92,12 @@ const UserPost = ({ userPosts }) => {
       },
     };
 
-    const body = JSON.stringify({ title, description, images, links, timeStamp });
+    const body = JSON.stringify({
+      title,
+      description,
+      images: selectedImages,
+      links: selectedLink.map((link) => link.url),
+    });
 
     try {
       await axios.post(
@@ -169,7 +175,10 @@ const UserPost = ({ userPosts }) => {
                     onKeyDown={handleLinkInputKeyDown}
                     // Add this onBlur event
                   />
-                <a onClick={addLink}> <IoAddCircle /> </a>
+                  <a onClick={addLink}>
+                    {" "}
+                    <IoAddCircle />{" "}
+                  </a>
                 </div>
               ) : (
                 ""
@@ -206,7 +215,7 @@ const UserPost = ({ userPosts }) => {
                   accept="image/*"
                   onChange={handleImageUpload}
                 />
-                <BiImageAdd className="image-icon"/>
+                <BiImageAdd className="image-icon" />
                 Add Image
               </label>
               <label
