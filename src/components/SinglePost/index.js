@@ -5,7 +5,6 @@ import { FaHeart as PostLikesIcon } from "react-icons/fa";
 import { MdModeComment as PostCommentsIcon } from "react-icons/md";
 import { connect } from "react-redux";
 
-
 import "./index.scss";
 import MakePostButton from "../MakePostButton";
 import LeftSide from "../Leftside";
@@ -24,28 +23,31 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const [replyIndex, setReplyIndex] = useState(null);
 
   const addComment = (AtUsername) => {
-    if (AtUsername != undefined) {
-      if (replyComment.trim() !== "") {
-        let newCommentText = `@${AtUsername} ${replyComment}`;
+    if (newComment.trim() !== "") {
+      if (AtUsername != undefined) {
+        if (replyComment.trim() !== "") {
+          let newCommentText = `@${AtUsername} ${replyComment}`;
+          const newCommentObject = {
+            text: newCommentText,
+            username: "GuestID_1",
+            date: new Date().toISOString(),
+          };
+          setUserComments([...userComments, newCommentObject]);
+          setReplyComment("");
+          setReplyIndex(null);
+        }
+      } else {
+        let newCommentText = newComment;
         const newCommentObject = {
           text: newCommentText,
           username: "GuestID_1",
           date: new Date().toISOString(),
         };
         setUserComments([...userComments, newCommentObject]);
-        setReplyComment("");
+        setNewComment("");
         setReplyIndex(null);
       }
     } else {
-      let newCommentText = newComment;
-      const newCommentObject = {
-        text: newCommentText,
-        username: "GuestID_1",
-        date: new Date().toISOString(),
-      };
-      setUserComments([...userComments, newCommentObject]);
-      setNewComment("");
-      setReplyIndex(null);
     }
   };
 
@@ -57,12 +59,8 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
     setReplyIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
-  const handleEdit = () => {
-    
-  }
-  const handleDelete = () => {
-
-  }
+  const handleEdit = () => {};
+  const handleDelete = () => {};
 
   return (
     <>
@@ -108,11 +106,11 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
               </div>
             </div>
             {isAuthenticated && username === ProfileUsername && (
-            <div>
-              <button onClick={() => handleEdit()}>Edit</button>
-              <button onClick={() => handleDelete()}>Delete</button>
-            </div>
-          )}
+              <div>
+                <button onClick={() => handleEdit()}>Edit</button>
+                <button onClick={() => handleDelete()}>Delete</button>
+              </div>
+            )}
             <div className="add-comment">
               <textarea
                 className="post-comment-box"
@@ -190,6 +188,5 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   ProfileUsername: state.profile.username,
 });
-
 
 export default connect(mapStateToProps)(SinglePost);
