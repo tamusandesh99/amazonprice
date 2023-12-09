@@ -146,7 +146,7 @@ const UserPost = ({ userPosts }) => {
                 selectedLink.length > 0 ? "post-with-link" : ""
               }`}
             >
-              {selectedLink.map((links, index) => (
+              {selectedLink.map((link, index) => (
                 <div key={index} className="link-preview-container">
                   <a href={link.url} target="_blank" rel="noreferrer">
                     {link.url}
@@ -168,7 +168,7 @@ const UserPost = ({ userPosts }) => {
                     type="url"
                     className="link-input"
                     placeholder="Paste your link here"
-                    value={links}
+                    value={link}
                     onChange={handleLinkInputChange}
                     autoFocus
                     onBlur={handleLinkInputBlur}
