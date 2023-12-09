@@ -81,7 +81,7 @@ export const get_top_posts = async (dispatch) => {
 };
 
 export const create_user_post =
-  (title, description, images, links, likes, comments, timeStamp) =>
+  (title, description, images, links, likes, comments) =>
   async (dispatch) => {
     const config = {
       headers: {

@@ -216,7 +216,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, username }) => {
                   <p className="post-username">{post.username}</p>
                   <p className="post-username">{post.date}</p>
                   <p className="post-title">{post.title}</p>
-                  <p className="post-tech-stack">{post.description}</p>
+                  <p className="post-description">{post.description}</p>
                   <div className="post-likes-comments">
                     <p>
                       <PostLikesIcon className="post-icons" /> {post.likes || 0}

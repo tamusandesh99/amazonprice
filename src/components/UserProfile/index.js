@@ -23,12 +23,33 @@ const UserProfile = ({ username, user_posts_global }) => {
   }, [user_posts_global]);
 
   let navigate = useNavigate();
-  const handleButtonClick = (webLink, username, title, tech_stack) => {
-    navigate(`/posts/${encodeURIComponent(webLink)}`, {
+
+  const handleButtonClick = (
+    link,
+    username,
+    title,
+    description,
+    likes,
+    comments,
+    images,
+    date
+  ) => {
+    console.log(username)
+    
+    const defaultLikes = likes !== undefined && likes !== "" ? likes : 0;
+    const defaultComments =
+      comments !== undefined && comments !== "" ? comments : [];
+    const encodedTitle = encodeURIComponent(title).replace(/%20/g, "_");
+    navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
       state: {
         username: username,
         title: title,
-        tech_stack: tech_stack,
+        description: description,
+        link: link,
+        likes: defaultLikes,
+        comments: defaultComments,
+        images: images,
+        date: date,
       },
     });
   };
@@ -42,28 +63,32 @@ const UserProfile = ({ username, user_posts_global }) => {
               className="single-post"
               onClick={() =>
                 handleButtonClick(
-                  post.website_link,
                   post.username,
                   post.title,
-                  post.tech_stack
+                  post.description,
+                  post.likes,
+                  post.comments,
+                  post.date
                 )
               }
               key={index}
             >
               <div className="post-info">
-                <p className="post-username">{post.username}</p>
+                {/* <p className="post-username">{post.username}</p> */}
                 <p className="post-title">{post.title}</p>
-                <p className="post-tech-stack">{post.tech_stack}</p>
+                <p className="post-description">{post.description}</p>
               </div>
               <div className="website-preview">
                 <button
                   className="preview-button"
                   onClick={() =>
                     handleButtonClick(
-                      post.website_link,
                       post.username,
                       post.title,
-                      post.tech_stack
+                      post.description,
+                      post.likes,
+                      post.comments,
+                      post.date
                     )
                   }
                 >
