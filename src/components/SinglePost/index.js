@@ -14,7 +14,7 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const { id } = useParams();
   const webLink = decodeURIComponent(id);
   const location = useLocation();
-  const { username, title, description, links, likes, comments, images } =
+  const { username, title, description, images, links, likes, comments } =
     location.state;
   const [likedNumber, setLikedNumber] = useState(likes);
   const [userComments, setUserComments] = useState(comments || []);
@@ -89,6 +89,7 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
                   ))}
                 </div>
               )} */}
+              <p>link here: {links}</p>
             </div>
             <div className="post-likes-comments">
               <div className="likes-comments-item">

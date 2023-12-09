@@ -58,8 +58,11 @@ export const get_top_posts = async (dispatch) => {
       ...post,
       username: post.username,
       title: post.title,
-      website_link: post.website_link,
-      tech_stack: post.tech_stack,
+      description: post.description,
+      images: post.images,
+      links: post.links,
+      linkes: post.likes,
+      comments: post.comments
     }));
 
     // if(res.data.error) {

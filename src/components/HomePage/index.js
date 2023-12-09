@@ -92,13 +92,13 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, username }) => {
   };
 
   const handleButtonClick = (
-    link,
     username,
     title,
     description,
+    images,
+    links,
     likes,
     comments,
-    images,
     date
   ) => {
     console.log(username)
@@ -112,7 +112,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, username }) => {
         username: username,
         title: title,
         description: description,
-        link: link,
+        links: links,
         likes: defaultLikes,
         comments: defaultComments,
         images: images,
@@ -200,13 +200,13 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, username }) => {
                 className="single-post"
                 onClick={() =>
                   handleButtonClick(
-                    post.link,
                     post.username,
                     post.title,
                     post.description,
+                    post.images,
+                    post.links,
                     post.likes,
                     post.comments,
-                    post.images,
                     post.date
                   )
                 }
