@@ -29,7 +29,7 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
           let newCommentText = `@${AtUsername} ${replyComment}`;
           const newCommentObject = {
             text: newCommentText,
-            username: "GuestID_1",
+            username: ProfileUsername,
             date: new Date().toISOString(),
           };
           setUserComments([...userComments, newCommentObject]);
@@ -40,7 +40,7 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
         let newCommentText = newComment;
         const newCommentObject = {
           text: newCommentText,
-          username: "GuestID_1",
+          username: ProfileUsername,
           date: new Date().toISOString(),
         };
         setUserComments([...userComments, newCommentObject]);

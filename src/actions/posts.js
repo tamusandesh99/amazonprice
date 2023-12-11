@@ -35,6 +35,7 @@ export const get_all_posts =
         dispatch({
           type: POSTS_LOAD_SUCCESS,
           payload: postsWithUsernames,
+          // payload: samplePosts,
 
         })
       }

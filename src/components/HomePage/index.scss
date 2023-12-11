@@ -18,7 +18,8 @@
     border-right: 1px var(--border-color);
     margin-right: 0.7em;
     // margin-left: 0.5em;
-    display: grid;
+    // display: grid;
+    place-content: top;
     // min-width: 48.3em;
     max-width: 48.3em;
     flex: 1;
@@ -64,57 +65,57 @@
         background-color: inherit;
       }
     }
-  }
 
-  .homepage-bottom-page {
-    .single-post {
-      display: flex;
-      margin-top: 1%;
-      max-width: 100%;
-      border-bottom: 1px var(--border-color);
+    .homepage-bottom-page {
+      .single-post {
+        display: flex;
+        margin-top: 1%;
+        max-width: 100%;
+        border-bottom: 1px var(--border-color);
 
-      &:hover {
-        box-shadow: 0 4px 6px rgba(183, 178, 178, 0.1);
-      }
-
-      .post-info {
-        padding: 1em 1em 1em 2em;
-
-        .post-icons {
-          margin: 0.5em 0em 0 0;
-          color: white;
-          font-size: 1rem;
+        &:hover {
+          box-shadow: 0 4px 6px rgba(183, 178, 178, 0.1);
         }
 
-        .post-likes-comments {
-          margin-top: 1rem;
-          max-width: 5em;
-          // border: 1px solid red;
-          display: flex;
+        .post-info {
+          padding: 1em 1em 1em 2em;
 
-          p {
-            font-size: 0.8em;
+          .post-icons {
+            margin: 0.5em 0em 0 0;
+            color: white;
+            font-size: 1rem;
+          }
+
+          .post-likes-comments {
+            margin-top: 1rem;
+            max-width: 5em;
+            // border: 1px solid red;
+            display: flex;
+
+            p {
+              font-size: 0.8em;
+            }
           }
         }
-      }
 
-      .post-username {
-        font-size: 0.7em;
-        color: rgb(101, 101, 174);
-        font-weight: 900;
-      }
+        .post-username {
+          font-size: 0.7em;
+          color: rgb(101, 101, 174);
+          font-weight: 900;
+        }
 
-      .post-title {
-        font-size: 0.9em;
-        font-weight: 900;
-        text-shadow: 1px 1px 1px black;
+        .post-title {
+          font-size: 0.9em;
+          font-weight: 900;
+          text-shadow: 1px 1px 1px black;
+        }
+        .post-description {
+          font-size: 0.7em;
+        }
       }
-      .post-description {
-        font-size: 0.7em;
+      img {
+        min-width: 40%;
       }
-    }
-    img {
-      min-width: 40%;
     }
   }
 }
