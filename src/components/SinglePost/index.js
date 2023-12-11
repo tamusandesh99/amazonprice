@@ -89,7 +89,22 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
                   ))}
                 </div>
               )} */}
-              <p>link here: {links}</p>
+              {links && links.length > 0 && (
+                <div className="post-links-container">
+                  {/* Map over the links and create anchor elements */}
+                  {links.map((link, index) => (
+                    <a
+                      key={index}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link}
+                      <br></br>
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="post-likes-comments">
               <div className="likes-comments-item">
