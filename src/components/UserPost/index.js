@@ -138,6 +138,7 @@ const UserPost = ({ userPosts }) => {
               value={description}
               onChange={onChange}
               placeholder="Description"
+              required
             />
           </div>
           <div className="form-group">
