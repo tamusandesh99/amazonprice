@@ -9,6 +9,7 @@ import {
   POSTS_LOAD_SUCCESS,
   ADD_SAMPLE_POST,
   LOAD_MORE_POSTS,
+  GET_SINGLE_POST_SUCCESS
 } from "./types";
 import samplePosts from "../assets/SamplePost/samplePosts";
 
@@ -48,41 +49,41 @@ export const get_all_posts =
     }
   };
 
-export const get_top_posts = async (dispatch) => {
-  try {
-    const res = await axios.get(
-      `${process.env.REACT_APP_API_URL}/profile/top_posts`
-    );
-    const { random_posts } = res.data;
+export const get_single_post =
+  (title) =>
+  async (dispatch) => {
+    const config = {
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-CSRFToken": Cookies.get("csrftoken"),
+      },
+    };
+    console.log(title)
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/profile/posts/${encodeURIComponent(title)}/`,
+        config
+      );
 
-    const postsWithUsernames = random_posts.map((post) => ({
-      ...post,
-      username: post.username,
-      title: post.title,
-      description: post.description,
-      images: post.images,
-      links: post.links,
-      linkes: post.likes,
-      comments: post.comments
-    }));
+      console.log(res.data)
 
-    // if(res.data.error) {
-    //   dispatch({
-    //     type: USER_POST_LOAD_FAIL
-    //   })
-    // }
-    // else{
-    //   dispatch({
-    //     type: USER_POST_LOAD_SUCCESS,
-    //     payload: postsWithUsernames,
-    //   });
-    // }
-    return postsWithUsernames;
-  } catch (err) {
-    console.error("Error loading posts:", err);
-    throw err;
-  }
-};
+      if (res.data.error) {
+        // Handle error, e.g., dispatch an action with an error type
+      } else {
+        // Dispatch an action with the single post data
+        dispatch({
+          type: GET_SINGLE_POST_SUCCESS,
+          payload: res.data,
+        });
+      }
+    } catch (err) {
+      console.error("Error loading single post:", err);
+      throw err;
+    }
+  };
+
 
 export const create_user_post =
   (title, description, images, links, likes, comments) =>

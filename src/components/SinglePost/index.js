@@ -1,18 +1,21 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { FaHeart as PostLikesIcon } from "react-icons/fa";
 import { MdModeComment as PostCommentsIcon } from "react-icons/md";
 import { connect } from "react-redux";
+import Cookies from "js-cookie";
+
 
 import "./index.scss";
 import MakePostButton from "../MakePostButton";
 import LeftSide from "../Leftside";
+import { get_single_post } from "../../actions/posts";
 import commentPicture from "../../assets/pictures/comment-pic.jpg";
 
 const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
-  const { id } = useParams();
-  const webLink = decodeURIComponent(id);
+  const { dynamic_title } = useParams();
+  const webLink = decodeURIComponent(dynamic_title);
   const location = useLocation();
   const { username, title, description, images, links, likes, comments } =
     location.state;
@@ -21,6 +24,17 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const [newComment, setNewComment] = useState("");
   const [replyComment, setReplyComment] = useState("");
   const [replyIndex, setReplyIndex] = useState(null);
+
+  const [postData, setPostData] = useState(null);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    const fetchSinglePost = async () => {
+      dispatch(get_single_post(webLink));
+    };
+    fetchSinglePost();
+  }, [webLink]);
+ 
 
   const addComment = (AtUsername) => {
     if (newComment.trim() !== "") {
@@ -77,21 +91,8 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
             <div className="user-post-content">
               <h>{title}</h>
               <p>{description}</p>
-              {/* {images.length > 0 && (
-                <div className="post-images-container">
-                  {images.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image}
-                      alt={`Image ${index + 1}`}
-                      className="post-image"
-                    />
-                  ))}
-                </div>
-              )} */}
               {links && links.length > 0 && (
                 <div className="post-links-container">
-                  {/* Map over the links and create anchor elements */}
                   {links.map((link, index) => (
                     <a
                       key={index}
@@ -143,9 +144,6 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
               <button onClick={() => addComment()}>Post Comment</button>
             </div>
           </div>
-          {/* <iframe title="user-website" src={webLink} /> */}
-          {/* <iframe title="user-website" src={webLink} /> */}
-
           <div className="post-comments-container">
             <div className="all-comments">
               {userComments.map((comment, index) => (
@@ -205,4 +203,4 @@ const mapStateToProps = (state) => ({
   ProfileUsername: state.profile.username,
 });
 
-export default connect(mapStateToProps)(SinglePost);
+export default connect(mapStateToProps,{get_single_post})(SinglePost);

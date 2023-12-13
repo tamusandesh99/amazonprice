@@ -6,15 +6,17 @@ import {
   POSTS_LOAD_FAIL,
   POSTS_LOAD_SUCCESS,
   ADD_SAMPLE_POST,
-  LOAD_MORE_POSTS
+  LOAD_MORE_POSTS,
+  GET_SINGLE_POST_SUCCESS
 } from "../actions/types";
 
 const initialState = {
   username: "",
   user_posts: [],
   all_posts: [],
+  single_post: [],
 };
- 
+
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
@@ -46,18 +48,22 @@ export default function (state = initialState, action) {
         ...state,
         all_posts: payload,
       };
-    case ADD_SAMPLE_POST:
+    case GET_SINGLE_POST_SUCCESS:
       return{
         ...state,
-        all_posts:[...state.all_posts, payload]
+        single_post: payload
       }
+    case ADD_SAMPLE_POST:
+      return {
+        ...state,
+        all_posts: [...state.all_posts, payload],
+      };
 
-      case LOAD_MORE_POSTS:
-        return{
-          ...state,
-          all_posts:[...state.all_posts, payload]
-          
-      }
+    case LOAD_MORE_POSTS:
+      return {
+        ...state,
+        all_posts: [...state.all_posts, payload],
+      };
     default:
       return state;
   }

@@ -24,7 +24,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<HomePage />} />
               {/* <Route exact path="/posts" element={<AllPosts />} /> */}
-              <Route exact path="/posts/:id" element={<SinglePost />} />
+              <Route exact path="/posts/:title" element={<SinglePost />} />
               <Route exact path="/submitpost" element={<UserPost />} />
               <Route exact path="/samplepost" element={<SamplePost />} />
               <Route exact path="/login" element={<UserLogin />} />
