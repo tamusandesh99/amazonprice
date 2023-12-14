@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import { FaHeart as PostLikesIcon } from "react-icons/fa";
 import { MdModeComment as PostCommentsIcon } from "react-icons/md";
 import { connect } from "react-redux";
-import Cookies from "js-cookie";
-
 
 import "./index.scss";
 import MakePostButton from "../MakePostButton";
@@ -14,11 +12,11 @@ import { get_single_post } from "../../actions/posts";
 import commentPicture from "../../assets/pictures/comment-pic.jpg";
 
 const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
-  const { dynamic_title } = useParams();
-  const webLink = decodeURIComponent(dynamic_title);
+  const { title } = useParams();
+  const webLink = decodeURIComponent(title);
   const location = useLocation();
-  const { username, title, description, images, links, likes, comments } =
-    location.state;
+  const { username, post_title, description, images, links, likes, comments } =
+    location.state || {}
   const [likedNumber, setLikedNumber] = useState(likes);
   const [userComments, setUserComments] = useState(comments || []);
   const [newComment, setNewComment] = useState("");
@@ -27,13 +25,39 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
 
   const [postData, setPostData] = useState(null);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     const fetchSinglePost = async () => {
+      console.log(webLink)
       dispatch(get_single_post(webLink));
     };
     fetchSinglePost();
   }, [webLink]);
+
+  // useEffect(() => {
+  //   const fetchSinglePost = async () => {
+  //     if (location.state != null) {
+  //       // If location.state is defined, use the data from it
+  //       const { username, title, description, images, links, likes, comments } =
+  //         location.state;
+  //       setPostData({
+  //         username,
+  //         title,
+  //         description,
+  //         images,
+  //         links,
+  //         likes,
+  //         comments,
+  //       });
+  //     } else {
+  //       // If location.state is undefined, fetch the data from the server
+  //       dispatch(get_single_post(webLink));
+  //     }
+  //   };
+  
+  //   fetchSinglePost();
+  // }, [webLink, location.state, dispatch]);
+  
  
 
   const addComment = (AtUsername) => {
