@@ -101,23 +101,25 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, username }) => {
     comments,
     date
   ) => {
-    console.log(username)
-    
+
     const defaultLikes = likes !== undefined && likes !== "" ? likes : 0;
     const defaultComments =
       comments !== undefined && comments !== "" ? comments : [];
     const encodedTitle = encodeURIComponent(title).replace(/%20/g, "_");
-    navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
-      state: {
-        username: username,
+
+    const postData = {
+      post: {
         title: title,
         description: description,
-        links: links,
         likes: defaultLikes,
         comments: defaultComments,
-        images: images,
-        date: date,
+        // Add other properties as needed
       },
+      username: username,
+    };
+    
+    navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
+      state: postData
     });
   };
 

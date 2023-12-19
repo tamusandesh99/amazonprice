@@ -23,31 +23,31 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const [replyComment, setReplyComment] = useState("");
   const [replyIndex, setReplyIndex] = useState(null);
 
-  // const [postData, setPostData] = useState(location.state);
-  const [postData, setPostData] = useState([]);
+  const [postData, setPostData] = useState({ post: {}, username: '' });
+  // const [postData, setPostData] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchSinglePost = async () => {
       try {
-        const response = await dispatch(get_single_post(webLink));
-
+        let response;
+  
+        if (location.state) {
+          // If location.state is available, set postData directly
+          response = location.state;
+        } else {
+          // Fetch the single post if location.state is not available
+          response = await dispatch(get_single_post(webLink));
+        }
+  
         setPostData(response);
-        console.log(response)
-        // console.log(postData)
       } catch (error) {
         // Handle errors
         console.error(error);
       }
     };
   
-    // Only fetch the single post if location.state is not available
-    if (!location.state) {
-      fetchSinglePost();
-    } else {
-      // If location.state is available, set postData directly
-      setPostData(location.state);
-    }
-  }, [webLink]);
+    fetchSinglePost();
+  }, [webLink, location.state]);
 
   const addComment = (AtUsername) => {
     if (newComment.trim() !== "") {
