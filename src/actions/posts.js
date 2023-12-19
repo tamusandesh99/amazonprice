@@ -9,7 +9,7 @@ import {
   POSTS_LOAD_SUCCESS,
   ADD_SAMPLE_POST,
   LOAD_MORE_POSTS,
-  GET_SINGLE_POST_SUCCESS
+  GET_SINGLE_POST_SUCCESS,
 } from "./types";
 import samplePosts from "../assets/SamplePost/samplePosts";
 
@@ -27,67 +27,59 @@ export const get_all_posts =
         return [...acc, ...postsWithUsername];
       }, []);
 
-      if(res.data.error){
+      if (res.data.error) {
         dispatch({
-          type: POSTS_LOAD_FAIL
-        })
-      }
-      else{
+          type: POSTS_LOAD_FAIL,
+        });
+      } else {
         dispatch({
           type: POSTS_LOAD_SUCCESS,
           payload: postsWithUsernames,
           // payload: samplePosts,
-
-        })
+        });
       }
 
       const initialPosts = samplePosts.slice(0, initialPostsCount);
-
     } catch (err) {
       console.error("Error loading posts:", err);
       throw err;
     }
   };
 
-export const get_single_post =
-  (title) =>
-  async (dispatch) => {
-    const config = {
-      withCredentials: true,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "X-CSRFToken": Cookies.get("csrftoken"),
-      },
-    };
-    console.log(title)
-    try {
-      const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/profile/posts/${encodeURIComponent(title)}/`,
-        config
-      );
-
-      console.log(res.data)
-
-      if (res.data.error) {
-        // Handle error, e.g., dispatch an action with an error type
-      } else {
-        // Dispatch an action with the single post data
-        dispatch({
-          type: GET_SINGLE_POST_SUCCESS,
-          payload: res.data,
-        });
-      }
-    } catch (err) {
-      console.error("Error loading single post:", err);
-      throw err;
-    }
+export const get_single_post = (title) => async (dispatch) => {
+  const config = {
+    withCredentials: true,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "X-CSRFToken": Cookies.get("csrftoken"),
+    },
   };
+  try {
+    const res = await axios.get(
+      `${process.env.REACT_APP_API_URL}/profile/posts/${encodeURIComponent(
+        title
+      )}/`,
+      config
+    );
+    if (res.data.error) {
+      // Handle error, e.g., dispatch an action with an error type
+    } else {
 
+      return res.data;
+      // dispatch({
+      //   type: GET_SINGLE_POST_SUCCESS,
+      //   payload: res.data,
+      // });
+    }
+  } catch (err) {
+    console.error("Error loading single post:", err);
+    throw err;
+  }
+};
 
 export const create_user_post =
-  (title, description, images, links, likes, comments) =>
-  async (dispatch) => {
+  (title, description, images, links, likes, comments) => async (dispatch) => {
     const config = {
       headers: {
         Accept: "application/json",

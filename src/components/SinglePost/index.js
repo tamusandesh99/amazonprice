@@ -23,42 +23,31 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const [replyComment, setReplyComment] = useState("");
   const [replyIndex, setReplyIndex] = useState(null);
 
-  const [postData, setPostData] = useState(null);
+  // const [postData, setPostData] = useState(location.state);
+  const [postData, setPostData] = useState([]);
   const dispatch = useDispatch();
-
   useEffect(() => {
     const fetchSinglePost = async () => {
-      console.log(webLink)
-      dispatch(get_single_post(webLink));
-    };
-    fetchSinglePost();
-  }, [webLink]);
+      try {
+        const response = await dispatch(get_single_post(webLink));
 
-  // useEffect(() => {
-  //   const fetchSinglePost = async () => {
-  //     if (location.state != null) {
-  //       // If location.state is defined, use the data from it
-  //       const { username, title, description, images, links, likes, comments } =
-  //         location.state;
-  //       setPostData({
-  //         username,
-  //         title,
-  //         description,
-  //         images,
-  //         links,
-  //         likes,
-  //         comments,
-  //       });
-  //     } else {
-  //       // If location.state is undefined, fetch the data from the server
-  //       dispatch(get_single_post(webLink));
-  //     }
-  //   };
+        setPostData(response);
+        console.log(response)
+        // console.log(postData)
+      } catch (error) {
+        // Handle errors
+        console.error(error);
+      }
+    };
   
-  //   fetchSinglePost();
-  // }, [webLink, location.state, dispatch]);
-  
- 
+    // Only fetch the single post if location.state is not available
+    if (!location.state) {
+      fetchSinglePost();
+    } else {
+      // If location.state is available, set postData directly
+      setPostData(location.state);
+    }
+  }, [webLink]);
 
   const addComment = (AtUsername) => {
     if (newComment.trim() !== "") {
@@ -100,6 +89,7 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const handleEdit = () => {};
   const handleDelete = () => {};
 
+  console.log(postData)
   return (
     <>
       <div className="single-post-page">
@@ -107,14 +97,18 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
           <LeftSide />
         </div>
         <div className="center-post-page">
+        {postData && postData.post ? (
           <div className="user-post-container">
             <div className="user-post-info">
               <img src={commentPicture} />
-              <p>{username}</p>
+              <p>{postData.username}</p>
             </div>
+
             <div className="user-post-content">
-              <h>{title}</h>
-              <p>{description}</p>
+
+              <h>{postData.post.title}</h>
+              <p>{postData.post.description}</p>
+ 
               {links && links.length > 0 && (
                 <div className="post-links-container">
                   {links.map((link, index) => (
@@ -146,12 +140,14 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
                 </p>
               </div>
             </div>
+            
             {isAuthenticated && username === ProfileUsername && (
               <div>
                 <button onClick={() => handleEdit()}>Edit</button>
                 <button onClick={() => handleDelete()}>Delete</button>
               </div>
             )}
+            
             <div className="add-comment">
               <textarea
                 className="post-comment-box"
@@ -168,6 +164,9 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
               <button onClick={() => addComment()}>Post Comment</button>
             </div>
           </div>
+                ) : (
+                  <p>Loading...</p>
+                )}
           <div className="post-comments-container">
             <div className="all-comments">
               {userComments.map((comment, index) => (
