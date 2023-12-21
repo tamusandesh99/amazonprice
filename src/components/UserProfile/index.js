@@ -6,7 +6,7 @@ import { update_profile } from "../../actions/profile";
 import profilepicture from "../../assets/background-pictures/banner.jpg";
 import "./index.scss";
 
-const UserProfile = ({ username, user_posts_global }) => {
+const UserProfile = ({ user_username, user_posts_global }) => {
   // const username = useSelector(state => state.profile.username);
   // const website_link = useSelector(state => state.profile.user_website);
 
@@ -25,32 +25,35 @@ const UserProfile = ({ username, user_posts_global }) => {
   let navigate = useNavigate();
 
   const handleButtonClick = (
-    link,
     username,
     title,
     description,
     likes,
     comments,
+    link,
     images,
     date
   ) => {
-    console.log(username)
     
     const defaultLikes = likes !== undefined && likes !== "" ? likes : 0;
     const defaultComments =
       comments !== undefined && comments !== "" ? comments : [];
     const encodedTitle = encodeURIComponent(title).replace(/%20/g, "_");
-    navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
-      state: {
-        username: username,
+
+    const postData = {
+      post: {
         title: title,
         description: description,
-        link: link,
         likes: defaultLikes,
         comments: defaultComments,
-        images: images,
-        date: date,
+        // Add other properties as needed
       },
+      username: user_username,
+    };
+    console.log(postData)
+
+    navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
+      state: postData
     });
   };
 
@@ -66,6 +69,8 @@ const UserProfile = ({ username, user_posts_global }) => {
                   post.username,
                   post.title,
                   post.description,
+                  post.images,
+                  post.links,
                   post.likes,
                   post.comments,
                   post.date
@@ -86,6 +91,8 @@ const UserProfile = ({ username, user_posts_global }) => {
                       post.username,
                       post.title,
                       post.description,
+                      post.images,
+                      post.links,
                       post.likes,
                       post.comments,
                       post.date
@@ -109,7 +116,7 @@ const UserProfile = ({ username, user_posts_global }) => {
             </div>
           </div>
           <div className="user-profile-lower-container">
-            <h3>{username}</h3>
+            <h3>{user_username}</h3>
             <p>Description</p>
             <button className="user-edit-profile">Edit Profile</button>
           </div>
@@ -120,7 +127,7 @@ const UserProfile = ({ username, user_posts_global }) => {
 };
 
 const mapStateToProps = (state) => ({
-  username: state.profile.username,
+  user_username: state.profile.username,
   user_posts_global: state.profile.user_posts,
 });
 

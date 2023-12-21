@@ -56,6 +56,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, username }) => {
       setOriginalOrder(all_Posts);
       setTotalPostsLength(all_Posts.length);
     }
+    
   }, [isAuthenticated]);
 
   const sortPosts = (order) => {
@@ -117,7 +118,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts, username }) => {
       },
       username: username,
     };
-    
+
     navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
       state: postData
     });
