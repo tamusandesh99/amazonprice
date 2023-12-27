@@ -42,6 +42,7 @@ export default function (state = initialState, action) {
     case POSTS_LOAD_FAIL:
       return {
         ...state,
+        all_posts: payload,
       };
     case POSTS_LOAD_SUCCESS:
       return {

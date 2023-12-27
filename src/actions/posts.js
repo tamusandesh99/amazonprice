@@ -30,6 +30,7 @@ export const get_all_posts =
       if (res.data.error) {
         dispatch({
           type: POSTS_LOAD_FAIL,
+          payload: samplePosts
         });
       } else {
         dispatch({
@@ -42,7 +43,11 @@ export const get_all_posts =
       const initialPosts = samplePosts.slice(0, initialPostsCount);
     } catch (err) {
       console.error("Error loading posts:", err);
-      throw err;
+      dispatch({
+        type: POSTS_LOAD_FAIL,
+        payload: samplePosts
+      });
+      // throw err;
     }
   };
 
