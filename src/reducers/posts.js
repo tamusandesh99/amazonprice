@@ -34,15 +34,9 @@ export default function (state = initialState, action) {
       return {
         ...state,
       };
-    case USER_POST_LOAD_SUCCESS:
-      return {
-        ...state,
-        top_posts: payload,
-      };
     case POSTS_LOAD_FAIL:
       return {
         ...state,
-        all_posts: payload,
       };
     case POSTS_LOAD_SUCCESS:
       return {

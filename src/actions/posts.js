@@ -20,6 +20,7 @@ export const get_all_posts =
       const res = await axios.get(
         `${process.env.REACT_APP_API_URL}/profile/get_posts`
       );
+
       const { user_profiles } = res.data;
       const postsWithUsernames = user_profiles.reduce((acc, profile) => {
         const { username, posts } = profile;
