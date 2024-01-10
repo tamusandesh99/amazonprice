@@ -29,7 +29,6 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
   let navigate = useNavigate();
   let dispatcher = useDispatch();
   // const scrollContainerRef = useRef();
-
   const page = useSelector((state) => state.limit.page, shallowEqual);
 
   // useEffect(() => {
@@ -52,7 +51,6 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
     if (!all_Posts.length > 0) {
       const posts = get_all_posts();
     } else {
-      console.log(all_Posts)
       setDisplayedPosts(all_Posts);
       setOriginalOrder(all_Posts);
       setTotalPostsLength(all_Posts.length);

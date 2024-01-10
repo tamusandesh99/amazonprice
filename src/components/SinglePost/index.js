@@ -15,22 +15,29 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const { title } = useParams();
   const webLink = decodeURIComponent(title);
   const location = useLocation();
-  const { username, post_title, description, images, links, likes, comments } =
-    location.state || {}
-  const [likedNumber, setLikedNumber] = useState(likes);
-  const [userComments, setUserComments] = useState(comments || []);
+  const [postData, setPostData] = useState({ post: {}, username: "" });
+  const {
+    username,
+    post_title,
+    post_description,
+    post_images,
+    post_links,
+    post_likes,
+    post_comments,
+    post_date
+  } = location.state || postData;
+  const [likedNumber, setLikedNumber] = useState(postData.post.likes || 0);
+  const [userComments, setUserComments] = useState(post_comments || []);
   const [newComment, setNewComment] = useState("");
   const [replyComment, setReplyComment] = useState("");
   const [replyIndex, setReplyIndex] = useState(null);
 
-  const [postData, setPostData] = useState({ post: {}, username: '' });
-  // const [postData, setPostData] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchSinglePost = async () => {
       try {
         let response;
-  
+
         if (location.state) {
           // If location.state is available, set postData directly
           response = location.state;
@@ -38,16 +45,19 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
           // Fetch the single post if location.state is not available
           response = await dispatch(get_single_post(webLink));
         }
-  
+
         setPostData(response);
+        setLikedNumber(response.post.likes)
+        setUserComments(response.post.comments)
       } catch (error) {
         // Handle errors
         console.error(error);
       }
     };
-  
+
     fetchSinglePost();
   }, [webLink, location.state]);
+
 
   const addComment = (AtUsername) => {
     if (newComment.trim() !== "") {
@@ -89,7 +99,6 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const handleEdit = () => {};
   const handleDelete = () => {};
 
-  console.log(postData)
   return (
     <>
       <div className="single-post-page">
@@ -97,76 +106,75 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
           <LeftSide />
         </div>
         <div className="center-post-page">
-        {postData && postData.post ? (
-          <div className="user-post-container">
-            <div className="user-post-info">
-              <img src={commentPicture} />
-              <p>{postData.username}</p>
-            </div>
+          {postData && postData.post ? (
+            <div className="user-post-container">
+              <div className="user-post-info">
+                <img src={commentPicture} />
+                <p>{postData.username}</p>
+              </div>
 
-            <div className="user-post-content">
+              <div className="user-post-content">
+                <h>{postData.post.title}</h>
+                <p>{postData.post.description}</p>
 
-              <h>{postData.post.title}</h>
-              <p>{postData.post.description}</p>
- 
-              {links && links.length > 0 && (
-                <div className="post-links-container">
-                  {links.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {link}
-                      <br></br>
-                    </a>
-                  ))}
+                {post_links && post_links.length > 0 && (
+                  <div className="post-links-container">
+                    {post_links.map((link, index) => (
+                      <a
+                        key={index}
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {link}
+                        <br></br>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="post-likes-comments">
+                <div className="likes-comments-item">
+                  <p>
+                    <PostLikesIcon className="post-icons" onClick={postLiked} />{" "}
+                    {likedNumber}
+                  </p>
+                </div>
+
+                <div className="likes-comments-item">
+                  <p>
+                    <PostCommentsIcon className="post-icons" />
+                    {post_comments ? post_comments.length : 0} comments
+                  </p>
+                </div>
+              </div>
+
+              {isAuthenticated && username === ProfileUsername && (
+                <div>
+                  <button onClick={() => handleEdit()}>Edit</button>
+                  <button onClick={() => handleDelete()}>Delete</button>
                 </div>
               )}
-            </div>
-            <div className="post-likes-comments">
-              <div className="likes-comments-item">
-                <p>
-                  <PostLikesIcon className="post-icons" onClick={postLiked} />{" "}
-                  {likedNumber}
-                </p>
-              </div>
 
-              <div className="likes-comments-item">
-                <p>
-                  <PostCommentsIcon className="post-icons" />
-                  {comments ? comments.length : 0} comments
-                </p>
+              <div className="add-comment">
+                <textarea
+                  className="post-comment-box"
+                  placeholder={`Say something nice to ${username}`}
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && e.target.value.trim() !== "") {
+                      e.preventDefault();
+                      setNewComment((newComment) => newComment + "\n");
+                    }
+                  }}
+                ></textarea>
+                <button onClick={() => addComment()}>Post Comment</button>
               </div>
             </div>
-            
-            {isAuthenticated && username === ProfileUsername && (
-              <div>
-                <button onClick={() => handleEdit()}>Edit</button>
-                <button onClick={() => handleDelete()}>Delete</button>
-              </div>
-            )}
-            
-            <div className="add-comment">
-              <textarea
-                className="post-comment-box"
-                placeholder={`Say something nice to ${username}`}
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && e.target.value.trim() !== "") {
-                    e.preventDefault();
-                    setNewComment((newComment) => newComment + "\n");
-                  }
-                }}
-              ></textarea>
-              <button onClick={() => addComment()}>Post Comment</button>
-            </div>
-          </div>
-                ) : (
-                  <p>Loading...</p>
-                )}
+          ) : (
+            <p>Loading...</p>
+          )}
           <div className="post-comments-container">
             <div className="all-comments">
               {userComments.map((comment, index) => (
@@ -226,4 +234,4 @@ const mapStateToProps = (state) => ({
   ProfileUsername: state.profile.username,
 });
 
-export default connect(mapStateToProps,{get_single_post})(SinglePost);
+export default connect(mapStateToProps, { get_single_post })(SinglePost);

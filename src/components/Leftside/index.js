@@ -24,7 +24,7 @@ const Leftside = () => {
         </div>
         <div
           className="icon-text-container"
-          onClick={() => navigateTo("/posts")}
+          onClick={() => navigateTo("/")}
         >
           <div className="icon-text-container-inner">
             <GiOpenFolder className="left-content icon" />

@@ -50,7 +50,6 @@ const UserProfile = ({ user_username, user_posts_global }) => {
       },
       username: user_username,
     };
-    console.log(postData)
 
     navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
       state: postData
