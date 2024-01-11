@@ -15,12 +15,18 @@ import { FaStopwatch } from "react-icons/fa";
 import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
 
-const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
+const HomePage = ({
+  isAuthenticated,
+  all_Posts,
+  get_all_posts,
+  sample_posts_state,
+}) => {
   const [activeButton, setActiveButton] = useState("Hot");
   // const [allPosts, setAllPosts] = useState([]);
 
   const [displayedPosts, setDisplayedPosts] = useState([]);
   const [originalOrder, setOriginalOrder] = useState([]);
+  const [samplePosts, setSamplePosts] = useState([]);
   const [totalPostsLength, setTotalPostsLength] = useState(0);
   const [postsPerPage, setPostsPerPage] = useState(20);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -55,20 +61,19 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
       setOriginalOrder(all_Posts);
       setTotalPostsLength(all_Posts.length);
     }
-    
   }, [isAuthenticated]);
 
   const sortPosts = (order) => {
-    if (order === "Most Liked") {
-      const sortedPosts = [...displayedPosts].sort((a, b) => b.likes - a.likes);
+    if (order === "Most_Liked") {
+      const sortedPosts = [...originalOrder].sort((a, b) => b.likes - a.likes);
       setDisplayedPosts(sortedPosts);
-    } else if (order === "Most Comments") {
-      const sortedPosts = [...displayedPosts].sort(
+    } else if (order === "Most_Comments") {
+      const sortedPosts = [...originalOrder].sort(
         (a, b) => b.comments.length - a.comments.length
       );
       setDisplayedPosts(sortedPosts);
-    } else if (order === "Recent Posts") {
-      const sortedPosts = [...displayedPosts].sort((a, b) => b.id - a.id);
+    } else if (order === "Recent_Posts") {
+      const sortedPosts = [...originalOrder].sort((a, b) => b.id - a.id);
       setDisplayedPosts(sortedPosts);
     } else if (order === "Hot") {
       const sortedPosts = [...originalOrder].sort((a, b) => {
@@ -85,6 +90,8 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
         }
       });
       setDisplayedPosts(sortedPosts);
+    } else if (order === "Sample_Posts") {
+      setDisplayedPosts(sample_posts_state);
     } else {
       //nothing
     }
@@ -101,7 +108,6 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
     comments,
     date
   ) => {
-
     const defaultLikes = likes !== undefined && likes !== "" ? likes : 0;
     const defaultComments =
       comments !== undefined && comments !== "" ? comments : [];
@@ -119,7 +125,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
     };
 
     navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
-      state: postData
+      state: postData,
     });
   };
 
@@ -141,7 +147,6 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
       </div>
     </Fragment>
   );
-
   return (
     <>
       <div className="main-page">
@@ -161,36 +166,36 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
             </button>
             <button
               className={`menu-button ${
-                activeButton === "Recent Posts" ? "active" : ""
+                activeButton === "Recent_Posts" ? "active" : ""
               }`}
-              onClick={() => sortPosts("Recent Posts")}
+              onClick={() => sortPosts("Recent_Posts")}
             >
               <FaStopwatch className="homepage-top-menu-icons" />
               Recent Posts
             </button>
             <button
               className={`menu-button ${
-                activeButton === "Most Liked" ? "active" : ""
+                activeButton === "Most_Liked" ? "active" : ""
               }`}
-              onClick={() => sortPosts("Most Liked")}
+              onClick={() => sortPosts("Most_Liked")}
             >
               <RiHeartsFill className="homepage-top-menu-icons" />
               Most Liked
             </button>
             <button
               className={`menu-button ${
-                activeButton === "Most Comments" ? "active" : ""
+                activeButton === "Most_Comments" ? "active" : ""
               }`}
-              onClick={() => sortPosts("Most Comments")}
+              onClick={() => sortPosts("Most_Comments")}
             >
               <FaComments className="homepage-top-menu-icons" />
               Most Comments
             </button>
             <button
               className={`menu-button ${
-                activeButton === "Most Comments" ? "active" : ""
+                activeButton === "Sample_Posts" ? "active" : ""
               }`}
-              onClick={() => sortPosts("Most Comments")}
+              onClick={() => sortPosts("Sample_Posts")}
             >
               <FaComments className="homepage-top-menu-icons" />
               Sample Posts
@@ -231,7 +236,6 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
                 </div>
               </div>
             ))}
-           
           </div>
           <div className="load-all-posts">
             <ul className="load-posts">
@@ -258,6 +262,7 @@ const HomePage = ({ isAuthenticated, all_Posts, get_all_posts }) => {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   all_Posts: state.posts.all_posts,
+  sample_posts_state: state.posts.sample_posts,
   pageNum: state.limit.page,
 });
 

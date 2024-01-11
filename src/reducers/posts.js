@@ -7,7 +7,7 @@ import {
   POSTS_LOAD_SUCCESS,
   ADD_SAMPLE_POST,
   LOAD_MORE_POSTS,
-  GET_SINGLE_POST_SUCCESS
+  GET_SINGLE_POST_SUCCESS,
 } from "../actions/types";
 
 const initialState = {
@@ -15,6 +15,21 @@ const initialState = {
   user_posts: [],
   all_posts: [],
   single_post: [],
+  sample_posts: [
+    {
+      username: "user1",
+      post: {
+        id: 19,
+        username: "sophia_parker",
+        title: "Home Sweet Home",
+        description: "Discovering cozy homes and interior design inspirations.",
+        images: [],
+        link: "https://example.com/home-inspo",
+        likes: 37,
+        comments: [],
+      },
+    },
+  ],
 };
 
 export default function (state = initialState, action) {
@@ -44,14 +59,14 @@ export default function (state = initialState, action) {
         all_posts: payload,
       };
     case GET_SINGLE_POST_SUCCESS:
-      return{
+      return {
         ...state,
-        single_post: payload
-      }
+        single_post: payload,
+      };
     case ADD_SAMPLE_POST:
       return {
         ...state,
-        all_posts: [...state.all_posts, payload],
+        sample_posts: [...state.sample_posts, payload],
       };
 
     case LOAD_MORE_POSTS:
