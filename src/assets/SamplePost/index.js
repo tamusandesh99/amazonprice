@@ -76,26 +76,26 @@ const SamplePost = ({ make_sample_post }) => {
 
   const onSubmit = async (e) => {
     try {
-      
       make_sample_post(postData);
 
       const encodedTitle = encodeURIComponent(title).replace(/%20/g, "_");
       navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
         state: {
           username: postData.username,
-          title: title,
-          description: description,
-          links: links,
-          likes: postData.likes,
-          comments: postData.comments,
-          image: images,
+          post: {
+            title: title,
+            description: description,
+            links: links,
+            likes: postData.likes,
+            comments: postData.comments,
+            image: images,
+          },
         },
       });
 
       e.preventDefault();
     } catch {}
   };
-
 
   return (
     <>

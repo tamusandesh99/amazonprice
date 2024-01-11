@@ -147,6 +147,7 @@ const HomePage = ({
       </div>
     </Fragment>
   );
+  console.log(sample_posts_state)
   return (
     <>
       <div className="main-page">

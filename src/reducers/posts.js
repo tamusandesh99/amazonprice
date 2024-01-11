@@ -17,17 +17,14 @@ const initialState = {
   single_post: [],
   sample_posts: [
     {
-      username: "user1",
-      post: {
         id: 19,
-        username: "sophia_parker",
-        title: "Home Sweet Home",
+        username: "sample_user",
+        title: "This is sample post ",
         description: "Discovering cozy homes and interior design inspirations.",
         images: [],
         link: "https://example.com/home-inspo",
         likes: 37,
         comments: [],
-      },
     },
   ],
 };
