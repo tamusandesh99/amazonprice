@@ -117,9 +117,11 @@ const HomePage = ({
       post: {
         title: title,
         description: description,
+        images: images,
+        links: links,
         likes: defaultLikes,
         comments: defaultComments,
-        // Add other properties as needed
+        date: date,
       },
       username: username,
     };
@@ -147,7 +149,6 @@ const HomePage = ({
       </div>
     </Fragment>
   );
-  console.log(sample_posts_state)
   return (
     <>
       <div className="main-page">

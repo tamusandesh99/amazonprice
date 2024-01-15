@@ -24,7 +24,7 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
     post_links,
     post_likes,
     post_comments,
-    post_date
+    post_date,
   } = location.state || postData;
   const [likedNumber, setLikedNumber] = useState(postData.post.likes || 0);
   const [userComments, setUserComments] = useState(post_comments || []);
@@ -39,6 +39,7 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
         let response;
 
         if (location.state) {
+          console.log("location state");
           // If location.state is available, set postData directly
           response = location.state;
         } else {
@@ -47,8 +48,9 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
         }
 
         setPostData(response);
-        setLikedNumber(response.post.likes)
-        setUserComments(response.post.comments)
+        console.log(response.post);
+        setLikedNumber(response.post.likes);
+        setUserComments(response.post.comments);
       } catch (error) {
         // Handle errors
         console.error(error);
@@ -57,7 +59,6 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
 
     fetchSinglePost();
   }, [webLink, location.state]);
-
 
   const addComment = (AtUsername) => {
     if (newComment.trim() !== "") {
@@ -99,6 +100,8 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const handleEdit = () => {};
   const handleDelete = () => {};
 
+  console.log(post_links);
+
   return (
     <>
       <div className="single-post-page">
@@ -117,21 +120,23 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
                 <h>{postData.post.title}</h>
                 <p>{postData.post.description}</p>
 
-                {post_links && post_links.length > 0 && (
-                  <div className="post-links-container">
-                    {post_links.map((link, index) => (
-                      <a
-                        key={index}
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {link}
-                        <br></br>
-                      </a>
-                    ))}
-                  </div>
-                )}
+                {postData.post.links &&
+                  Array.isArray(postData.post.links) &&
+                  postData.post.links.length > 0 && (
+                    <div className="post-links-container">
+                      {postData.post.links.map((link, index) => (
+                        <a
+                          key={index}
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {link}
+                          <br></br>
+                        </a>
+                      ))}
+                    </div>
+                  )}
               </div>
               <div className="post-likes-comments">
                 <div className="likes-comments-item">
