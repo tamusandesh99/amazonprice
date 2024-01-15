@@ -10,6 +10,8 @@ import {
   GET_SINGLE_POST_SUCCESS,
 } from "../actions/types";
 
+import image1 from '../assets/pictures/main-page.png'
+
 const initialState = {
   username: "",
   user_posts: [],
@@ -21,13 +23,15 @@ const initialState = {
         username: "sample_user",
         title: "This is sample post ",
         description: "This is where all the sample posts will appear.",
-        images: [],
+        images: [image1,],
         links: ["https://example.com/home-inspo","https://google.com"],
         likes: 37,
         comments: [],
+        date: 12/19/2023
     },
   ],
 };
+
 
 export default function (state = initialState, action) {
   const { type, payload } = action;

@@ -71,6 +71,15 @@
           font-weight: 400;
         }
 
+        .post-images-container{
+          // border: 1px solid red;
+
+          .post-image{
+            max-width: 60%;
+            max-height: 20%;
+          }
+        }
+
         .post-links-container{
           a{
             font-size: 1rem;

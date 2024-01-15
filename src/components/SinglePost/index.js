@@ -39,13 +39,14 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
         let response;
 
         if (location.state) {
-          console.log("location state");
           // If location.state is available, set postData directly
           response = location.state;
         } else {
           // Fetch the single post if location.state is not available
           response = await dispatch(get_single_post(webLink));
         }
+
+        console.log(response.post)
 
         setPostData(response);
         setLikedNumber(response.post.likes);
@@ -118,6 +119,20 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
                 <h>{postData.post.title}</h>
                 <p>{postData.post.description}</p>
 
+                {postData.post.images &&
+                  Array.isArray(postData.post.images) &&
+                  postData.post.images.length > 0 && (
+                    <div className="post-images-container">
+                      {postData.post.images.map((imagePath, index) => (
+                        <img
+                        key={index}
+                        src={imagePath}
+                        alt={`Image ${index + 1}`}
+                        className="post-image"
+                      />
+                      ))}
+                    </div>
+                  )}
                 {postData.post.links &&
                   Array.isArray(postData.post.links) &&
                   postData.post.links.length > 0 && (
