@@ -99,6 +99,7 @@ const UserPost = ({ userPosts }) => {
       links: selectedLink.map((link) => link.url),
     });
 
+
     try {
       await axios.post(
         `${process.env.REACT_APP_API_URL}/profile/post/create`,

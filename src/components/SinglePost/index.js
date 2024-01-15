@@ -48,7 +48,6 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
         }
 
         setPostData(response);
-        console.log(response.post);
         setLikedNumber(response.post.likes);
         setUserComments(response.post.comments);
       } catch (error) {
@@ -100,7 +99,6 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const handleEdit = () => {};
   const handleDelete = () => {};
 
-  console.log(post_links);
 
   return (
     <>
