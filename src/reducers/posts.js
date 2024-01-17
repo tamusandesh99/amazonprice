@@ -10,7 +10,7 @@ import {
   GET_SINGLE_POST_SUCCESS,
 } from "../actions/types";
 
-import image1 from '../assets/pictures/main-page.png'
+import image1 from '../assets/pictures/temp-logo.png'
 
 const initialState = {
   username: "",
@@ -24,7 +24,7 @@ const initialState = {
         title: "This is sample post ",
         description: "This is where all the sample posts will appear.",
         images: [image1,],
-        links: ["https://example.com/home-inspo","https://google.com"],
+        links: ["https://sandeshgurung.com","https://google.com"],
         likes: 37,
         comments: [],
         date: 12/19/2023

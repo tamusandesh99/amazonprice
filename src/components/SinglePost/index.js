@@ -46,8 +46,6 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
           response = await dispatch(get_single_post(webLink));
         }
 
-        console.log(response.post)
-
         setPostData(response);
         setLikedNumber(response.post.likes);
         setUserComments(response.post.comments);
