@@ -28,13 +28,12 @@ const UserProfile = ({ user_username, user_posts_global }) => {
     username,
     title,
     description,
+    images,
+    links,
     likes,
     comments,
-    link,
-    images,
     date
   ) => {
-    
     const defaultLikes = likes !== undefined && likes !== "" ? likes : 0;
     const defaultComments =
       comments !== undefined && comments !== "" ? comments : [];
@@ -44,15 +43,17 @@ const UserProfile = ({ user_username, user_posts_global }) => {
       post: {
         title: title,
         description: description,
+        images: images,
+        links: links,
         likes: defaultLikes,
         comments: defaultComments,
-        // Add other properties as needed
+        date: date,
       },
-      username: user_username,
+      username: username,
     };
 
     navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
-      state: postData
+      state: postData,
     });
   };
 

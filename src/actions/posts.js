@@ -18,7 +18,7 @@ export const get_all_posts =
   async (dispatch) => {
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/profile/get_posts`
+        `${process.env.REACT_APP_API_URL}/profile/get_posts`,
       );
 
       const { user_profiles } = res.data;
@@ -43,7 +43,7 @@ export const get_all_posts =
 
       const initialPosts = samplePosts.slice(0, initialPostsCount);
     } catch (err) {
-      console.error("Error loading posts:", err);
+      console.error("Error loading posts:", 'backend error');
       dispatch({
         type: POSTS_LOAD_FAIL,
         payload: samplePosts

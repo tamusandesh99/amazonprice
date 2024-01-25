@@ -12,6 +12,8 @@
     border: none;
   }
 
+
+
   .center-homepage {
     background-color: var(--homepage-bg);
     border-left: 1px var(--border-color);
@@ -116,6 +118,12 @@
       img {
         min-width: 40%;
       }
+    }
+  }
+
+  @media (max-width: 40em) {
+    .left-homepage{
+      border: 1px solid red;
     }
   }
 }
