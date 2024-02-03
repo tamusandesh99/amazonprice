@@ -20,17 +20,19 @@ const CSRFToken = () => {
     return cookieValue;
   };
   useEffect(() => {
+    let token;
     const fetchData = async () => {
       try {
-        await axios.get(`${process.env.REACT_APP_API_URL}/user/csrfCookie`, {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/user/csrfCookie`, {
           withCredentials: true,
         });
+         token = res.data.Success;
       } catch (err) {
         console.error("Error fetching CSRF Token:", err);
       }
     };
     fetchData();
-    setcsrftoken(getCookie("csrftoken"));
+    setcsrftoken(token);
   }, []);
 
   return (

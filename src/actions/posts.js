@@ -18,7 +18,7 @@ export const get_all_posts =
   async (dispatch) => {
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/profile/get_posts`,
+        `${process.env.REACT_APP_API_URL}/profile/get_posts`
       );
 
       const { user_profiles } = res.data;
@@ -31,7 +31,12 @@ export const get_all_posts =
       if (res.data.error) {
         dispatch({
           type: POSTS_LOAD_FAIL,
-          payload: samplePosts
+          payload: samplePosts,
+        });
+      } else if (postsWithUsernames.length < 1) {
+        dispatch({
+          type: POSTS_LOAD_FAIL,
+          payload: samplePosts,
         });
       } else {
         dispatch({
@@ -43,10 +48,10 @@ export const get_all_posts =
 
       const initialPosts = samplePosts.slice(0, initialPostsCount);
     } catch (err) {
-      console.error("Error loading posts:", 'backend error');
+      console.error("Error loading posts:", "backend error");
       dispatch({
         type: POSTS_LOAD_FAIL,
-        payload: samplePosts
+        payload: samplePosts,
       });
       // throw err;
     }
@@ -71,7 +76,6 @@ export const get_single_post = (title) => async (dispatch) => {
     if (res.data.error) {
       // Handle error, e.g., dispatch an action with an error type
     } else {
-
       return res.data;
       // dispatch({
       //   type: GET_SINGLE_POST_SUCCESS,
