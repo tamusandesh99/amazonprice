@@ -16,6 +16,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -26,5 +28,4 @@ body {
   line-height: 1.6rem;
   margin-bottom: 10%;
   margin: auto;
-  overflow-x: hidden;
 }

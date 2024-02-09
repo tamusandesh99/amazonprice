@@ -47,7 +47,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
           <Link className="nav-link navbar-brand" to="/">
             Reviewers Hub
           </Link>
-          <NavLink className="nav-link" to="/">
+          <NavLink className="nav-link navbar-home" to="/">
             Home
           </NavLink>
           {isAuthenticated ? authLinks : guestLinks}

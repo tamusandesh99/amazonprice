@@ -2,12 +2,9 @@ nav {
   position: relative;
   z-index: 2;
   background-color: var(--navbar-bg);
-
-
 }
 
 .main-nav-container {
-  
   // width: 100vw;
   height: 7vh;
   display: flex;
@@ -54,7 +51,7 @@ nav {
       }
     }
     .nav-link-center {
-      border: 1px solid red;
+      // border: 1px solid red;
       min-width: 48.3em;
       max-width: 48.3em;
       display: flex;
@@ -93,4 +90,20 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 450px) {
+  .main-nav-container {
+    .nav-link {
+      display: none;
+    }
+    .nav-logo-items {
+      // border: 1px solid red;
+      display: block;
+      .navbar-brand {
+        display: block;
+        margin:auto;
+      }
+    }
+  }
 }
