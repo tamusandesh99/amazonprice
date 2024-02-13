@@ -6,11 +6,15 @@ nav {
 
 .main-nav-container {
   // width: 100vw;
-  height: 7vh;
+  min-height: 7vh;
   display: flex;
   justify-content: center;
   align-items: center;
   place-content: center;
+
+  .hamburgermenu-container {
+    display: none;
+  }
 
   .nav-logo-items {
     // width: min(100%, 70em);
@@ -94,15 +98,56 @@ nav {
 
 @media (max-width: 450px) {
   .main-nav-container {
-    .nav-link {
-      display: none;
-    }
-    .nav-logo-items {
-      // border: 1px solid red;
+    // min-height: 20vh;
+    // .hamburgeremu-container{
+    //   display: block;
+    //   border: 1px solid red;
+    //   // margin-right: 10%;
+    //   width: 10em;
+    //   height:5vh;
+    // }
+    .hamburgermenu-container {
       display: block;
-      .navbar-brand {
+      // border: 1px solid red;
+      min-width: 2em;
+      position: absolute;
+      margin-right: -15em;
+      .hamburgermenu-icon {
+        width: 100%;
         display: block;
-        margin:auto;
+        color: white;
+      }
+    }
+
+    .nav-logo-items {
+      display: block;
+      justify-content: right;
+      align-items: right;
+      .nav-link {
+        display: none;
+      }
+      .navbar-brand {
+        border: 0px;
+        margin-left: 0em;
+        display: block;
+        margin: auto;
+      }
+      .nav-link-right {
+        display: block;
+        min-width: 0em;
+        max-width: 5em;
+      }
+      .nav-link-center {
+        display: block;
+      }
+    }
+
+    .nav-logo-items-mobile {
+      display: block;
+      border: 1px solid red;
+
+      .nav-link {
+        display: block;
       }
     }
   }

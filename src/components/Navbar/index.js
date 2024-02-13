@@ -1,11 +1,21 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { ImMenu } from "react-icons/im";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
 import "./index.scss";
+import Burgermenu from "./BurgerMenu/Burgermenu";
+import MakePostButton from "../MakePostButton";
 
 const Navbar = ({ isAuthenticated, logout }) => {
   const navigate = useNavigate();
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    console.log('kk')
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const handleLogout = async () => {
     try {
@@ -40,17 +50,33 @@ const Navbar = ({ isAuthenticated, logout }) => {
       </Fragment>
     </div>
   );
+
   return (
     <>
       <nav className="main-nav-container">
-        <div className="nav-logo-items">
+        <div
+          className={`nav-logo-items ${
+            isMobileMenuOpen ? "nav-logo-items-mobile" : ""
+          }`}
+        >
           <Link className="nav-link navbar-brand" to="/">
             Reviewers Hub
           </Link>
           <NavLink className="nav-link navbar-home" to="/">
             Home
           </NavLink>
+          <NavLink className="nav-link make-post" to="/submitpost">
+            Make a post
+          </NavLink>
+          <NavLink className="nav-link sample-post-nav" to="/samplepost">
+            Make Sample Post
+          </NavLink>
           {isAuthenticated ? authLinks : guestLinks}
+        </div>
+
+        <div className="hamburgermenu-container" onClick={toggleMobileMenu}>
+          <ImMenu className="hamburgermenu-icon" />
+          {/* <Burgermenu className="burgermenu-component"></Burgermenu> */}
         </div>
       </nav>
     </>
