@@ -75,7 +75,6 @@
 
     .register-form {
       max-width: 20em;
-      // border: 1px solid red;
       .form-group {
         min-width: none;
         min-width: 5em;
@@ -86,7 +85,9 @@
       }
     }
     button {
+      border: 1px solid red;
       min-width: 100%;
+      font-size: 1em;
     }
   }
 }

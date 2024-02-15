@@ -239,7 +239,7 @@ const HomePage = ({
               </div>
             ))}
           </div>
-          <div className="load-all-posts">
+          {/* <div className="load-all-posts">
             <ul className="load-posts">
               <div>
                 <button
@@ -251,7 +251,7 @@ const HomePage = ({
                 </button>
               </div>
             </ul>
-          </div>
+          </div> */}
         </div>
         <div className="right-homepage">
           <Rightside />
