@@ -18,6 +18,14 @@
   box-sizing: border-box;
   max-width: 100vw;
   overflow-x: hidden;
+  scrollbar-width: none;
+  -webkit-scrollbar: none;
+  -webkit-appearance: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
 }
 
 body {
@@ -28,4 +36,5 @@ body {
   line-height: 1.6rem;
   margin-bottom: 10%;
   margin: auto;
+  
 }

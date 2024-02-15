@@ -22,11 +22,11 @@
 
     display: flex;
     flex-direction: column;
-    //   justify-content: center;
+    // justify-content: center;
     align-items: center;
     max-width: 48.3em;
     flex: 1;
-    overflow-y: scroll;
+    // overflow-y: auto;
     max-height: 93vh;
     scrollbar-width: none;
     -webkit-scrollbar: none;
@@ -39,6 +39,16 @@
 
     .user-post-container {
       // margin-top: 1em;
+      // overflow-y: auto;
+      scrollbar-width: none;
+      -webkit-scrollbar: none;
+      -webkit-appearance: none;
+      // border: 1px solid red;
+
+      &::-webkit-scrollbar {
+        width: 0;
+        background-color: transparent;
+      }
       min-width: 45em;
       padding: 1em;
       border-bottom: 3px var(--border-color);
@@ -71,17 +81,15 @@
           font-weight: 400;
         }
 
-        .post-images-container{
-          // border: 1px solid red;
-
-          .post-image{
+        .post-images-container {
+          .post-image {
             max-width: 60%;
             max-height: 20%;
           }
         }
 
-        .post-links-container{
-          a{
+        .post-links-container {
+          a {
             font-size: 1rem;
             color: rgb(102, 102, 193);
           }
@@ -159,13 +167,23 @@
     .post-comments-container {
       display: grid;
       place-items: left;
-      max-width: 45em;
+      // max-width: 45em;
       // border: 1px solid red;
       margin-top: 1em;
       // margin-bottom: 10%;
+      
       .all-comments {
         margin-top: 1em;
         color: white;
+
+        scrollbar-width: none;
+        -webkit-scrollbar: none;
+        -webkit-appearance: none;
+
+        &::-webkit-scrollbar {
+          width: 0;
+          background-color: transparent;
+        }
         .user-comment-container {
           // background-color: rgb(49, 48, 48);
           display: flex;
@@ -275,6 +293,39 @@
       &:hover {
         transition: 1s;
         background-color: rgb(57, 54, 54);
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .single-post-page {
+    max-width: 100vw;
+    height: 100vh;
+    display: block;
+    // border: 1px solid red;
+    background-color: var(--homepage-bg);
+    .left-post-page {
+      display: none;
+    }
+    .right-post-page {
+      display: none;
+    }
+
+    .user-post-content{
+      max-width: 19em;
+    }
+
+    .center-post-page {
+      margin-right: 0em;
+      display: block;
+
+      .add-comment {
+        max-width: 15em !important;
+
+        button {
+          min-height: 4vh !important;
+        }
       }
     }
   }
