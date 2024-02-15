@@ -3,7 +3,7 @@
   display: grid;
   place-content: center;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 10em;
   color: white;
   padding: 1em;
   border: 1px var(--border-color);
@@ -68,5 +68,7 @@
 }
 
 @media (max-width: 450px){
-
+  .form-container-login{
+    margin-top: 3em;
+  }
 }

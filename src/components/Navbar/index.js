@@ -23,13 +23,27 @@ const Navbar = ({ isAuthenticated, logout }) => {
     }
   };
 
+  const navigatepost = async () => {
+    if (isAuthenticated) {
+      navigate("/submitpost");
+      setIsMobileMenuOpen(!isMobileMenuOpen);
+    } else {
+      navigate("/login");
+      setIsMobileMenuOpen(!isMobileMenuOpen);
+    }
+  };
+
   const authLinks = (
     <Fragment>
       <div className="nav-link-right">
-        <NavLink className="nav-link profile" onClick={toggleMobileMenu} to="/profile">
+        <NavLink
+          className="nav-link profile"
+          onClick={toggleMobileMenu}
+          to="/profile"
+        >
           Profile
         </NavLink>
-        <button onClick={handleLogout} className="nav-link logout"  to="/">
+        <button onClick={handleLogout} className="nav-link logout" to="/">
           Logout
         </button>
       </div>
@@ -38,10 +52,18 @@ const Navbar = ({ isAuthenticated, logout }) => {
   const guestLinks = (
     <div className="nav-link-right">
       <Fragment>
-        <NavLink className="nav-link login" onClick={toggleMobileMenu} to="/login">
+        <NavLink
+          className="nav-link login"
+          onClick={toggleMobileMenu}
+          to="/login"
+        >
           Login
         </NavLink>
-        <NavLink className="nav-link signup" onClick={toggleMobileMenu} to="/register">
+        <NavLink
+          className="nav-link signup"
+          onClick={toggleMobileMenu}
+          to="/register"
+        >
           Signup
         </NavLink>
       </Fragment>
@@ -60,23 +82,39 @@ const Navbar = ({ isAuthenticated, logout }) => {
             Home
           </NavLink>
           {isAuthenticated ? authLinks : guestLinks}
-        <div className="hamburgermenu-container">
-          <ImMenu className="hamburgermenu-icon" onClick={toggleMobileMenu}/>
-        </div>
+          <div className="hamburgermenu-container">
+            <ImMenu className="hamburgermenu-icon" onClick={toggleMobileMenu} />
+          </div>
         </div>
 
-        <div className={`nav-logo-items-toggle${isMobileMenuOpen ? "-mobile" : ""}`}>
-            <NavLink className="nav-link navbar-home" onClick={toggleMobileMenu} to="/">
-              Home
-            </NavLink>
-            <NavLink className="nav-link make-post" onClick={toggleMobileMenu} to="/submitpost">
-              Make a post
-            </NavLink>
-            <NavLink className="nav-link sample-post-nav" onClick={toggleMobileMenu} to="/samplepost">
-              Make Sample Post
-            </NavLink>
-            {isAuthenticated ? authLinks : guestLinks}
-          </div>
+        <div
+          className={`nav-logo-items-toggle${
+            isMobileMenuOpen ? "-mobile" : ""
+          }`}
+        >
+          <NavLink
+            className="nav-link navbar-home"
+            onClick={toggleMobileMenu}
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className="nav-link make-post"
+            onClick={toggleMobileMenu}
+            to={isAuthenticated ? "/submitpost" : "/login"}
+          >
+            Make a post
+          </NavLink>
+          <NavLink
+            className="nav-link sample-post-nav"
+            onClick={toggleMobileMenu}
+            to="/samplepost"
+          >
+            Make Sample Post
+          </NavLink>
+          {isAuthenticated ? authLinks : guestLinks}
+        </div>
       </nav>
     </>
   );
