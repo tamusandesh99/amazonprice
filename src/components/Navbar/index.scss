@@ -138,6 +138,11 @@ nav {
       line-height: 1.5em;
       display: grid;
       place-content: center;
+
+        .logout{
+          background-color: var(--navbar-bg);
+          border: none;
+        }  
       
       .nav-link {
         min-width: 100vw;
