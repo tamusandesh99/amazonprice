@@ -151,3 +151,29 @@
     }
   }
 }
+
+@media (min-width: 451px) and (max-width: 1100px) {
+  .main-page {
+    // border: 1px solid red;
+    .center-homepage {
+      .homepage-top-menu {
+        min-width: 30em;
+        // max-width: 300px;
+        overflow-x: scroll;
+        .menu-button {
+          // border: 1px solid red;
+          margin-right: 1em;
+          margin-left: 0em;
+          font-size: 0.8em;
+          .homepage-top-menu-icons {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .left-homepage {
+      display: none;
+    }
+  }
+}

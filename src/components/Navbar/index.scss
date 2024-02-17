@@ -177,9 +177,21 @@ nav {
         min-width: 0em;
         max-width: 5em;
       }
-      .nav-link-center {
-        display: block;
-      }
     }
   }
 }
+
+@media (min-width: 451px) and (max-width: 1200px) {
+  .main-nav-container {
+   .navbar-home{
+    display: none;
+   }
+   .navbar-brand {
+    margin-left: 0em;
+    display: block;
+    margin: auto;
+    padding: 0.5em;
+  }
+  }
+}
+
