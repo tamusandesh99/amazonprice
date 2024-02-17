@@ -17,19 +17,10 @@ const Navbar = ({ isAuthenticated, logout }) => {
   const handleLogout = async () => {
     try {
       await logout();
+      setIsMobileMenuOpen(!isMobileMenuOpen)
       navigate("/");
     } catch (error) {
       console.error("Logout error:", error);
-    }
-  };
-
-  const navigatepost = async () => {
-    if (isAuthenticated) {
-      navigate("/submitpost");
-      setIsMobileMenuOpen(!isMobileMenuOpen);
-    } else {
-      navigate("/login");
-      setIsMobileMenuOpen(!isMobileMenuOpen);
     }
   };
 

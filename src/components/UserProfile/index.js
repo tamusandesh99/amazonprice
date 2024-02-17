@@ -28,12 +28,13 @@ const UserProfile = ({ user_username, user_posts_global }) => {
     username,
     title,
     description,
-    images,
-    links,
     likes,
     comments,
+    links,
+    images,
     date
   ) => {
+    
     const defaultLikes = likes !== undefined && likes !== "" ? likes : 0;
     const defaultComments =
       comments !== undefined && comments !== "" ? comments : [];
@@ -49,11 +50,11 @@ const UserProfile = ({ user_username, user_posts_global }) => {
         comments: defaultComments,
         date: date,
       },
-      username: username,
+      username: user_username,
     };
 
     navigate(`/posts/${encodeURIComponent(encodedTitle)}`, {
-      state: postData,
+      state: postData
     });
   };
 
@@ -82,28 +83,6 @@ const UserProfile = ({ user_username, user_posts_global }) => {
                 {/* <p className="post-username">{post.username}</p> */}
                 <p className="post-title">{post.title}</p>
                 <p className="post-description">{post.description}</p>
-              </div>
-              <div className="website-preview">
-                <button
-                  className="preview-button"
-                  onClick={() =>
-                    handleButtonClick(
-                      post.username,
-                      post.title,
-                      post.description,
-                      post.images,
-                      post.links,
-                      post.likes,
-                      post.comments,
-                      post.date
-                    )
-                  }
-                >
-                  <img
-                    src={post.website_link + "/favicon.ico"}
-                    alt={post.title}
-                  />
-                </button>
               </div>
             </div>
           ))}

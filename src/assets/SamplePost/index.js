@@ -123,6 +123,7 @@ const SamplePost = ({ make_sample_post }) => {
               value={description}
               onChange={onChange}
               placeholder="Description"
+              required
             />
           </div>
           <div className="form-group">
