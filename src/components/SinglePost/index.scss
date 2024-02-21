@@ -331,17 +331,37 @@
   }
 }
 
-@media (min-width: 451px) and (max-width: 1100px) {
+@media (min-width: 451px) and (max-width: 1200px) {
   .single-post-page {
     max-width: 100vw;
     height: 100vh;
-    // border: 1px solid red;
     .left-post-page {
       display: none;
     }
     .user-post-content{
       max-width: 19em;
     }
+
+    .center-post-page {
+      display: block;
+      
+      .add-comment {
+        max-width: 15em !important;
+
+        button {
+          min-height: 4vh !important;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .single-post-page {
+    max-width: 100vw;
+    height: 100vh;
+    // border: 1px solid red;
+
 
     .center-post-page {
       display: block;

@@ -14,6 +14,7 @@ import { FaComments } from "react-icons/fa";
 import { FaStopwatch } from "react-icons/fa";
 import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
+import Skeleton from "react-loading-skeleton";
 
 const HomePage = ({
   isAuthenticated,
@@ -22,26 +23,13 @@ const HomePage = ({
   sample_posts_state,
 }) => {
   const [activeButton, setActiveButton] = useState("Hot");
-  // const [allPosts, setAllPosts] = useState([]);
-
   const [displayedPosts, setDisplayedPosts] = useState([]);
   const [originalOrder, setOriginalOrder] = useState([]);
-  const [samplePosts, setSamplePosts] = useState([]);
-  const [totalPostsLength, setTotalPostsLength] = useState(0);
-  const [postsPerPage, setPostsPerPage] = useState(20);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [initialized, setInitialized] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   let navigate = useNavigate();
   let dispatcher = useDispatch();
-  // const scrollContainerRef = useRef();
   const page = useSelector((state) => state.limit.page, shallowEqual);
-
-  // useEffect(() => {
-  //   console.log(page);
-  //   dispatcher(loadMorePosts(page));
-  //   setDisplayedPosts(all_Posts);
-  // }, [page]);
 
   useEffect(() => {
     // get_all_posts()
@@ -59,7 +47,7 @@ const HomePage = ({
     } else {
       setDisplayedPosts(all_Posts);
       setOriginalOrder(all_Posts);
-      setTotalPostsLength(all_Posts.length);
+      setLoading(false)
     }
   }, [isAuthenticated]);
 
@@ -222,7 +210,7 @@ const HomePage = ({
                 key={index}
               >
                 <div className="post-info">
-                  <p className="post-username">{post.username}</p>
+                  <p className="post-username">{post.username} </p>
                   <p className="post-username">{post.date}</p>
                   <p className="post-title">{post.title}</p>
                   <p className="post-description">{post.description}</p>
