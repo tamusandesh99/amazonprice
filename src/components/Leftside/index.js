@@ -6,6 +6,7 @@ import { GiOpenFolder } from "react-icons/gi";
 import { BiSolidHelpCircle } from "react-icons/bi";
 
 
+
 const Leftside = () => {
   let navigate = useNavigate();
 
@@ -37,7 +38,7 @@ const Leftside = () => {
             <button className="left-content icon-text">Tags</button>
           </div>
         </div>
-        <div className="icon-text-container" onClick={() => navigateTo("/")}>
+        <div className="icon-text-container" onClick={() => navigateTo("/help")}>
           <div className="icon-text-container-inner">
             <BiSolidHelpCircle className="left-content icon" />
             <button className="left-content icon-text">Help</button>

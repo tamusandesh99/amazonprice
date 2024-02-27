@@ -14,6 +14,7 @@ import { FaComments } from "react-icons/fa";
 import { FaStopwatch } from "react-icons/fa";
 import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
+import SkeletonLoad from "../SkeletonLoad";
 import Skeleton from "react-loading-skeleton";
 
 const HomePage = ({
@@ -25,7 +26,7 @@ const HomePage = ({
   const [activeButton, setActiveButton] = useState("Hot");
   const [displayedPosts, setDisplayedPosts] = useState([]);
   const [originalOrder, setOriginalOrder] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   let navigate = useNavigate();
   let dispatcher = useDispatch();
@@ -47,7 +48,7 @@ const HomePage = ({
     } else {
       setDisplayedPosts(all_Posts);
       setOriginalOrder(all_Posts);
-      setLoading(false)
+      setIsLoading(false)
     }
   }, [isAuthenticated]);
 
@@ -227,19 +228,6 @@ const HomePage = ({
               </div>
             ))}
           </div>
-          {/* <div className="load-all-posts">
-            <ul className="load-posts">
-              <div>
-                <button
-                  onClick={() => {
-                    dispatcher({ type: "increment" });
-                  }}
-                >
-                  next page
-                </button>
-              </div>
-            </ul>
-          </div> */}
         </div>
         <div className="right-homepage">
           <Rightside />

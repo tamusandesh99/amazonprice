@@ -1,0 +1,21 @@
+.help-container {
+  max-width: 48em;
+  margin: auto;
+  margin-top: 5em;
+  .inner-container {
+    display: grid;
+    place-content: center;
+
+    p {
+        font-size: 1.2rem;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+      color: white;
+      margin-bottom: 1em;
+    }
+    img {
+      max-width: 25em;
+      margin-bottom: 1em;
+    }
+  }
+}
