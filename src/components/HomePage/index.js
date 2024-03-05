@@ -14,6 +14,7 @@ import { FaComments } from "react-icons/fa";
 import { FaStopwatch } from "react-icons/fa";
 import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
+import { BsFillCloudSlashFill } from "react-icons/bs";
 import SkeletonLoad from "../SkeletonLoad";
 import Skeleton from "react-loading-skeleton";
 
@@ -188,7 +189,7 @@ const HomePage = ({
               }`}
               onClick={() => sortPosts("Sample_Posts")}
             >
-              <FaComments className="homepage-top-menu-icons" />
+              <BsFillCloudSlashFill className="homepage-top-menu-icons" />
               Sample Posts
             </button>
           </div>

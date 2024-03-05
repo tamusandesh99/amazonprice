@@ -1,27 +1,35 @@
 import React from "react";
 import "./index.scss";
-import reddit1 from '../../assets/pictures/reddit1.png'
-import reddit2 from '../../assets/pictures/reddit2.png'
+import reddit1 from "../../assets/pictures/reddit1.png";
+import reddit2 from "../../assets/pictures/reddit2.png";
 
 const HelpComponent = () => {
   return (
     <div className="help-container">
       <div className="inner-container">
         <p>
-          This website is currently on development and is not fully what I want
-          it to be like. The main reason why I decided to create such website is
-          because of how some developers are asking in forum such as reddit for
-          their website and UI designs feedbacks. As well as some backend methods about
-          asking if its optimal approach for their situation. 
-
-          Here are some posts that inspired me to make this website.
+          This website is currently undergoing development and is not yet fully
+          aligned with my vision. The idea stemmed from observing developers
+          seeking feedback on their website designs and backend approaches in
+          forums like Reddit. I noticed a gap in platforms dedicated to
+          providing constructive feedback and support in these areas. Inspired
+          by this observation, I embarked on creating this website to offer a
+          space where developers can seek advice, share insights, and refine
+          their projects.
         </p>
 
         <img src={reddit1}></img>
         <img src={reddit2}></img>
 
-
-
+        <p>
+          While there are still many tasks to be completed, I welcome
+          contributions from anyone interested. Feel free to fork the
+          repository, create a new branch for your feature or bug fix, and
+          submit a pull request to contribute to the project.{" "}
+          <a href="https://github.com/tamusandesh99/reviewershub.git">
+            Link to repo
+          </a>
+        </p>
       </div>
     </div>
   );
