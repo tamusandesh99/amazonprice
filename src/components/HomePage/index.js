@@ -16,7 +16,6 @@ import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
 import { BsFillCloudSlashFill } from "react-icons/bs";
 import SkeletonLoad from "../SkeletonLoad";
-import Skeleton from "react-loading-skeleton";
 
 const HomePage = ({
   isAuthenticated,
@@ -47,9 +46,9 @@ const HomePage = ({
     if (!all_Posts.length > 0) {
       const posts = get_all_posts();
     } else {
+      setIsLoading(true);
       setDisplayedPosts(all_Posts);
       setOriginalOrder(all_Posts);
-      setIsLoading(false)
     }
   }, [isAuthenticated]);
 
@@ -193,42 +192,49 @@ const HomePage = ({
               Sample Posts
             </button>
           </div>
-          <div className="homepage-bottom-page" id="scrollable-element">
-            {displayedPosts.map((post, index) => (
-              <div
-                className="single-post"
-                onClick={() =>
-                  handleButtonClick(
-                    post.username,
-                    post.title,
-                    post.description,
-                    post.images,
-                    post.links,
-                    post.likes,
-                    post.comments,
-                    post.date
-                  )
-                }
-                key={index}
-              >
-                <div className="post-info">
-                  <p className="post-username">{post.username} </p>
-                  <p className="post-username">{post.date}</p>
-                  <p className="post-title">{post.title}</p>
-                  <p className="post-description">{post.description}</p>
-                  <div className="post-likes-comments">
-                    <p>
-                      <PostLikesIcon className="post-icons" /> {post.likes || 0}
-                    </p>
-                    <p>
-                      <PostCommentsIcon className="post-icons" />{" "}
-                      {post.comments ? post.comments.length : 0}
-                    </p>
+          {isLoading ? (
+            <div classname="loading-skeleton">
+              <SkeletonLoad />
+            </div>
+          ) : (
+            <div className="homepage-bottom-page" id="scrollable-element">
+              {/* {displayedPosts.map((post, index) => (
+                <div
+                  className="single-post"
+                  onClick={() =>
+                    handleButtonClick(
+                      post.username,
+                      post.title,
+                      post.description,
+                      post.images,
+                      post.links,
+                      post.likes,
+                      post.comments,
+                      post.date
+                    )
+                  }
+                  key={index}
+                >
+                  <div className="post-info">
+                    <p className="post-username">{post.username} </p>
+                    <p className="post-username">{post.date}</p>
+                    <p className="post-title">{post.title}</p>
+                    <p className="post-description">{post.description}</p>
+                    <div className="post-likes-comments">
+                      <p>
+                        <PostLikesIcon className="post-icons" />{" "}
+                        {post.likes || 0}
+                      </p>
+                      <p>
+                        <PostCommentsIcon className="post-icons" />{" "}
+                        {post.comments ? post.comments.length : 0}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))} */}
+            </div>
+          )}
         </div>
         <div className="right-homepage">
           <Rightside />
