@@ -1,71 +1,23 @@
 import React from "react";
 import './index.scss'
-import Skeleton from "react-loading-skeleton";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const SkeletonLoad = ({ posts }) => {
-  // return Array(posts)
-  //   .fill(0)
-  //   .map((post, i) => (
-  //     <div className="skeleton-loading" key={i}>
-  //       <div className="post-skeleton">
-  //         <div className="post-info">
-  //           <p className="post-username">username </p>
-  //           <p className="post-username">date</p>
-  //           <p className="post-title">title</p>
-  //           <p className="post-description">description</p>
-  //           <div className="post-likes-comments">
-
-  //           </div>
-  //         </div>
-  //         <Skeleton />
-  //       </div>
-  //     </div>
-  //   ));
-
-  return (
-    <div className="skeleton-loading">
-      <div className="post-skeleton">
-        <div className="post-info">
-          <p className="post-username">username </p>
-          <p className="post-username">date</p>
-          <p className="post-title">title</p>
-          <p className="post-description">description</p>
-          <div className="post-likes-comments"></div>
+  return Array(posts)
+    .fill(0)
+    .map((post, i) => (
+      <div className="skeleton-loading" key={i}>
+        <div className="post-skeleton">
+          <div className="post-skeleton-info">
+            <p className="post-skeleton-username">   <Skeleton /> </p>
+            <p className="post-skeleton-title"> <Skeleton /> </p>
+            <p className="post-skeleton-description"> <Skeleton /> </p>
+          </div>
+       
         </div>
-        <Skeleton />
       </div>
-      <div className="post-skeleton">
-        <div className="post-info">
-          <p className="post-username">username </p>
-          <p className="post-username">date</p>
-          <p className="post-title">title</p>
-          <p className="post-description">description</p>
-          <div className="post-likes-comments"></div>
-        </div>
-        <Skeleton />
-      </div>
-      <div className="post-skeleton">
-        <div className="post-info">
-          <p className="post-username">username </p>
-          <p className="post-username">date</p>
-          <p className="post-title">title</p>
-          <p className="post-description">description</p>
-          <div className="post-likes-comments"></div>
-        </div>
-        <Skeleton />
-      </div>
-      <div className="post-skeleton">
-        <div className="post-info">
-          <p className="post-username">username </p>
-          <p className="post-username">date</p>
-          <p className="post-title">title</p>
-          <p className="post-description">description</p>
-          <div className="post-likes-comments"></div>
-        </div>
-        <Skeleton />
-      </div>
-    </div>
-  );
+    ));
 };
 
 export default SkeletonLoad;

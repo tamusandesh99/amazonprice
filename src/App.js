@@ -17,7 +17,8 @@ function App() {
   return (
     <>
       <Provider store={store}>
-          <Router>
+        <Router>
+        <SkeletonTheme baseColor="rgb(48, 47, 47)" highlightColor="#807c7c">
             <HomeLayout>
               <Routes>
                 <Route exact path="/" element={<HomePage />} />
@@ -31,7 +32,8 @@ function App() {
                 <Route exact path="/help" element={<HelpComponent />} />
               </Routes>
             </HomeLayout>
-          </Router>
+          </SkeletonTheme>
+        </Router>
       </Provider>
     </>
   );

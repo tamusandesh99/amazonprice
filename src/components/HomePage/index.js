@@ -16,6 +16,8 @@ import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
 import { BsFillCloudSlashFill } from "react-icons/bs";
 import SkeletonLoad from "../SkeletonLoad";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const HomePage = ({
   isAuthenticated,
@@ -194,11 +196,11 @@ const HomePage = ({
           </div>
           {isLoading ? (
             <div classname="loading-skeleton">
-              <SkeletonLoad />
+              <SkeletonLoad posts={4}/>
             </div>
           ) : (
             <div className="homepage-bottom-page" id="scrollable-element">
-              {/* {displayedPosts.map((post, index) => (
+              {displayedPosts.map((post, index) => (
                 <div
                   className="single-post"
                   onClick={() =>
@@ -232,7 +234,7 @@ const HomePage = ({
                     </div>
                   </div>
                 </div>
-              ))} */}
+              ))}
             </div>
           )}
         </div>

@@ -1,45 +1,35 @@
-.skeleton-loading{
+.skeleton-loading {
+  .post-skeleton {
+    opacity: 0.6;
+    // display: flex;
+    margin-top: 1%;
+    max-width: 100%;
+    border-bottom: 1px var(--border-color);
 
+    .post-skeleton-info {
+      max-width: 40em;
+      padding: 1em 1em 1em 2em;
 
-    
-    .post-skeleton{
-        opacity: 0.5;
-        display: flex;
-        margin-top: 1%;
-        max-width: 100%;
-        border-bottom: 1px var(--border-color);
-        &:hover {
-          box-shadow: 0 4px 6px rgba(183, 178, 178, 0.1);
-        }
-        animation: skeleton-loading 1s linear infinite alternate;
-        }
-        @keyframes skeleton-loading {
-        0% {
-        background-color: hs1(200, 20%, 70%);
-        }
-        100% {
-        background-color: Ihsl(200, 20%, 95%);
-        }
-        }
-        .post-info {
-            padding: 1em 1em 1em 2em;
-  
-            .post-username {
-              font-size: 0.7em;
-              color: rgb(101, 101, 174);
-              font-weight: 900;
-            }
-  
-            .post-title {
-              font-size: 0.9em;
-              font-weight: 900;
-              text-shadow: 1px 1px 1px black;
-            }
-            .post-description {
-              font-size: 0.7em;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-          }
+      .post-skeleton-username {
+        max-width: 15em;
+        font-size: 0.7em;
+        color: rgb(101, 101, 174);
+        font-weight: 900;
+      }
+
+      .post-skeleton-title {
+        font-size: 0.9em;
+        max-width: 25em;
+        font-weight: 900;
+        text-shadow: 1px 1px 1px black;
+      }
+      .post-skeleton-description {
+        max-width: 50em;
+        font-size: 0.7em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
 }
