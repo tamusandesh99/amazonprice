@@ -3,7 +3,7 @@
     opacity: 0.6;
     // display: flex;
     margin-top: 1%;
-    max-width: 100%;
+    // max-width: 100%;
     border-bottom: 1px var(--border-color);
 
     .post-skeleton-info {
@@ -15,15 +15,18 @@
         font-size: 0.7em;
         color: rgb(101, 101, 174);
         font-weight: 900;
+        margin-left: 0;
       }
 
       .post-skeleton-title {
+        margin-left: 0;
         font-size: 0.9em;
         max-width: 25em;
         font-weight: 900;
         text-shadow: 1px 1px 1px black;
       }
       .post-skeleton-description {
+        margin-left: 0;
         max-width: 50em;
         font-size: 0.7em;
         overflow: hidden;

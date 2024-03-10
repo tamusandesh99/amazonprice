@@ -48,7 +48,7 @@ const HomePage = ({
     if (!all_Posts.length > 0) {
       const posts = get_all_posts();
     } else {
-      setIsLoading(true);
+      setIsLoading(false);
       setDisplayedPosts(all_Posts);
       setOriginalOrder(all_Posts);
     }
