@@ -15,6 +15,7 @@ import { FaStopwatch } from "react-icons/fa";
 import { RiHeartsFill } from "react-icons/ri";
 import { AiTwotoneFire } from "react-icons/ai";
 import { BsFillCloudSlashFill } from "react-icons/bs";
+
 import SkeletonLoad from "../SkeletonLoad";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'

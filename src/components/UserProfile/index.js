@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { update_profile } from "../../actions/profile";
-import profilepicture from "../../assets/pictures/Profile-Pictures/PP-Cropped/profile_picture.png";
+import profilepicture from "../../assets/pictures/Profile-Pictures/girl-pp.jpeg";
 import "./index.scss";
 
 const UserProfile = ({ user_username, user_posts_global }) => {

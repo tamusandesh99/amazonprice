@@ -9,7 +9,7 @@ import "./index.scss";
 import MakePostButton from "../MakePostButton";
 import LeftSide from "../Leftside";
 import { get_single_post } from "../../actions/posts";
-import commentPicture from "../../assets/pictures/Profile-Pictures/PP-Cropped/profile_pic_4.jpeg";
+import commentPicture from "../../assets/pictures/Profile-Pictures/unknown.jpg";
 
 const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const { title } = useParams();
