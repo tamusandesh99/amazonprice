@@ -32,6 +32,7 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
   const [replyComment, setReplyComment] = useState("");
   const [replyIndex, setReplyIndex] = useState(null);
 
+
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchSinglePost = async () => {
@@ -111,6 +112,7 @@ const SinglePost = ({ ProfileUsername, isAuthenticated }) => {
               <div className="user-post-info">
                 <img src={commentPicture} />
                 <p>{postData.username}</p>
+                <p>{postData.post.date}</p>
               </div>
 
               <div className="user-post-content">

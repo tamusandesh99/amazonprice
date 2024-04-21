@@ -213,14 +213,14 @@ const HomePage = ({
                       post.links,
                       post.likes,
                       post.comments,
-                      post.date
+                      post.timestamp
                     )
                   }
                   key={index}
                 >
                   <div className="post-info">
                     <p className="post-username">{post.username} </p>
-                    <p className="post-username">{post.date}</p>
+                    <p className="post-username">{post.timestamp}</p>
                     <p className="post-title">{post.title}</p>
                     <p className="post-description">{post.description}</p>
                     <div className="post-likes-comments">

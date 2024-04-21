@@ -28,6 +28,7 @@ export const get_all_posts =
         return [...acc, ...postsWithUsername];
       }, []);
 
+
       if (res.data.error) {
         dispatch({
           type: POSTS_LOAD_FAIL,
